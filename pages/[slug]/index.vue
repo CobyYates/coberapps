@@ -11,8 +11,8 @@
 <script setup>
 import { ref, computed, defineAsyncComponent } from "vue";
 const { params } = useRoute();
-console.log('testing value', params.slug || "home")
-const story = await useAsyncStoryblok("home", { version: "draft" });
+console.log('testing params', params)
+const story = await useAsyncStoryblok(params.slug, { version: "draft" });
 const props = defineProps({});
 
 const row = defineAsyncComponent(() => import("~/components/Layout/row.vue"));

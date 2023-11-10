@@ -88,9 +88,9 @@ const {
   },
 });
 
-const colorValue = computed(() => {
-  console.log("testing color", color);
-});
+// const colorValue = computed(() => {
+//   console.log("testing color", color);
+// });
 
 const ctaClass = computed(() => {
   let result = [];
@@ -106,7 +106,6 @@ const ctaClass = computed(() => {
 
 const ctaValue = computed(() => {
   const val = cta[0];
-  console.log('testing cta', val.iconValue, val.iconLocation)
   let icon = val.iconValue
   let iconLocation = val.iconLocation
   const result = {
@@ -123,9 +122,8 @@ const ctaValue = computed(() => {
     append: icon && iconLocation == "right" ? icon : null,
     iconValue: val.iconValue
   };
-  if (result) {
-    console.log("testing", result);
-  }
+  // if (result) {
+  // }
   return result;
 });
 

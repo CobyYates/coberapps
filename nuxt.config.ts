@@ -24,6 +24,9 @@ export default defineNuxtConfig({
   plugins: [
     { src: '~/plugins/flickity.js', ssr: false }
   ],
+  generate: {
+    fallback: true, // Enables fallback for dynamic routes
+  },
   components: {
     global: true,
     dirs: ["~/components"],
