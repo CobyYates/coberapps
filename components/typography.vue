@@ -27,6 +27,7 @@ const {
   hiddenMobile,
   color,
   richText,
+  colorReset
 } = defineProps({
   element: {
     type: String,
@@ -68,6 +69,10 @@ const {
     type: Boolean,
     default: false,
   },
+  colorReset: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const typographyClass = computed(() => {
@@ -81,7 +86,9 @@ const typographyClass = computed(() => {
 
 const typographyStyle = computed(() => {
   let result = []
-  if (color.length > 0) {
+  if(colorReset) {
+    return
+  } else if (color.length > 0) {
     result.push({color:currentColor(color[0])})
   }
   return result;

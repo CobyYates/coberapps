@@ -10,7 +10,7 @@
             width="200"
             :to="image.link"
           >
-            <v-img :src="image.image.filename" height="150" contain />
+            <v-img :src="image.image.filename || ''" height="150" contain />
           </v-card>
         </div>
       </flickity-wrapper>
