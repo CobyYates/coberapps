@@ -10,8 +10,8 @@
     :rounded="false"
   >
     <v-img
-      v-if="image.filename"
-      :src="image.filename"
+      v-if="image && image.filename"
+      :src="image.filename ||''"
       cover
       :aspect-ratio="5 / 4"
     />

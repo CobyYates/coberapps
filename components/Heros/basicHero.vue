@@ -14,8 +14,9 @@
           class="c-hero__overlay d-flex my-0"
           :class="overlayClass"
           :style="overlayStyle"
+          v-if="textLocation != 'center' && !currentBreakpoint.smAndDown"
         >
-          <v-col v-if="currentBreakpoint.mdAndUp" class="pl-10">
+          <v-col>
             <typography v-bind="title[0]" class="c-hero__title" />
             <typography v-bind="subtitle[0]" class="c-hero__subtitle" />
             <typography v-bind="description[0]" class="c-hero__description" />
@@ -24,17 +25,28 @@
             <slot />
           </v-col>
         </v-row>
+        <v-row
+          class="c-hero__overlay d-flex my-0"
+          :class="overlayClass"
+          :style="overlayStyle"
+          v-else-if="currentBreakpoint.smAndDown || textLocation == 'center' || !textBelowOnMobile"
+        >
+          <v-col v-if="!textBelowOnMobile">
+            <typography v-bind="title[0]" class="c-hero__title" />
+            <typography v-bind="subtitle[0]" class="c-hero__subtitle" />
+            <typography v-bind="description[0]" class="c-hero__description" />
+          </v-col>
+        </v-row>
       </v-img>
     </v-col>
     <v-col
-      v-if="currentBreakpoint.smAndDown"
+      v-if="currentBreakpoint.smAndDown && textBelowOnMobile"
       cols="12"
-      sm="12"
-      class="text-center"
+      class="text-center mx-auto"
     >
-      <typography v-bind="title[0]" class="c-hero__title" />
-      <typography v-bind="subtitle[0]" class="c-hero__subtitle" />
-      <typography v-bind="description[0]" class="c-hero__description" />
+      <typography v-bind="title[0]" :color-reset="true" class="c-hero__title" />
+      <typography v-bind="subtitle[0]" :color-reset="true" class="c-hero__subtitle" />
+      <typography v-bind="description[0]" :color-reset="true" class="c-hero__description" />
     </v-col>
   </v-row>
 </template>
@@ -100,6 +112,10 @@ const {
     type: String,
     default: "align-center",
   },
+  textBelowOnMobile: {
+    type: Boolean,
+    default: false
+  }
 });
 
 const imageData = computed(() => {
@@ -153,6 +169,8 @@ const overlayClass = computed(() => {
   if (textLocation) {
     if (textLocation == "right") {
       result.push("flex-row-reverse");
+    } else if(textLocation == "center") {
+      result.push("text-center")
     }
   }
   if (textPosition) {
@@ -168,17 +186,19 @@ const overlayStyle = computed(() => {
     const opacity = overlayData.opacity;
     let value = overlayData.gradient
       ? `linear-gradient(${overlayData.gradient}, rgba(${color},0) 0%, rgba(${color},${opacity}) 100%)`
-      : ``;
+      : `rgba(${color},${opacity})`;
     result.push({ background: value });
   }
+  console.log('testing', result)
   return result;
 });
 </script>
 
 <style lang="scss" scoped>
 .c-hero {
-  width: 100%;
+  // width: 100%;
   &__container {
+    width: 100%;
   }
   &__image {
     position: relative;

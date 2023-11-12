@@ -5,6 +5,7 @@
     <carousel-hero v-else-if="section.component == 'carouselHero'" v-bind="section" />
     <image-gallery v-else-if="section.component == 'imageGallery'" v-bind="section" />
     <brand-carousel v-else-if="section.component == 'brandCarousel'" v-bind="section" />
+    <filterable-gallery v-else-if="section.component == 'filterableGallery'" v-bind="section" />
   </template>
 </template>
 
@@ -27,6 +28,9 @@ const imageGallery = defineAsyncComponent(() =>
 );
 const brandCarousel = defineAsyncComponent(() =>
   import("~/components/Carousel/brandCarousel.vue")
+);
+const filterableGallery = defineAsyncComponent(() =>
+  import("~/components/Gallery/filterableGallery.vue")
 );
 
 </script>

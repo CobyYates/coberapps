@@ -1,13 +1,28 @@
 <template>
   <v-img
-    :src="image.filename"
+    :src="image.filename || ''"
     cover
     class="gallery-item"
     :height="height"
+    :aspect-ratio="aspectRatio"
   >
-    <div class="gallery-item__overlay d-flex align-center flex-column justify-center text-center">
-      <p class="mb-3 text-white font-weight-bold">{{ title }}</p>
-      <v-btn :to="link" size="x-small" rounded="0">{{ buttonText }}</v-btn>
+    <div
+      class="gallery-item__overlay d-flex align-center flex-column justify-center text-center"
+    >
+      <p class="mb-3 text-white font-weight-bold" v-if="title">{{ title }}</p>
+      <v-img
+        width="75%"
+        max-height="30"
+        v-if="titleLogo && titleLogo.filename"
+        :src="titleLogo.filename"
+      />
+      <p class="mb-3 text-white" v-if="subtitle">
+        {{ subtitle }}
+      </p>
+      <v-btn v-if="buttonText" :to="link" size="x-small" rounded="0">{{
+        buttonText
+      }}</v-btn>
+      <slot />
     </div>
   </v-img>
 </template>
@@ -16,9 +31,12 @@
 const { image } = defineProps({
   image: Object,
   title: String,
+  subtitle: String,
+  titleLogo: Object,
   buttonText: String,
   link: String,
-  height: String
+  height: String,
+  aspectRatio: String
 });
 </script>
 
@@ -31,7 +49,7 @@ const { image } = defineProps({
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,.3);
+    background-color: rgba(0, 0, 0, 0.3);
   }
 }
 </style>
