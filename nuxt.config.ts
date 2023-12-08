@@ -1,7 +1,7 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 export default defineNuxtConfig({
   build: {
-    transpile: ["vuetify","class-validator"],
+    transpile: ["vuetify", "class-validator"],
   },
   ssr: true,
   modules: [
@@ -22,7 +22,7 @@ export default defineNuxtConfig({
     ],
   ],
   plugins: [
-    { src: '~/plugins/flickity.js', ssr: false }
+    { src: "~/plugins/flickity.js", ssr: false },
   ],
   generate: {
     fallback: true, // Enables fallback for dynamic routes
@@ -38,7 +38,7 @@ export default defineNuxtConfig({
       },
     },
     optimizeDeps: {
-      exclude: ['class-validator']
-    }
+      exclude: ["class-validator"],
+    },
   },
 });

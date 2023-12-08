@@ -9,24 +9,24 @@
 </template>
 
 <script setup>
-import { ref, computed, defineAsyncComponent } from "vue";
+import { defineAsyncComponent } from "vue";
 const { params } = useRoute();
 console.log('testing value', params.slug || "home")
 const story = await useAsyncStoryblok("home", { version: "draft" });
 const props = defineProps({});
 
-const row = defineAsyncComponent(() => import("~/components/Layout/row.vue"));
+const row = defineAsyncComponent(() => import("~/components/row.vue"));
 const basicHero = defineAsyncComponent(() =>
-  import("~/components/Heros/basicHero.vue")
+  import("~/components/basicHero.vue")
 );
 const carouselHero = defineAsyncComponent(() =>
-  import("~/components/Heros/carouselHero.vue")
+  import("~/components/carouselHero.vue")
 );
 const imageGallery = defineAsyncComponent(() =>
   import("~/screens/imageGallery.vue")
 );
 const brandCarousel = defineAsyncComponent(() =>
-  import("~/components/Carousel/brandCarousel.vue")
+  import("~/components/brandCarousel.vue")
 );
 
 </script>
