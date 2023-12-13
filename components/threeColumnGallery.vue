@@ -1,14 +1,14 @@
 <template>
   <v-row :style="rowStyle" class="mx-auto">
     <v-col>
-      <typography v-if="title" v-bind="title[0]" class="c-section__title" />
+      <typography v-if="title && title.length > 0" v-bind="title[0]" class="c-section__title" />
       <typography
-        v-if="subtitle"
+        v-if="subtitle && subtitle.length > 0"
         v-bind="subtitle[0]"
         class="c-section__subtitle"
       />
       <typography
-        v-if="description"
+        v-if="description && description.length > 0"
         v-bind="description[0]"
         class="c-section__description"
       />

@@ -12,25 +12,24 @@
 <script setup>
 import { ref, computed, defineAsyncComponent } from "vue";
 const { params } = useRoute();
-console.log('testing params', params)
 const story = await useAsyncStoryblok(params.slug, { version: "draft" });
 const props = defineProps({});
 
-const row = defineAsyncComponent(() => import("~/components/Layout/row.vue"));
+const row = defineAsyncComponent(() => import("~/components/row.vue"));
 const basicHero = defineAsyncComponent(() =>
-  import("~/components/Heros/basicHero.vue")
+  import("~/components/basicHero.vue")
 );
 const carouselHero = defineAsyncComponent(() =>
-  import("~/components/Heros/carouselHero.vue")
+  import("~/components/carouselHero.vue")
 );
 const imageGallery = defineAsyncComponent(() =>
   import("~/screens/imageGallery.vue")
 );
 const brandCarousel = defineAsyncComponent(() =>
-  import("~/components/Carousel/brandCarousel.vue")
+  import("~/components/brandCarousel.vue")
 );
 const filterableGallery = defineAsyncComponent(() =>
-  import("~/components/Gallery/filterableGallery.vue")
+  import("~/components/filterableGallery.vue")
 );
 
 </script>

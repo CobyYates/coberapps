@@ -1,106 +1,124 @@
 <template>
-  <component
-    :is="element"
-    v-if="show"
-    :class="typographyClass"
-    :style="typographyStyle"
-  >
-    {{ text }}
+  <component v-if="show" :is="element" :class="typographyClass" :style="typographyStyle" class="black">
+    <div v-if="!resolvedRichText">{{ text }}</div> 
+    <div v-else>
+      <div v-if="resolvedRichText" v-html="resolvedRichText" />
+    </div>
   </component>
 </template>
 
-<script setup>
-import { computed, ref } from "vue";
-import { useDisplay, useTheme } from "vuetify";
-import useProjectTheme from "~/composables/theme";
+<script>
+import breakpoint from '~/mixin/breakpoint'
+import textColor from '~/mixin/colors'
+import RichTextResolver from "storyblok-js-client/richTextResolver";
 
-const { currentColor } = useProjectTheme();
+export default {
+  mixins: [breakpoint, textColor],
+  props: {
+    element: {
+      type: String,
+      default: "p",
+    },
+    headingStyle: {
+      type: String,
+      default: "",
+    },
+    text: {
+      type: String,
+      default: "",
+    },
+    richText: {
+      type: Object,
+      default: () => ({}),
+    },
+    fontWeight: {
+      type: String,
+      default: "",
+    },
+    color: {
+      type: Array,
+      default: () => [],
+    },
+    spacing: {
+      type: Array,
+      default: () => [],
+    },
+    alignment: {
+      type: Array,
+      default: () => [],
+    },
+    hiddenDesktop: {
+      type: Boolean,
+      default: false,
+    },
+    hiddenMobile: {
+      type: Boolean,
+      default: false,
+    },
+    colorReset: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    typographyClass() {
+      const result = [];
+      const alignment = this.alignment;
+      const headingStyle = this.headingStyle;
+      const fontWeight = this.fontWeight;
+      const spacing = this.spacing;
+      const colorReset = this.colorReset;
+      const color = this.color;
 
-const {
-  element,
-  headingStyle,
-  text,
-  fontWeight,
-  alignment,
-  spacing,
-  hiddenDesktop,
-  hiddenMobile,
-  color,
-  richText,
-  colorReset
-} = defineProps({
-  element: {
-    type: String,
-    default: "p",
-  },
-  headingStyle: {
-    type: String,
-    default: "",
-  },
-  text: {
-    type: String,
-    default: "",
-  },
-  richText: {
-    type: Object,
-    default: () => ({}),
-  },
-  fontWeight: {
-    type: String,
-    default: "",
-  },
-  color: {
-    type: Array,
-    default: () => [],
-  },
-  spacing: {
-    type: Array,
-    default: () => [],
-  },
-  alignment: {
-    type: Array,
-    default: () => [],
-  },
-  hiddenDesktop: {
-    type: Boolean,
-    default: false,
-  },
-  hiddenMobile: {
-    type: Boolean,
-    default: false,
-  },
-  colorReset: {
-    type: Boolean,
-    default: false,
-  },
-});
+      if (alignment) {
+        result.push(...alignment);
+      }
 
-const typographyClass = computed(() => {
-  const result = [...alignment, headingStyle, fontWeight];
-  const spacingClasses = spacing
-    ? spacing.map((s) => `${s.type}${s.location}${s.screenSize}${s.value}`)
-    : [];
-  result.push(...spacingClasses);
-  return result.filter(Boolean);
-});
+      if (headingStyle) {
+        result.push(headingStyle);
+      }
 
-const typographyStyle = computed(() => {
-  let result = []
-  if(colorReset) {
-    return
-  } else if (color.length > 0) {
-    result.push({color:currentColor(color[0])})
-  }
-  return result;
-});
+      if (fontWeight) {
+        result.push(fontWeight);
+      }
 
-const { mdAndUp, smAndDown } = useDisplay();
-const show = computed(() => {
-  if ((mdAndUp && hiddenDesktop) || (smAndDown && hiddenMobile)) {
-    return false;
-  }
-  return true;
-});
+      if (color.length > 0 && !colorReset) {
+        result.push(this.textColor(color[0]))
+      }
+
+      const spacingClasses = spacing
+        ? spacing.map((s) => `${s.type}${s.location}${s.screenSize}${s.value}`)
+        : [];
+      result.push(...spacingClasses);
+
+      return result.filter(Boolean);
+    },
+    resolvedRichText() {
+      const resolver = new RichTextResolver();
+      const richText = this.richText;
+      let result;
+      if (richText && richText.content && richText.content[0].content) {
+        result = resolver.render(this.richText);
+      } else {
+        result = false;
+      }
+      return result;
+    },
+    typographyStyle() {
+      let result = [];
+      return result;
+    },
+    show() {
+      const hiddenDesktop = this.hiddenDesktop;
+      const hiddenMobile = this.hiddenMobile;
+      const breakpoint = this.breakpoint
+      if ((breakpoint.mdAndUp && hiddenDesktop) || (breakpoint.smAndDown && hiddenMobile)) {
+        return false;
+      }
+      return true;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>

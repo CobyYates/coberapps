@@ -1,4 +1,5 @@
 import { ref, computed } from "vue";
+import vuetify from "vite-plugin-vuetify";
 import { useDisplay, useTheme } from "vuetify";
 
 export default function useProjectTheme(data) {
@@ -25,7 +26,7 @@ export default function useProjectTheme(data) {
         adjustment = colorObject.colorAdjustment;
       }
       let colorValue = adjustment
-        ? `${colorObject.themeColor}-${adjustment}`
+        ? `${colorObject.themeColor}-${adjustment}```
         : colorObject.themeColor;
       result = currentTheme.colors[colorValue];
     }
