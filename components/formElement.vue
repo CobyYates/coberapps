@@ -155,17 +155,13 @@
           :rounded="input.settings[0].rounded"
         />
       </template>
-      <form-button class="" type="submit" v-bind="formButton" />
+      <form-button class="" type="submit" v-bind="formButton[0]" />
     </form>
   </div>
 </template>
 
 <script>
-import FormButton from "../Buttons/formButton.vue";
 export default {
-  components: {
-    FormButton,
-  },
   data: () => ({
     name: "",
     form: {},
@@ -176,7 +172,6 @@ export default {
     select: null,
     checkbox: false,
   }),
-
   props: {
     inputs: Array,
     endpoint: String,
@@ -185,11 +180,13 @@ export default {
     description: Array,
     columns: String,
     formId: String,
-    formButton: Array,
+    formButton: {
+      type: Array,
+      default: () => []
+    },
     spacing: Array,
     required: Boolean,
   },
-
   methods: {
     async validate() {
       const { valid } = await this.$refs.form.validate();

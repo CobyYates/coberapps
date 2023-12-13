@@ -10,7 +10,7 @@ const imageGallery = defineAsyncComponent(() =>
   import("~/components/imageGallery.vue")
 );
 const threeColumnGallery = defineAsyncComponent(() =>
-  import("~/components/Gallery/threeColumnGallery.vue")
+  import("~/components/threeColumnGallery.vue")
 );
 
 const props = defineProps({

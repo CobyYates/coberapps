@@ -1,8 +1,8 @@
 <template>
-  <v-row class="c-hero pt-16">
+  <v-row class="c-hero">
     <v-col class="c-hero__container" cols="12" sm="12">
       <v-img :src="imageData.image.filename" :alt="imageData.image.alt" class="c-hero__image" cover min-width="100vw"
-        :max-height="heroHeight[0]" :height="heroHeight[0]">
+        :max-height="heroHeight" :height="heroHeight">
         <v-row v-if="textLocation != 'center' && (textBelowOnMobile && !breakpoint.smAndDown)"
           class="c-hero__overlay d-flex my-0" :class="overlayClass" :style="overlayStyle">
           <v-col>

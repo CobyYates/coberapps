@@ -26,7 +26,7 @@ export default function useProjectTheme(data) {
         adjustment = colorObject.colorAdjustment;
       }
       let colorValue = adjustment
-        ? `${colorObject.themeColor}-${adjustment}`
+        ? `${colorObject.themeColor}-${adjustment}```
         : colorObject.themeColor;
       result = currentTheme.colors[colorValue];
     }

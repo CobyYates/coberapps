@@ -29,7 +29,7 @@ const brandCarousel = defineAsyncComponent(() =>
   import("~/components/brandCarousel.vue")
 );
 const filterableGallery = defineAsyncComponent(() =>
-  import("~/components/Gallery/filterableGallery.vue")
+  import("~/components/filterableGallery.vue")
 );
 
 </script>
