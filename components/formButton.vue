@@ -36,10 +36,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    block: {
-      type: Boolean,
-      default: false,
-    },
     size: {
       type: String,
       default: "",
