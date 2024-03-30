@@ -13,7 +13,7 @@
         class="c-section__description"
       />
       {{ typeof imageAspectRatio }}
-      <v-row v-if="images.length > 0">
+      <v-row v-if="images.length > 0" class="mb-16">
         <v-col cols="12" sm="6" md="4" v-for="item in images" :key="item.i">
           <gallery-item v-bind="item" :aspect-ratio="imageAspectRatio" height="100%" />
         </v-col>

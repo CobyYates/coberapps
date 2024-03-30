@@ -52,7 +52,7 @@
           </v-item-group>
 
           <div
-            class="c-filterable-gallery__image-container"
+            class="c-filterable-gallery__image-container mb-16"
             v-if="images.length > 0"
           >
             <v-img
@@ -116,6 +116,10 @@ export default {
       }
       return results;
     },
+    rowStyle() {
+      let result
+      return result
+    },
     images() {
       const groups = this.filterableGalleryGroups;
       let val = groups.map((e) => e.images.map((e) => e.filename));
@@ -139,7 +143,6 @@ export default {
       return Math.trunc(result);
     },
     updateGallery(index) {
-      console.log("testing index", index);
       // let val = index-= 2;
       this.tab = index;
     },

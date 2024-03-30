@@ -19,7 +19,8 @@
       <p class="mb-3 text-white" v-if="subtitle">
         {{ subtitle }}
       </p>
-      <v-btn v-if="buttonText" :to="link" size="x-small" rounded="0">{{
+       <!-- :to="link" -->
+      <v-btn v-if="buttonText" size="x-small" rounded="0">{{
         buttonText
       }}</v-btn>
       <slot />

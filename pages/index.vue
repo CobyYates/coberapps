@@ -1,40 +1,16 @@
 <template>
-  <template v-for="section in story.content.sections" :key="section.i">
-    <row v-if="section.component == 'row'" v-bind="section" />
-    <basic-hero v-else-if="section.component == 'basicHero'" v-bind="section" />
-    <carousel-hero v-else-if="section.component == 'carouselHero'" v-bind="section" />
-    <image-gallery v-else-if="section.component == 'imageGallery'" v-bind="section" />
-    <brand-carousel v-else-if="section.component == 'brandCarousel'" v-bind="section" />
-  </template>
+  <main role="main">
+    <component
+      v-for="section in story.content.sections"
+      :key="section.i"
+      :is="section.component"
+      v-bind="section"
+    />
+  </main>
 </template>
 
-<script setup>
-import { defineAsyncComponent } from "vue";
-const { params } = useRoute();
-console.log('testing value', params.slug || "home")
-const story = await useAsyncStoryblok("home", { version: "draft" });
-const props = defineProps({});
+<script setup lang="ts">
 
-const row = defineAsyncComponent(() => import("~/components/row.vue"));
-const basicHero = defineAsyncComponent(() =>
-  import("~/components/basicHero.vue")
-);
-const carouselHero = defineAsyncComponent(() =>
-  import("~/components/carouselHero.vue")
-);
-const imageGallery = defineAsyncComponent(() =>
-  import("~/screens/imageGallery.vue")
-);
-const brandCarousel = defineAsyncComponent(() =>
-  import("~/components/brandCarousel.vue")
-);
-
+const story = await useStoryblok('home', { version: 'draft' })
 </script>
-
-<style lang="scss" scoped>
-.v-container {
-  max-width: 100%;
-}
-</style>
-
 <!-- https://blog.logrocket.com/building-dynamic-vuetify-themes/#:~:text=Vuetify%20includes%20a%20useTheme%20method,current. -->

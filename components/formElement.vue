@@ -15,7 +15,7 @@
       v-bind="description[0]"
       class="c-section__description"
     />
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submit" ref="form">
       <template v-for="input in inputs" :key="input.i">
         <v-text-field
           v-if="input.component == 'textField'"
@@ -155,12 +155,13 @@
           :rounded="input.settings[0].rounded"
         />
       </template>
-      <form-button class="" type="submit" v-bind="formButton[0]" />
+      <btn type="submit" v-bind="formButton[0]" @click="submitForm" />
     </form>
   </div>
 </template>
 
 <script>
+import emailjs from '@emailjs/browser';
 export default {
   data: () => ({
     name: "",
@@ -179,7 +180,9 @@ export default {
     subtitle: Array,
     description: Array,
     columns: String,
-    formId: String,
+    publicKey: String,
+    templateId: String,
+    serviceId: String,
     formButton: {
       type: Array,
       default: () => []
@@ -206,6 +209,22 @@ export default {
       }
       return result;
     },
+    async submitForm() {
+      let form = this.form
+      const serviceId = this.serviceId
+      const publicKey = this.publicKey
+      const templateId = this.templateId
+      try {
+        const response = await emailjs.send(
+          serviceId,
+          templateId,
+          form, // Assuming your form data is stored in the component's data
+          publicKey
+        );
+      } catch (error) {
+        console.error('Error sending email', error);
+      }
+    }
   },
 };
 </script>

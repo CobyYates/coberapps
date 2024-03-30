@@ -1,14 +1,46 @@
 <template>
-  <v-row :class="rowClass" :style="rowStyle" class="c-section my-0 mx-auto" justify="center">
+  <v-row
+    :class="rowClass"
+    :style="rowStyle"
+    class="c-section my-0 mx-auto"
+    justify="center"
+  >
     <template v-for="item in columns" :key="item.i">
-      <v-col v-if="item" :cols="item.cols" :sm="item.sm" :md="item.md" :lg="item.lg" :xl="item.xl"
-        class="c-section__column w-100" :class="colClass(item)" :style="colStyle(item)">
-        <typography v-if="item.title.length > 0" v-bind="item.title[0]" class="c-section__title" />
-        <typography v-if="item.subtitle.length > 0" v-bind="item.subtitle[0]" class="c-section__subtitle" />
-        <typography v-if="item.description.length > 0" v-bind="item.description[0]" class="c-section__description" />
+      <v-col
+        v-if="item"
+        :cols="item.cols"
+        :sm="item.sm"
+        :md="item.md"
+        :lg="item.lg"
+        :xl="item.xl"
+        class="c-section__column w-100"
+        :class="colClass(item)"
+        :style="colStyle(item)"
+      >
+        <typography
+          v-if="item.title.length > 0"
+          v-bind="item.title[0]"
+          class="c-section__title"
+        />
+        <typography
+          v-if="item.subtitle.length > 0"
+          v-bind="item.subtitle[0]"
+          class="c-section__subtitle"
+        />
+        <typography
+          v-if="item.description.length > 0"
+          v-bind="item.description[0]"
+          class="c-section__description"
+        />
         <template v-if="item && item.sections && item.sections.length > 0">
-          <card v-if="item.sections[0].component == 'card'" v-bind="item.sections[0]" />
-          <form-element v-if="item.sections[0].component == 'formElement'" v-bind="item.sections[0]" />
+          <card
+            v-if="item.sections[0].component == 'card'"
+            v-bind="item.sections[0]"
+          />
+          <form-element
+            v-if="item.sections[0].component == 'formElement'"
+            v-bind="item.sections[0]"
+          />
         </template>
       </v-col>
     </template>
@@ -16,7 +48,7 @@
 </template>
 
 <script>
-import colors from '~/mixin/colors'
+import colors from "~/mixin/colors";
 
 export default {
   mixins: [colors],
@@ -35,7 +67,7 @@ export default {
     },
     backgroundImage: {
       type: Object,
-      default: () => { },
+      default: () => {},
     },
     maxWidth: {
       type: String,
@@ -49,37 +81,38 @@ export default {
   computed: {
     rowClass() {
       let result = [];
-      const spacing = this.spacing
-      const backgroundColor = this.backgroundColor
+      const spacing = this.spacing;
+      const backgroundColor = this.backgroundColor;
       if (spacing && spacing.length > 0) {
         if (spacing && spacing.length > 0) {
           for (let i = 0; i < spacing.length; i++) {
-            let val = spacing[i].values[0]
+            let val = spacing[i].values[0];
             // let auto = val.auto || null
             // if (auto) {
             //   value = 'auto'
             // }
             if (val && val.type)
-              result.push(`${val.type}${val.location}${val.screenSize}${val.value}`);
+              result.push(
+                `${val.type}${val.location}${val.screenSize}${val.value}`
+              );
           }
         }
       }
       if (backgroundColor && backgroundColor.length > 0) {
-        result.push(`bg-${this.basicColor(backgroundColor[0])}`)
+        result.push(`bg-${this.basicColor(backgroundColor[0])}`);
       }
-      console.log('testing result', result)
       return result;
     },
     rowStyle() {
       const styles = {};
       // const backgroundColor = this.backgroundColor
-      const maxWidth = this.maxWidth || null
-      const minWidth = this.minWidth || null
-      const backgroundImage = this.backgroundImage
+      const maxWidth = this.maxWidth || null;
+      const minWidth = this.minWidth || null;
+      const backgroundImage = this.backgroundImage;
       // if (backgroundColor.length > 0) {
       //   styles.backgroundColor = this.basicColor(backgroundColor[0]);
       // }
-      if (backgroundImage.length > 0) {
+      if (backgroundImage) {
         styles.backgroundImage = `url(${backgroundImage.filename})`;
       }
       if (maxWidth) {
@@ -88,8 +121,9 @@ export default {
       if (minWidth) {
         styles.width = minWidth;
       }
+      if (styles && styles.backgroundImage)
       return styles;
-    }
+    },
   },
   methods: {
     colStyle(item) {
@@ -103,21 +137,21 @@ export default {
       const result = [];
       if (item.spacing.length > 0) {
         item.spacing.forEach((s) => {
-          let auto = s.auto || null
-          let value = s.value
+          let auto = s.auto || null;
+          let value = s.value;
           if (auto) {
-            value = 'auto'
+            value = "auto";
           }
           result.push(`${s.type}${s.location}${s.screenSize}${value}`);
         });
       }
       if (item && item.backgroundColor && item.backgroundColor.length > 0) {
-        result.push('py-0')
+        result.push("py-0");
       }
       return result;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
