@@ -1,17 +1,17 @@
 <template>
   <div>
-    <v-sheet v-if="topNavigation" :color="backgroundColor">
+    <v-sheet v-if="topNavigationVal" :color="backgroundColorVal">
       <nav class="px-10 py-2">
         <v-row>
           <v-col class="d-flex align-center">
-            <v-app-bar-nav-icon v-if="navigationDrawer" variant="text" @click.stop="drawer = !drawer" />
+            <v-app-bar-nav-icon v-if="navigationDrawerVal" variant="text" @click.stop="drawer = !drawer" />
           </v-col>
           <v-col class="d-flex justify-center align-center">
-            <v-img v-if="topNavigation.logo.filename" :src="topNavigation.logo.filename" max-width="200" />
+            <v-img v-if="topNavigationVal.logo.filename" :src="topNavigationVal.logo.filename" max-width="200" />
           </v-col>
           <v-col class="d-flex justify-end align-center">
-            <nuxt-link v-for="icon in topNavigation.socialLinks" :key="icon.i" :href="icon.url" target="_blank">
-              <v-icon :size="topNavigation.socialIconSize" :color="iconColor(icon.color[0])">{{ icon.value }}</v-icon>
+            <nuxt-link v-for="icon in topNavigationVal.socialLinks" :key="icon.i" :href="icon.url" target="_blank">
+              <v-icon :size="topNavigationVal.socialIconSize" :color="iconColor(icon.color[0])">{{ icon.value }}</v-icon>
             </nuxt-link>
           </v-col>
         </v-row>
@@ -19,16 +19,16 @@
         </div>
       </nav>
     </v-sheet>
-    <v-sheet v-if="subNavigationBar && showSubNav" :color="backgroundColor"
+    <v-sheet v-if="subNavigationBarVal && showSubNav" :color="backgroundColorVal"
       class="c-navigation__sub-navigation d-flex justify-center">
       <nav class="d-flex align-center justify-space-between px-10 py-2" :style="subNavStyle">
-        <template v-for="navItem in subNavigationBar.navItems" :key="navItem.i">
+        <template v-for="navItem in subNavigationBarVal.navItems" :key="navItem.i">
           <nuxt-link v-if="navItem.externalLink" :href="navItem.url" target="_blank"
-            class="c-navigation__sub-navigation__link mx-3" :class="textColor">
+            class="c-navigation__sub-navigation__link mx-3" :class="navTextColor">
             <v-icon class="pr-3" v-if="navItem.icon">{{ navItem.icon }}</v-icon>
             {{ navItem.linkText }}
           </nuxt-link>
-          <nuxt-link v-else :to="navItem.url" class="c-navigation__sub-navigation__link mx-3" :class="textColor">
+          <nuxt-link v-else :to="navItem.url" class="c-navigation__sub-navigation__link mx-3" :class="navTextColor">
             <v-icon class="pr-3" v-if="navItem.icon">{{ navItem.icon }}</v-icon>
             {{ navItem.linkText }}
           </nuxt-link>
@@ -38,7 +38,7 @@
 
     <v-navigation-drawer v-model="drawer" v-if="navigationDrawer" temporary class="c-navigation__drawer">
       <v-list class="c-navigation__drawer-list py-0">
-        <v-list-item v-for="item in navigationDrawer.navItems" :key="item.i" :to="item.url" :value="item.linkText"
+        <v-list-item v-for="item in navigationDrawer[0].navItems" :key="item.i" :to="item.url" :value="item.linkText"
           class="c-navigation__drawer-list-item">
           <v-list-item-title>
             {{ item.linkText }}
@@ -54,49 +54,73 @@ import breakpoint from '~/mixin/breakpoint'
 export default {
   data() {
     return {
-      nav: null,
       drawer: false
     }
   },
+  props: {
+    topNavigation: {
+      type: Array,
+      default: () => []
+    },
+    navigationDrawer: {
+      type: Array,
+      default: () => []
+    },
+    subNavigationBar: {
+      type: Array,
+      default: () => []
+    },
+    backgroundColor: {
+      type: Array,
+      default: () => []
+    },
+    textColor: {
+      type: Array,
+      default: () => []
+    },
+  },
   mixins: [breakpoint],
   computed: {
-    topNavigation() {
+    topNavigationVal() {
       let result = null
-      const nav = this.nav
-      if (nav && nav.content && nav.content.topNavigation.length > 0) {
-        result = nav.content.topNavigation[0]
+      const topNavigation = this.topNavigation
+      if (topNavigation && topNavigation.length > 0) {
+        result = topNavigation[0]
       }
       return result
     },
-    navigationDrawer() {
+    navigationDrawerVal() {
       let result = null
-      const nav = this.nav
-      if (nav && nav.content && nav.content.navigationDrawer.length > 0) {
-        result = nav.content.navigationDrawer[0]
+      const navigationDrawer = this.navigationDrawer
+      if (navigationDrawer && navigationDrawer.length > 0) {
+        result = navigationDrawer[0]
       }
       return result
     },
-    subNavigationBar() {
+    subNavigationBarVal() {
       let result = null
-      const nav = this.nav
-      if (nav && nav.content && nav.content.subNavigationBar.length > 0) {
-        result = nav.content.subNavigationBar[0]
+      const subNavigationBar = this.subNavigationBar
+      if (subNavigationBar && subNavigationBar.length > 0) {
+        result = subNavigationBar[0]
       }
       return result
     },
-    backgroundColor() {
+    backgroundColorVal() {
       let result = 'white'
-      const nav = this.nav
-      if (nav && nav.content && nav.content.backgroundColor.length > 0) {
-        let color = nav.content.backgroundColor[0]
+      const backgroundColor = this.backgroundColor
+      if (backgroundColor && backgroundColor.length > 0) {
+        let color = backgroundColor[0]
         result = color.themeColor
       }
       return result
     },
-    textColor() {
+    navTextColor() {
       let result = []
-      const nav = this.nav
-      const color = nav.content.textColor[0]
+      const textColor = this.textColor
+      let color
+      if(textColor && textColor.length > 0) {
+        color = textColor[0]
+      }
       if (color && color.themeColor != "") {
         result.push(color.colorAdjustment != "" ? `text-${color.themeColor}-${color.colorAdjustment}` : `text-${color.themeColor}`)
       } else if (color && color.customColor.value != "") {
@@ -106,19 +130,19 @@ export default {
     },
     subNavStyle() {
       let result = []
-      const nav = this.subNavigationBar
-      if (nav.maxWidth) {
-        result.push({ width: nav.maxWidth })
+      const subNavigationBar = this.subNavigationBar
+      if (subNavigationBar.maxWidth) {
+        result.push({ width: subNavigationBar.maxWidth })
       }
       return result
     },
     showSubNav() {
       let result = true
-      const nav = this.subNavigationBar
+      const subNavigationBar = this.subNavigationBar
       const breakpoint = this.breakpoint
-      if (nav && nav.hideOnMobile && breakpoint.smAndDown) {
+      if (subNavigationBar && subNavigationBar.hideOnMobile && breakpoint.smAndDown) {
         result = false
-      } else if (nav && nav.hideOnTablet && breakpoint.md) {
+      } else if (subNavigationBar && subNavigationBar.hideOnTablet && breakpoint.md) {
         return false
       }
       return result
@@ -134,10 +158,6 @@ export default {
       }
       return result
     }
-  },
-  async beforeMount() {
-    const story = await useAsyncStoryblok("globalNavigation", { version: "draft" });
-    this.nav = story
   },
 }
 </script>

@@ -1,17 +1,37 @@
 <template>
-  <v-row justify="center" align="center" :style="rowStyle" :class="rowClass" class="bg-primary c-call-to-action">
-    <v-col cols="12" md="7">
-      <typography v-if="text && text.length > 0" v-bind="text[0]" class="c-cta__title" />
-    </v-col>
-    <v-col cols="12" md="3">
-      <v-btn v-if="cta && cta.length > 0" :prepend-icon="ctaValue.prepend" :append-icon="ctaValue.append"
-        v-bind="ctaValue" :class="ctaClass" />
+  <v-row
+    justify="center"
+    align="center"
+    :style="rowStyle"
+    :class="rowClass"
+    class="bg-primary c-call-to-action"
+  >
+    <v-col class="c-call-to-actions__container">
+      <v-row justify="center">
+        <v-col cols="12" md="6">
+          <typography
+            v-if="text && text.length > 0"
+            v-bind="text[0]"
+            class="c-cta__title"
+          />
+        </v-col>
+        <v-col cols="12" md="3" class="d-flex justify-end">
+          {{ ctaColor }}
+          <v-btn
+            v-if="cta && cta.length > 0"
+            :prepend-icon="ctaValue.prepend"
+            :append-icon="ctaValue.append"
+            v-bind="ctaValue"
+            :class="ctaClass"
+          />
+        </v-col>
+      </v-row>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import colors from '~/mixin/colors'
+import colors from "~/mixin/colors";
 
 export default {
   mixins: [colors],
@@ -34,7 +54,7 @@ export default {
     },
     backgroundImage: {
       type: Object,
-      default: () => { },
+      default: () => {},
     },
     maxWidth: {
       type: String,
@@ -44,23 +64,24 @@ export default {
   computed: {
     rowClass() {
       let result = [];
-      const spacing = this.spacing
-      const backgroundColor = this.backgroundColor
+      const spacing = this.spacing;
+      const backgroundColor = this.backgroundColor;
       if (spacing && spacing.length > 0) {
         if (spacing && spacing.length > 0) {
           for (let i = 0; i < spacing[0].values.length; i++) {
-            let val = spacing[0].values[i]
-            console.log('testing spacing',val)
+            let val = spacing[0].values[i];
             // let auto = val.auto || null
             // if (auto) {
             //   value = 'auto'
             // }
-            result.push(`${val.type}${val.location}${val.screenSize}${val.value}`);
+            result.push(
+              `${val.type}${val.location}${val.screenSize}${val.value}`
+            );
           }
         }
       }
       if (backgroundColor && backgroundColor.length > 0) {
-        result.push(`bg-${this.basicColor(backgroundColor[0])}`)
+        result.push(`bg-${this.basicColor(backgroundColor[0])}`);
       }
       return result;
     },
@@ -79,7 +100,7 @@ export default {
     ctaClass() {
       let result = [];
       let spacingClasses = [];
-      const cta = this.cta
+      const cta = this.cta;
       if (cta[0].spacing && cta[0].spacing[0] && cta[0].spacing[0].values) {
         spacingClasses = cta[0].spacing[0].values.map(
           (s) => `${s.type}${s.location}${s.screenSize}${s.value}`
@@ -88,16 +109,31 @@ export default {
       result.push(...spacingClasses);
       return result;
     },
+    // ctaColor(){
+    //   const ctaValue = this.ctaValue
+    //   const color = ctaValue.color && ctaValue.color.length > 0 ? ctaValue.color[0] : null
+    //   let result = null
+    //   if(color) {
+    //     if(color && color.themeColor) {
+    //       result = color.themeColor
+    //     }
+    //     if(color && color.colorAdjustment) {
+    //       result = color.themeColor + color.colorAdjustment
+    //     }
+    //     console.log('testing', color, result)
+    //   }
+    //   return result
+    // },
     ctaValue() {
       const val = this.cta[0];
       let icon = val.iconValue;
       let iconLocation = val.iconLocation;
       const result = {
         color: this.basicColor(val.color[0]) || null,
-        variant: val.variant || 'flat',
+        variant: val.variant || "flat",
         text: val.text,
         block: val.block,
-        elevation: val.elevation || '0',
+        elevation: val.elevation || "0",
         to: val.to,
         size: val.size,
         href: val.href,
@@ -108,13 +144,16 @@ export default {
       };
       return result;
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .c-call-to-action {
   background-size: cover;
   width: 100%;
+  &_container {
+    max-width: 1200px;
+  }
 }
 </style>

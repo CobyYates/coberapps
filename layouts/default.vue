@@ -1,9 +1,15 @@
 <template>
   <v-app>
-    <navigation />
-    <template v-for="section in page.sections" :key="section.i">
-      <component :is="section.component" v-bind="section" />
-    </template>
+    <navigation
+      v-if="navActive"
+      v-bind="nav.content"
+    />
+    <!-- <pre v-if="navActive">{{ nav.content }}</pre> -->
+    <slot />
+    <navigation-footer
+      v-if="navActive"
+      v-bind="nav.content.footer[0]"
+    />
   </v-app>
 </template>
 
@@ -11,19 +17,26 @@
 export default {
   data() {
     return {
-      story: null
+      nav: null
     }
   },
+  async beforeMount() {
+    const story = await useAsyncStoryblok("globalNavigation", { version: "draft" });
+    this.nav = story
+  },
   computed: {
-    page() {
-      const story = this.story
-      let result = {}
-      if (story && story.content) {
-        result = story.content
+    navActive() {
+      let result = false
+      const nav = this.nav
+      if (nav && nav.content) {
+        result = true
       }
       return result
-    },
+    }
   },
+}
+</script>
+<!--
   head() {
     let image
     if (this.page & this.page.image && this.page.image.filename) {
@@ -79,7 +92,7 @@ export default {
 
     let slugs = []
     try {
-      const result = await fetch(`https://api-us.storyblok.com/v2/cdn/stories?version=draft&token=m4Znb31QiZoEyaVja5acMQtt`)
+      const result = await fetch(`https://api-us.storyblok.com/v2/cdn/stories?version=draft&token=[token]`)
       const space = await result.json()
       if (space && space.stories) {
         space.stories.map(e => {
@@ -97,4 +110,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped></style> -->

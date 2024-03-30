@@ -1,6 +1,10 @@
 <template>
-  <image-gallery v-if="galleryType == 'randomGallery'" v-bind="props"/>
-  <three-column-gallery v-if="galleryType == 'threeColumnGrid'" v-bind="props"/>
+  <v-row>
+    <v-col>
+      <image-gallery v-if="galleryType == 'randomGallery'" v-bind="props"/>
+      <three-column-gallery v-if="galleryType == 'threeColumnGrid'" v-bind="props"/>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup>

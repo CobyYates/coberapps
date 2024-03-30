@@ -19,6 +19,7 @@
     "vuetify": "^3.3.23"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.12.1",
     "@mdi/font": "^7.3.67",
     "@storyblok/nuxt": "^5.7.4",
     "storyblok-js-client": "^6.2.0",

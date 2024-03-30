@@ -1,7 +1,7 @@
 <template>
   <v-card :variant="variant || 'flat'" :color="colorValue" :style="cardStyle" :class="cardClass" :height="height"
     :elevation="elevation || '3'" min-width="100%" :rounded="false">
-    <v-img v-if="image && image.filename" :src="image.filename || ''" cover :aspect-ratio="5 / 4" />
+    <v-img v-if="image && image.filename" :cover="!imageFit" :src="image.filename || ''" :aspect-ratio="5 / 4" :style="imageStyle" />
     <v-card-title v-if="title && title.length > 0">
       <typography v-bind="title[0]" class="c-section__title" />
     </v-card-title>
@@ -12,8 +12,8 @@
       <typography v-bind="description[0]" class="c-section__description" />
     </v-card-text>
     <v-card-text v-if="cta && cta.length > 0" class="pa-0">
-      <v-btn v-if="cta && cta.length > 0" :prepend-icon="ctaValue.prepend" :append-icon="ctaValue.append" v-bind="ctaValue"
-        :class="ctaClass" />
+      <v-btn v-if="cta && cta.length > 0" :prepend-icon="ctaValue.prepend" :append-icon="ctaValue.append"
+        v-bind="ctaValue" :class="ctaClass" />
     </v-card-text>
   </v-card>
 </template>
@@ -28,6 +28,10 @@ export default {
     subtitle: Array,
     description: Array,
     width: String,
+    textAlignment: {
+      type: String,
+      default: '',
+    },
     variant: {
       type: String,
       default: "flat",
@@ -38,6 +42,10 @@ export default {
     },
     color: Array,
     image: Object,
+    imageFit: {
+      type: String,
+      default: null,
+    },
     sections: Array,
     cta: {
       type: Array,
@@ -59,7 +67,10 @@ export default {
     },
     cardClass() {
       let result = [];
-      
+      const textAlignment = this.textAlignment
+      if (textAlignment) {
+        result.push(textAlignment)
+      }
       return result;
     },
     ctaClass() {
@@ -92,13 +103,19 @@ export default {
         append: icon && iconLocation == "right" ? icon : null,
         iconValue: val.iconValue,
       };
-      // if (result) {
-      // }
       return result;
     },
     colorValue() {
       let result = ''
       return result
+    },
+    imageStyle() {
+      const styles = {}
+      const imageFit = this.imageFit
+      if (imageFit) {
+        styles.imageFit = `${imageFit}!important`;
+      }
+      return styles
     }
   },
 }

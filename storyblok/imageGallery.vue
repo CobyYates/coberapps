@@ -4,7 +4,7 @@
       <typography v-if="title && title.length > 0" v-bind="title[0]" class="c-section__title" />
       <typography v-if="subtitle && subtitle.length > 0" v-bind="subtitle[0]" class="c-section__subtitle" />
       <typography v-if="description && description.length > 0" v-bind="description[0]" class="c-section__description" />
-      <div v-if="images && images.length > 0" class="grid">
+      <div v-if="images && images.length > 0" class="grid mb-16">
         <gallery-item v-for="(item, i) in images" :key="item.i" v-bind="item" class="hover"
           :style="`--n: ${styleIndex(i)};`" :id="`image${i}`">
         </gallery-item>

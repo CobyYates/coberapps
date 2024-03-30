@@ -15,7 +15,6 @@ export default {
     basicColor(color) {
       let result = null;
       if (color && color.themeColor != "") {
-        // console.log("testing colors", color.colorAdjustment != "" ? color : 'testing')
         result =
           color.colorAdjustment != ""
             ? `${color.themeColor}-${color.colorAdjustment}`
