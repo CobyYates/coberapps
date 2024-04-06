@@ -279,7 +279,7 @@ export default {
   }
 }
 
-::v-deep .v-responsive__content {
+:deep(.v-responsive__content) {
   display: flex;
   justify-content: center;
 }

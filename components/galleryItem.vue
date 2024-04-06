@@ -19,26 +19,27 @@
       <p class="mb-3 text-white" v-if="subtitle">
         {{ subtitle }}
       </p>
-       <!-- :to="link" -->
-      <v-btn v-if="buttonText" size="x-small" rounded="0">{{
-        buttonText
-      }}</v-btn>
+      <v-btn v-if="buttonText" size="x-small" rounded="0" :to="link.cached_url">
+        {{ buttonText }}
+      </v-btn>
       <slot />
     </div>
   </v-img>
 </template>
 
-<script setup>
-const { image } = defineProps({
-  image: Object,
-  title: String,
-  subtitle: String,
-  titleLogo: Object,
-  buttonText: String,
-  link: String,
-  height: String,
-  aspectRatio: String
-});
+<script>
+export default {
+  props: {
+    image: Object,
+    title: String,
+    subtitle: String,
+    titleLogo: Object,
+    buttonText: String,
+    link: String,
+    height: String,
+    aspectRatio: String,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-a::v-deep {
+a:deep {
   text-decoration: none!important;
 }
 </style>
