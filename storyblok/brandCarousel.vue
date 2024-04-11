@@ -5,7 +5,7 @@
         <div v-for="image in imageValues" :key="image">
           <v-card flat color="transparent" height="200" width="200" class="mx-7">
             <!-- <img :src="image" alt=""> -->
-            <v-img :src="image" height="200" />
+            <v-img :src="image" height="200" :alt="image.alt"/>
           </v-card>
         </div>
       </flickity-wrapper>

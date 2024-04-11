@@ -7,7 +7,7 @@
             <v-app-bar-nav-icon v-if="navigationDrawerVal" variant="text" @click.stop="drawer = !drawer" />
           </v-col>
           <v-col class="d-flex justify-center align-center">
-            <v-img v-if="topNavigationVal.logo.filename" :src="topNavigationVal.logo.filename" max-width="200" />
+            <v-img v-if="topNavigationVal.logo.filename" :src="topNavigationVal.logo.filename" max-width="200" :alt="topNavigationVal.logo.image.alt"/>
           </v-col>
           <v-col class="d-flex justify-end align-center">
             <nuxt-link v-for="icon in topNavigationVal.socialLinks" :key="icon.i" :href="icon.url" target="_blank">

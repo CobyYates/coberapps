@@ -9,7 +9,7 @@
     :prepend-icon="prepend"
     :append-icon="append"
     class="text-white font-weight-bold"
-    >
+  >
     {{ text }}
   </v-btn>
 </template>
@@ -51,49 +51,49 @@ export default {
     },
     iconLocation: {
       type: String,
-      default: ""
+      default: "",
     },
     iconValue: {
       type: String,
-      default: ""
+      default: "",
     },
     append: {
       type: String,
-      default: ""
+      default: "",
     },
   },
   computed: {
     buttonColor() {
-      const color = this.color
-      let result
-      if(color && color.length > 0) {
-        result = color[0].themeColor
+      const color = this.color;
+      let result;
+      if (color && color.length > 0) {
+        result = color[0].themeColor;
       }
-      return result
+      return result;
     },
     prepend() {
-      const icon = this.iconValue
-      const iconLocation = this.iconLocation
-      let result
-      if(icon && iconLocation == "left") {
-        result = icon
+      const icon = this.iconValue;
+      const iconLocation = this.iconLocation;
+      let result;
+      if (icon && iconLocation == "left") {
+        result = icon;
       }
-      return result
+      return result;
     },
     buttonClass() {
-        const result = [];
-        const spacing = this.spacing;
-        const dark = this.dark
-  
-        const spacingClasses = spacing
-          ? spacing.map((s) => `${s.type}${s.location}${s.screenSize}${s.value}`)
-          : [];
-        result.push(...spacingClasses);
-  
-        return result.filter(Boolean);
-      },
+      const result = [];
+      const spacing = this.spacing;
+      const dark = this.dark;
+
+      const spacingClasses = spacing
+        ? spacing.map((s) => `${s.type}${s.location}${s.screenSize}${s.value}`)
+        : [];
+      result.push(...spacingClasses);
+
+      return result.filter(Boolean);
+    },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped></style>

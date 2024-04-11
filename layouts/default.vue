@@ -34,6 +34,9 @@ export default {
       return result
     }
   },
+  useServerSeoMeta() {
+    
+  }
 }
 </script>
 <!--

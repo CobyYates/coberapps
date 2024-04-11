@@ -63,6 +63,7 @@
               height="100%"
               :src="item"
               cover
+              :alt="item.alt"
             />
           </div>
         </v-col>
@@ -75,7 +76,7 @@
             color="white"
             @click="previous"
           />
-          <v-img :src="image" contain max-height="90vh" />
+          <v-img :src="image" contain max-height="90vh" :alt="image.alt" />
           <v-icon
             icon="mdi-chevron-right"
             size="70"
@@ -117,8 +118,8 @@ export default {
       return results;
     },
     rowStyle() {
-      let result
-      return result
+      let result;
+      return result;
     },
     images() {
       const groups = this.filterableGalleryGroups;

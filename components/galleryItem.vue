@@ -5,6 +5,7 @@
     class="gallery-item"
     :height="height"
     :aspect-ratio="aspectRatio"
+    :alt="image.alt"
   >
     <div
       class="gallery-item__overlay d-flex align-center flex-column justify-center text-center"
@@ -19,8 +20,16 @@
       <p class="mb-3 text-white" v-if="subtitle">
         {{ subtitle }}
       </p>
-      <v-btn v-if="buttonText" size="x-small" rounded="0" :to="link.cached_url">
-        {{ buttonText }}
+      <v-btn
+        v-if="buttonText"
+        size="x-small"
+        rounded="0"
+        height="auto"
+        max-width="90%"
+        :to="link.cached_url"
+      >
+        <span class="text-wrap pa-1" v-if="breakpoint.mdAndUp">{{ buttonText }}</span>
+        <span class="text-wrap pa-1" v-else>Learn More</span>
       </v-btn>
       <slot />
     </div>
@@ -28,7 +37,9 @@
 </template>
 
 <script>
+import breakpoint from '~/mixin/breakpoint'
 export default {
+  mixins: [breakpoint],
   props: {
     image: Object,
     title: String,

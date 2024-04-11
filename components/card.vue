@@ -1,7 +1,7 @@
 <template>
   <v-card :variant="variant || 'flat'" :color="colorValue" :style="cardStyle" :class="cardClass" :height="height"
     :elevation="elevation || '3'" min-width="100%" :rounded="false">
-    <v-img v-if="image && image.filename" :cover="!imageFit" :src="image.filename || ''" :aspect-ratio="5 / 4" :style="imageStyle" />
+    <v-img v-if="image && image.filename" :cover="!imageFit" :src="image.filename || ''" :aspect-ratio="5 / 4" :style="imageStyle" :alt="image.alt"/>
     <v-card-title v-if="title && title.length > 0">
       <typography v-bind="title[0]" class="c-section__title" />
     </v-card-title>
