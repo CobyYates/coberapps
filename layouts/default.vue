@@ -1,15 +1,9 @@
 <template>
   <v-app>
-    <navigation
-      v-if="navActive"
-      v-bind="nav.content"
-    />
+    <navigation v-if="navActive" v-bind="nav.content" />
     <!-- <pre v-if="navActive">{{ nav.content }}</pre> -->
     <slot />
-    <navigation-footer
-      v-if="navActive"
-      v-bind="nav.content.footer[0]"
-    />
+    <navigation-footer v-if="navActive" v-bind="nav.content.footer[0]" />
   </v-app>
 </template>
 
@@ -17,27 +11,27 @@
 export default {
   data() {
     return {
-      nav: null
-    }
+      nav: null,
+    };
   },
   async beforeMount() {
-    const story = await useAsyncStoryblok("globalNavigation", { version: "draft" });
-    this.nav = story
+    const story = await useAsyncStoryblok("globalNavigation", {
+      version: "draft",
+    });
+    this.nav = story;
   },
   computed: {
     navActive() {
-      let result = false
-      const nav = this.nav
+      let result = false;
+      const nav = this.nav;
       if (nav && nav.content) {
-        result = true
+        result = true;
       }
-      return result
-    }
+      return result;
+    },
   },
-  useServerSeoMeta() {
-    
-  }
-}
+  useServerSeoMeta() {},
+};
 </script>
 <!--
   head() {
@@ -111,6 +105,51 @@ export default {
 
   },
 }
-</script>
+</script> -->
 
-<style lang="scss" scoped></style> -->
+<style lang="scss">
+h1,
+h2 {
+  font-family: "Tw Cen MT", sans-serif;
+}
+h2 {
+  // font-size: 1.6rem;
+  // font-weight: 600;
+  // color: rgb(110, 110, 113);
+}
+h3,
+h4,
+p,
+a,
+.v-btn {
+  font-family: "Tw Cen MT", sans-serif !important;
+}
+h3 {
+  // font-size: 1.5rem;
+  // font-weight: 500;
+  // color: rgb(110, 110, 113);
+}
+h4 {
+  // font-size: 1.4rem;
+  // font-weight: 500;
+  // color: rgb(110, 110, 113);
+}
+.v-btn {
+  // font-size: 1.3rem !important;
+}
+li {
+  p {
+    margin-bottom: 0;
+  }
+}
+p,
+a {
+  // font-size: 1.4rem;
+  // font-weight: 100;
+  // color: #6e6e71;
+}
+
+.clickable {
+  cursor: pointer;
+}
+</style>
