@@ -23,6 +23,7 @@
     "@mdi/font": "^7.3.67",
     "@storyblok/nuxt": "^5.7.4",
     "storyblok-js-client": "^6.2.0",
+    "vue-recaptcha-v3": "^2.0.1",
     "vue3-flickity": "^1.0.6",
     "vue3-runtime-template": "^1.0.2"
   }
