@@ -31,13 +31,14 @@
                         />
                     </div>
                     <div v-if="column && column.socialLinks && column.socialLinks.length > 0">
-                        <v-icon
-                            v-for="icon in column.socialLinks"
-                            :key="icon.i"
-                            :icon="icon.value"
-                            :size="icon.size"
-                            :color="iconColor(icon.color)"
-                        />
+                        <a v-for="icon in column.socialLinks" :href="icon.url" target="_blank">
+                            <v-icon
+                                :key="icon.i"
+                                :icon="icon.value"
+                                :size="icon.size"
+                                :color="iconColor(icon.color)"
+                            />
+                        </a>
                     </div>
                 </v-col>
             </v-row>
@@ -73,6 +74,7 @@ export default {
             return result
         },
         columnCount() {
+            console.log('icons', this.footerColumns)
             const columns = this.footerColumns
             let result 
             if(columns && columns.length > 0) {

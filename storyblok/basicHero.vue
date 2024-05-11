@@ -4,9 +4,9 @@
       <v-img
         :src="imageData.image.filename"
         :alt="imageData.image.alt"
-        class="c-hero__image mx-auto d-flex justify-center"
+        class="c-hero__image mx-auto d-flex justify-center my-10"
         cover
-        :min-width="maxWidth || '100vw'"
+        :min-width="'100vw'"
         :width="maxWidth || '100vw'"
         max-width="100vw"
         :max-height="heroHeight"
@@ -113,6 +113,7 @@
         v-bind="subtitle[0]"
         :color-reset="true"
         class="c-hero__subtitle"
+        :headingStyle="subtitle.length > 0 ? subtitle[0].headingStyle : 'text-h6'"
       />
       <typography
         v-if="description && description.length > 0"

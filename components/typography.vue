@@ -62,6 +62,7 @@ export default {
   },
   computed: {
     typographyClass() {
+      console.log('text heading', this.$props)
       const result = [];
       const alignment = this.alignment;
       const headingStyle = this.headingStyle;

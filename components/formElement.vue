@@ -161,8 +161,57 @@
 </template>
 
 <script>
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
+// import { ref } from "vue";
+// import { useGoogleRecaptcha } from "your-google-recaptcha-package";
+// import { useApiData } from "your-api-package";
 export default {
+  // setup() {
+  //   const formData = ref({}); // Initialize your formData object
+  //   const isSubmitting = ref(false);
+  //   const showSuccess = ref(false);
+  //   const showFail = ref(false);
+
+  //   const { executeRecaptcha } = useGoogleRecaptcha();
+
+  //   const submitForm = async (values) => {
+  //     isSubmitting.value = true;
+  //     const { token } = await executeRecaptcha("submit");
+
+  //     const bodyData = {
+  //       ...formData.value,
+  //       "g-recaptcha-response": token,
+  //     };
+
+  //     const { pending, error } = await useApiData(`/api/form_submissions`, {
+  //       method: "post",
+  //       cache: false,
+  //       body: bodyData,
+  //     });
+
+  //     if (error.value) {
+  //       isSubmitting.value = pending.value;
+  //       showFail.value = true;
+  //     } else {
+  //       isSubmitting.value = pending.value;
+  //       clearForm();
+  //       showSuccess.value = true;
+  //     }
+  //   };
+
+  //   const clearForm = () => {
+  //     // Implement your logic to clear the form data here
+  //   };
+
+  //   // Optionally expose some variables or functions to the template
+  //   return {
+  //     formData,
+  //     isSubmitting,
+  //     showSuccess,
+  //     showFail,
+  //     submitForm,
+  //   };
+  // },
   data: () => ({
     name: "",
     form: {},
@@ -185,7 +234,7 @@ export default {
     serviceId: String,
     formButton: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     spacing: Array,
     required: Boolean,
@@ -210,10 +259,10 @@ export default {
       return result;
     },
     async submitForm() {
-      let form = this.form
-      const serviceId = this.serviceId
-      const publicKey = this.publicKey
-      const templateId = this.templateId
+      let form = this.form;
+      const serviceId = this.serviceId;
+      const publicKey = this.publicKey;
+      const templateId = this.templateId;
       try {
         const response = await emailjs.send(
           serviceId,
@@ -222,9 +271,9 @@ export default {
           publicKey
         );
       } catch (error) {
-        console.error('Error sending email', error);
+        console.error("Error sending email", error);
       }
-    }
+    },
   },
 };
 </script>
