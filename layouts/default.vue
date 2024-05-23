@@ -16,7 +16,7 @@ export default {
   },
   async beforeMount() {
     const story = await useAsyncStoryblok("globalNavigation", {
-      version: "draft",
+      version: process.env.NUXT_PUBLIC_NODE_ENV === "production" ? "published" : "draft",
     });
     this.nav = story;
   },

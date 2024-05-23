@@ -5,7 +5,7 @@ export default {
             try {
                 const { data } = await storyblokApi.get('cdn/stories/', {
                   // version: process.env.NODE_ENV === 'production' ? 'published' : 'draft',
-                  version: 'draft',
+                  version: process.env.NUXT_PUBLIC_NODE_ENV === "production" ? "published" : "draft",
                   //   starts_with: 'recipes/',
                   by_slugs: slug,
                   // by_slugs: '*/' + slug,
