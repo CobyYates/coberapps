@@ -30,6 +30,8 @@
 </template>
 
 <script setup lang="ts">
-const story = await useStoryblok("home", { version: process.env.NUXT_PUBLIC_NODE_ENV === "production" ? "published" : "draft", });
+const config = useRuntimeConfig()
+let environmnet = config.public.NUXT_PUBLIC_NODE_ENV
+const story = await useStoryblok("home", { version: environmnet === "production" ? "published" : "draft", });
 </script>
 <!-- https://blog.logrocket.com/building-dynamic-vuetify-themes/#:~:text=Vuetify%20includes%20a%20useTheme%20method,current. -->

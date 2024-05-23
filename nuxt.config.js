@@ -62,7 +62,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      NODE_ENV: process.env.NODE_ENV,
+      NUXT_PUBLIC_NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
     },
   },
   // ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
