@@ -21,7 +21,7 @@ import getPage from '~/mixin/getPages';
     async beforeMount () {
       let path = this.$route.path.slice(1)
       this.story = await this.getPageBySlug(path);
-      console.log('path', path)
+      // console.log('path', path)
     },
   }
 </script>

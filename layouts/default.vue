@@ -15,8 +15,10 @@ export default {
     };
   },
   async beforeMount() {
+    const config = useRuntimeConfig();
+    let environmnet = config.public.NUXT_PUBLIC_NODE_ENV;
     const story = await useAsyncStoryblok("globalNavigation", {
-      version: "draft",
+      version: environmnet === "production" ? "published" : "draft",
     });
     this.nav = story;
   },
