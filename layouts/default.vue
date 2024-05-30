@@ -63,7 +63,6 @@ export default {
         { hid: 'article:publisher', property: 'article:publisher', content: 'https://www.facebook.com/elementappliancecompany/' },
         { hid: 'article:modified_time', property: 'article:modified_time', content: Date() },
         { hid: 'og:image', property: 'og:image', content: pageImage },
-        { hid: 'og:url', property: 'og:url', content: window.location.href },
       ],
     }
   },
