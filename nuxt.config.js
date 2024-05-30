@@ -66,7 +66,7 @@ export default defineNuxtConfig({
     },
   },
   // ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
-  // ssr: true,
+  ssr: true,
   head: [
     {
       rel: "stylesheet",
