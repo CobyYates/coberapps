@@ -7,7 +7,8 @@
             <v-app-bar-nav-icon v-if="navigationDrawerVal" variant="text" @click.stop="drawer = !drawer" />
           </v-col>
           <v-col class="d-flex justify-center align-center">
-            <v-img v-if="topNavigationVal.logo.filename" :src="topNavigationVal.logo.filename" max-width="200" :alt="topNavigationVal.logo.image.alt"/>
+            <!-- {{ topNavigationVal.logo.alt }} -->
+            <v-img v-if="topNavigationVal.logo.filename" :src="topNavigationVal.logo.filename" max-width="200" />
           </v-col>
           <v-col class="d-flex justify-end align-center">
             <nuxt-link v-for="icon in topNavigationVal.socialLinks" :key="icon.i" :href="icon.url" target="_blank">
@@ -84,6 +85,7 @@ export default {
     topNavigationVal() {
       let result = null
       const topNavigation = this.topNavigation
+      console.log('topNavigation', topNavigation)
       if (topNavigation && topNavigation.length > 0) {
         result = topNavigation[0]
       }
@@ -158,6 +160,9 @@ export default {
       }
       return result
     }
+  },
+  mounted () {
+    console.log('navigation mounted',this.topNavigationVal);
   },
 }
 </script>
