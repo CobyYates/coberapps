@@ -7,7 +7,6 @@
             <v-app-bar-nav-icon v-if="navigationDrawerVal" variant="text" @click.stop="drawer = !drawer" />
           </v-col>
           <v-col class="d-flex justify-center align-center">
-            <!-- {{ topNavigationVal.logo.alt }} -->
             <v-img v-if="topNavigationVal.logo.filename" :src="topNavigationVal.logo.filename" max-width="200" />
           </v-col>
           <v-col class="d-flex justify-end align-center">
@@ -160,10 +159,7 @@ export default {
       }
       return result
     }
-  },
-  mounted () {
-    console.log('navigation mounted',this.topNavigationVal);
-  },
+  }
 }
 </script>
 
