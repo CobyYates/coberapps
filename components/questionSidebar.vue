@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h2 class="text-h5 mb-4">{{ title }}</h2>
+    <h2 v-if="title" class="text-h5 mb-4">{{ title }}</h2>
     <v-divider
+      v-if="title"
       style="width: 50px"
       class="my-8"
       color="primary"

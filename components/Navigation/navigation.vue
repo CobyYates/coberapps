@@ -77,12 +77,15 @@
             cols="12"
             md="4"
           >
-            <v-img
-              v-if="topNavigationVal.logo.filename"
-              :src="topNavigationVal.logo.filename"
-              max-width="400"
-            >
-            </v-img>
+            <a href="/">
+              <v-img
+                v-if="topNavigationVal.logo.filename"
+                :src="topNavigationVal.logo.filename"
+                width="400"
+                to="/"
+              >
+              </v-img>
+            </a>
             <v-app-bar-nav-icon
               v-if="navigationDrawerVal && breakpoint.smAndDown"
               variant="text"
