@@ -4,18 +4,32 @@
     align="center"
     :style="rowStyle"
     :class="rowClass"
-    class="bg-primary c-call-to-action"
+    class="c-call-to-action py-10"
   >
     <v-col class="c-call-to-actions__container">
       <v-row justify="center">
-        <v-col cols="12" md="6">
-          <typography
-            v-if="text && text.length > 0"
-            v-bind="text[0]"
-            class="c-cta__title"
-          />
+        <v-col cols="10" md="6" class="d-flex align-center">
+          <v-avatar v-if="icon" class="mr-10" size="100">
+            <v-img :src="icon.filename" />
+          </v-avatar>
+          <div>
+            <typography
+              v-if="text && text.length > 0"
+              v-bind="text[0]"
+              class="c-cta__title"
+            />
+            <typography
+              v-if="description && description.length > 0"
+              v-bind="description[0]"
+              class="c-cta__title"
+            />
+          </div>
         </v-col>
-        <v-col cols="12" md="3" class="d-flex justify-end">
+        <v-col
+          cols="12"
+          md="3"
+          class="d-flex justify-center md-justify-end align-center"
+        >
           {{ ctaColor }}
           <v-btn
             v-if="cta && cta.length > 0"
@@ -40,6 +54,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    description: {
+      type: Array,
+      default: () => [],
+    },
     backgroundColor: {
       type: Array,
       default: () => [],
@@ -60,6 +78,10 @@ export default {
       type: String,
       default: null,
     },
+    icon: {
+      type: Object,
+      default: () => {},
+    },
   },
   computed: {
     rowClass() {
@@ -70,10 +92,6 @@ export default {
         if (spacing && spacing.length > 0) {
           for (let i = 0; i < spacing[0].values.length; i++) {
             let val = spacing[0].values[i];
-            // let auto = val.auto || null
-            // if (auto) {
-            //   value = 'auto'
-            // }
             result.push(
               `${val.type}${val.location}${val.screenSize}${val.value}`
             );
@@ -82,7 +100,10 @@ export default {
       }
       if (backgroundColor && backgroundColor.length > 0) {
         result.push(`bg-${this.basicColor(backgroundColor[0])}`);
+      } else {
+        result.push("bg-primary");
       }
+      console.log("color results", result);
       return result;
     },
     rowStyle() {

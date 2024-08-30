@@ -1,6 +1,7 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 // import { fetchStories } from './fetchStories.js'
 // import { apiPlugin } from '@storyblok/vue'
+import dotenv from "dotenv";
 
 const OPEN_GRAPH = [
   {
@@ -63,11 +64,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       NUXT_PUBLIC_NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
+      THEME_COLORS_PRIMARY: process.env.THEME_COLORS_PRIMARY,
     },
   },
   // ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
   ssr: false,
-  target: 'static',
+  target: "static",
   head: [
     {
       rel: "stylesheet",
@@ -92,7 +94,7 @@ export default defineNuxtConfig({
     [
       "@storyblok/nuxt",
       {
-        accessToken: "m4Znb31QiZoEyaVja5acMQtt",
+        accessToken: "uI3nrea2rmxvyEl6U3jTZAtt",
         apiOptions: {
           region: "us",
         },
@@ -102,7 +104,11 @@ export default defineNuxtConfig({
       },
     ],
   ],
-  plugins: [{ src: "~/plugins/flickity.js", ssr: false }],
+  plugins: [
+    { src: "~/plugins/flickity.js", ssr: false },
+    "~/plugins/composition-api.js",
+    "~/plugins/rich-text-renderer.js",
+  ],
   // hooks: {
   //   async 'nitro:config'(nitroConfig) {
   //     if (!nitroConfig || nitroConfig.dev) {

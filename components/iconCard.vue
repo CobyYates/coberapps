@@ -1,6 +1,5 @@
 <template>
   <v-card
-    v-if="link"
     :variant="variant || 'flat'"
     :color="colorValue"
     :style="cardStyle"
@@ -9,72 +8,32 @@
     :elevation="elevation || '3'"
     min-width="100%"
     :rounded="false"
-    :to="`/${link.cached_url || ''}`"
+    class="d-flex"
+    :hover="false"
   >
-    <v-img
-      v-if="image && image.filename"
-      :cover="!imageFit"
-      :src="image.filename || ''"
-      :aspect-ratio="5 / 4"
-      :style="imageStyle"
-      :alt="image.alt"
-    />
-    <v-card-title v-if="title && title.length > 0">
-      <typography v-bind="title[0]" class="c-section__title" />
-    </v-card-title>
-    <v-card-subtitle v-if="subtitle && subtitle.length > 0">
-      <typography v-bind="subtitle[0]" class="c-section__subtitle" />
-    </v-card-subtitle>
-    <v-card-text v-if="description && description.length > 0">
-      <typography v-bind="description[0]" class="c-section__description" />
-    </v-card-text>
-    <v-card-text v-if="cta && cta.length > 0" class="pa-0">
-      <v-btn
-        v-if="cta && cta.length > 0"
-        :prepend-icon="ctaValue.prepend"
-        :append-icon="ctaValue.append"
-        v-bind="ctaValue"
-        :class="ctaClass"
-      />
-    </v-card-text>
-  </v-card>
-  <v-card
-    v-else
-    :variant="variant || 'flat'"
-    :color="colorValue"
-    :style="cardStyle"
-    :class="cardClass"
-    :height="height"
-    :elevation="elevation || '3'"
-    min-width="100%"
-    :rounded="false"
-  >
-    <v-img
-      v-if="image && image.filename"
-      :cover="!imageFit"
-      :src="image.filename || ''"
-      :aspect-ratio="5 / 4"
-      :style="imageStyle"
-      :alt="image.alt"
-    />
-    <v-card-title v-if="title && title.length > 0">
-      <typography v-bind="title[0]" class="c-section__title" />
-    </v-card-title>
-    <v-card-subtitle v-if="subtitle && subtitle.length > 0">
-      <typography v-bind="subtitle[0]" class="c-section__subtitle" />
-    </v-card-subtitle>
-    <v-card-text v-if="description && description.length > 0">
-      <typography v-bind="description[0]" class="c-section__description" />
-    </v-card-text>
-    <v-card-text v-if="cta && cta.length > 0" class="pa-0">
-      <v-btn
-        v-if="cta && cta.length > 0"
-        :prepend-icon="ctaValue.prepend"
-        :append-icon="ctaValue.append"
-        v-bind="ctaValue"
-        :class="ctaClass"
-      />
-    </v-card-text>
+    <v-avatar size="100" v-if="icon && icon.filename">
+      <v-img :src="icon.filename" />
+    </v-avatar>
+    <div>
+      <v-card-title v-if="title && title.length > 0">
+        <typography v-bind="title[0]" class="c-section__title" />
+      </v-card-title>
+      <v-card-subtitle v-if="subtitle && subtitle.length > 0">
+        <typography v-bind="subtitle[0]" class="c-section__subtitle" />
+      </v-card-subtitle>
+      <v-card-text v-if="description && description.length > 0">
+        <typography v-bind="description[0]" class="c-section__description" />
+      </v-card-text>
+      <v-card-text>
+        <v-btn
+          v-if="cta && cta.length > 0"
+          :prepend-icon="ctaValue.prepend"
+          :append-icon="ctaValue.append"
+          v-bind="ctaValue"
+          :class="ctaClass"
+        />
+      </v-card-text>
+    </div>
   </v-card>
 </template>
 
@@ -102,6 +61,7 @@ export default {
     },
     color: Array,
     image: Object,
+    icon: Object,
     imageFit: {
       type: String,
       default: null,
@@ -121,8 +81,12 @@ export default {
     },
     cardLayout: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
+    color: {
+      type: Array,
+      default: null,
+    },
   },
   computed: {
     cardStyle() {
@@ -174,7 +138,12 @@ export default {
       return result;
     },
     colorValue() {
-      let result = "";
+      const color = this.color;
+      let result;
+      if (color && color.length > 0) {
+        result = `bg-${color[0].themeColor}`;
+      }
+      console.log('colorValue', result)
       return result;
     },
     imageStyle() {
@@ -185,6 +154,9 @@ export default {
       }
       return styles;
     },
+  },
+  mounted () {
+    console.log('icon card', this);
   },
 };
 </script>

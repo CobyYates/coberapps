@@ -42,7 +42,7 @@
                   variant="text"
                   :class="[
                     'd-flex align-center',
-                    i == 0 && tab == 0 ? 'bg-primary' : selectedClass,
+                    tab == i ? 'bg-primary' : selectedClass,
                   ]"
                 >
                   {{ item }}
@@ -113,28 +113,24 @@ export default {
       const groups = this.filterableGalleryGroups;
       if (groups.length > 0) {
         results = groups.map((e) => e.tagTitle);
-        // results.unshift("All");
+        results.unshift("All"); // Add the "All" tab
       }
       return results;
     },
-    rowStyle() {
-      let result;
-      return result;
-    },
     images() {
       const groups = this.filterableGalleryGroups;
-      let val = groups.map((e) => e.images.map((e) => e.filename));
-      let arrs = val.map((e) => e);
-      let result = [];
-      arrs.forEach((e) => {
-        for (let i = 0; i < e.length; i++) {
-          result.push(e[i]);
-        }
-      });
+      let allImages = groups.map((e) => e.images.map((e) => e.filename));
+      let allImagesFlat = [].concat(...allImages);
+
       const tab = this.tab;
-      if (tab != 0) {
-        result = groups[tab].images.map((e) => e.filename);
+      if (tab === 0) {
+        return allImagesFlat; // Show all images for the "All" tab
+      } else {
+        return groups[tab - 1].images.map((e) => e.filename); // Show filtered images for other tabs
       }
+    },
+    rowStyle() {
+      let result;
       return result;
     },
   },
@@ -144,7 +140,6 @@ export default {
       return Math.trunc(result);
     },
     updateGallery(index) {
-      // let val = index-= 2;
       this.tab = index;
     },
     openDialog(image, i) {

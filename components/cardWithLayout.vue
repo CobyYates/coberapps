@@ -1,81 +1,59 @@
 <template>
-  <v-card
-    v-if="link"
-    :variant="variant || 'flat'"
-    :color="colorValue"
-    :style="cardStyle"
-    :class="cardClass"
-    :height="height"
-    :elevation="elevation || '3'"
-    min-width="100%"
-    :rounded="false"
-    :to="`/${link.cached_url || ''}`"
-  >
-    <v-img
-      v-if="image && image.filename"
-      :cover="!imageFit"
-      :src="image.filename || ''"
-      :aspect-ratio="5 / 4"
-      :style="imageStyle"
-      :alt="image.alt"
-    />
-    <v-card-title v-if="title && title.length > 0">
-      <typography v-bind="title[0]" class="c-section__title" />
-    </v-card-title>
-    <v-card-subtitle v-if="subtitle && subtitle.length > 0">
-      <typography v-bind="subtitle[0]" class="c-section__subtitle" />
-    </v-card-subtitle>
-    <v-card-text v-if="description && description.length > 0">
-      <typography v-bind="description[0]" class="c-section__description" />
-    </v-card-text>
-    <v-card-text v-if="cta && cta.length > 0" class="pa-0">
-      <v-btn
-        v-if="cta && cta.length > 0"
-        :prepend-icon="ctaValue.prepend"
-        :append-icon="ctaValue.append"
-        v-bind="ctaValue"
-        :class="ctaClass"
-      />
-    </v-card-text>
-  </v-card>
-  <v-card
-    v-else
-    :variant="variant || 'flat'"
-    :color="colorValue"
-    :style="cardStyle"
-    :class="cardClass"
-    :height="height"
-    :elevation="elevation || '3'"
-    min-width="100%"
-    :rounded="false"
-  >
-    <v-img
-      v-if="image && image.filename"
-      :cover="!imageFit"
-      :src="image.filename || ''"
-      :aspect-ratio="5 / 4"
-      :style="imageStyle"
-      :alt="image.alt"
-    />
-    <v-card-title v-if="title && title.length > 0">
-      <typography v-bind="title[0]" class="c-section__title" />
-    </v-card-title>
-    <v-card-subtitle v-if="subtitle && subtitle.length > 0">
-      <typography v-bind="subtitle[0]" class="c-section__subtitle" />
-    </v-card-subtitle>
-    <v-card-text v-if="description && description.length > 0">
-      <typography v-bind="description[0]" class="c-section__description" />
-    </v-card-text>
-    <v-card-text v-if="cta && cta.length > 0" class="pa-0">
-      <v-btn
-        v-if="cta && cta.length > 0"
-        :prepend-icon="ctaValue.prepend"
-        :append-icon="ctaValue.append"
-        v-bind="ctaValue"
-        :class="ctaClass"
-      />
-    </v-card-text>
-  </v-card>
+  <v-hover v-if="cardLayout == 'centerCtaAnimate'">
+    <template v-slot:default="{ isHovering, props }">
+      <v-card
+        :color="colorValue"
+        :style="cardStyle"
+        :class="cardClass"
+        :height="height"
+        :elevation="elevation || '3'"
+        min-width="100%"
+        :rounded="false"
+        v-bind="props"
+        class="text-center"
+      >
+        <v-overlay
+          :model-value="isHovering"
+          class="align-center justify-center"
+          scrim="#111"
+          opacity=".7"
+          contained
+        >
+          <v-card-title v-if="title && title.length > 0">
+            <typography v-bind="title[0]" class="c-section__title text-white" />
+          </v-card-title>
+          <v-card-subtitle v-if="subtitle && subtitle.length > 0">
+            <typography v-bind="subtitle[0]" class="c-section__subtitle" />
+          </v-card-subtitle>
+          <v-card-text v-if="description && description.length > 0">
+            <typography
+              v-bind="description[0]"
+              class="c-section__description"
+            />
+          </v-card-text>
+          <v-card-text v-if="cta && cta.length > 0" class="pa-0">
+            <v-btn
+              v-if="cta && cta.length > 0"
+              :prepend-icon="ctaValue.prepend"
+              :append-icon="ctaValue.append"
+              v-bind="ctaValue"
+              color="white"
+              :class="ctaClass"
+            />
+          </v-card-text>
+        </v-overlay>
+        <v-img
+          v-if="image && image.filename"
+          :cover="!imageFit"
+          :src="image.filename || ''"
+          :aspect-ratio="5 / 4"
+          :style="imageStyle"
+          :alt="image.alt"
+        />
+      </v-card>
+    </template>
+  </v-hover>
+  <template v-else> </template>
 </template>
 
 <script>
@@ -121,8 +99,8 @@ export default {
     },
     cardLayout: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
     cardStyle() {

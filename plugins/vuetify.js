@@ -1,15 +1,17 @@
 import "@mdi/font/css/materialdesignicons.css";
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
+import { useRuntimeConfig } from '#app';
 
 export default defineNuxtPlugin((app) => {
+  const config = useRuntimeConfig();
   const vuetify = createVuetify({
     theme: {
       themes: {
         light: {
           dark: false,
           colors: {
-            primary: "#97ca65",
+            primary: `#${config.public.THEME_COLORS_PRIMARY}`,
             typography: "#000",
             secondary: "rgb(139, 195, 74)",
             accent: "#82B1FF",
@@ -21,6 +23,7 @@ export default defineNuxtPlugin((app) => {
             black: "#000000",
             white: "#FFFFFF",
             transparent: "#FFFFFF00",
+            textOverlay: "#FFFFFF",
           },
         },
       },

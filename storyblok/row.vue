@@ -32,16 +32,40 @@
           v-bind="item.description[0]"
           class="c-section__description"
         />
-        <template v-if="item && item.sections && item.sections.length > 0">
-          <card
-            v-if="item.sections[0].component == 'card'"
+        <div v-if="item && item.sections && item.sections.length > 0">
+          <card-with-layout
+            v-if="
+              item.sections[0].component == 'card' &&
+              item.sections[0].cardLayout
+            "
             v-bind="item.sections[0]"
           />
+          <template v-else-if="item.sections[0].component == 'card'">
+            <card
+              v-for="(card, i) in item.sections"
+              v-bind="item.sections[i]"
+            />
+          </template>
           <form-element
             v-if="item.sections[0].component == 'formElement'"
             v-bind="item.sections[0]"
           />
-        </template>
+          <call-to-action
+            v-if="item.sections[0].component == 'callToAction'"
+            v-bind="item.sections[0]"
+          />
+          <template v-if="item.sections[0].component == 'iconCard'">
+            <div v-for="(card, i) in item.sections" :key="i">
+              <icon-card v-bind="card" />
+            </div>
+          </template>
+          <template v-if="item.sections[0].component == 'markdown'">
+            <rich-text :richTextContent="item.sections[0]" />
+          </template>
+          <template v-if="item.sections[0].component == 'questionSidebar'">
+            <question-sidebar v-bind="item.sections[0]" />
+          </template>
+        </div>
       </v-col>
     </template>
   </v-row>
@@ -104,6 +128,7 @@ export default {
       return result;
     },
     rowStyle() {
+      console.log("columns", this.columns);
       const styles = {};
       // const backgroundColor = this.backgroundColor
       const maxWidth = this.maxWidth || null;
@@ -121,8 +146,7 @@ export default {
       if (minWidth) {
         styles.width = minWidth;
       }
-      if (styles && styles.backgroundImage)
-      return styles;
+      if (styles && styles.backgroundImage) return styles;
     },
   },
   methods: {

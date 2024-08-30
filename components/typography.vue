@@ -1,15 +1,44 @@
 <template>
-  <component v-if="show" :is="element" :class="typographyClass" :style="typographyStyle" class="black">
-    <div v-if="!resolvedRichText">{{ text }}</div> 
+  <component
+    v-if="show"
+    :is="element"
+    :class="typographyClass"
+    :style="typographyStyle"
+    class="black"
+  >
+    <template v-if="!resolvedRichText">{{ text }}</template>
     <div v-else>
-      <div v-if="resolvedRichText" v-html="resolvedRichText" />
+      <div
+        v-if="resolvedRichText"
+        v-html="
+          maxWords
+            ? `${resolvedRichText.slice(0, maxWords)}...`
+            : resolvedRichText
+        "
+      />
     </div>
+    <v-divider
+      v-if="addAccent"
+      style="width: 100px"
+      class="mx-auto my-8"
+      color="primary"
+      opacity="1"
+      thickness="2px"
+    />
+    <v-divider
+      v-if="addAccentLeft"
+      style="width: 100px"
+      class="my-8"
+      color="primary"
+      opacity="1"
+      thickness="2px"
+    />
   </component>
 </template>
 
 <script>
-import breakpoint from '~/mixin/breakpoint'
-import textColor from '~/mixin/colors'
+import breakpoint from "~/mixin/breakpoint";
+import textColor from "~/mixin/colors";
 import RichTextResolver from "storyblok-js-client/richTextResolver";
 
 export default {
@@ -59,6 +88,17 @@ export default {
       type: Boolean,
       default: false,
     },
+    addAccent: {
+      type: Boolean,
+      default: false,
+    },
+    addAccentLeft: {
+      type: Boolean,
+      default: false,
+    },
+    maxWords: {
+      type: Number,
+    },
   },
   computed: {
     typographyClass() {
@@ -84,7 +124,7 @@ export default {
       }
 
       if (color.length > 0 && !colorReset) {
-        result.push(this.textColor(color[0]))
+        result.push(this.textColor(color[0]));
       }
 
       const spacingClasses = spacing
@@ -99,7 +139,7 @@ export default {
       const richText = this.richText;
       let result;
       if (richText && richText.content && richText.content[0].content) {
-        result = resolver.render(this.richText);
+        result = resolver.render(richText);
       } else {
         result = false;
       }
@@ -112,11 +152,44 @@ export default {
     show() {
       const hiddenDesktop = this.hiddenDesktop;
       const hiddenMobile = this.hiddenMobile;
-      const breakpoint = this.breakpoint
-      if ((breakpoint.mdAndUp && hiddenDesktop) || (breakpoint.smAndDown && hiddenMobile)) {
+      const breakpoint = this.breakpoint;
+      if (
+        (breakpoint.mdAndUp && hiddenDesktop) ||
+        (breakpoint.smAndDown && hiddenMobile)
+      ) {
         return false;
       }
       return true;
+    },
+  },
+  mounted() {
+    this.removeMarkers();
+  },
+  updated() {
+    this.removeMarkers();
+  },
+  methods: {
+    removeMarkers() {
+      this.$nextTick(() => {
+        // Existing code for handling <li> elements
+        const listItems = this.$el.querySelectorAll("li");
+        listItems.forEach((item) => {
+          item.style.listStyleType = "none";
+          item.classList.add("d-flex");
+
+          const checkMark = document.createElement("span");
+          checkMark.textContent = "✔️";
+          checkMark.style.marginRight = "8px";
+
+          item.insertBefore(checkMark, item.firstChild);
+        });
+
+        // New code to add "mb-10" to all <p> tags
+        const paragraphs = this.$el.querySelectorAll("p");
+        paragraphs.forEach((p) => {
+          p.classList.add("mb-5");
+        });
+      });
     },
   },
 };
@@ -124,6 +197,6 @@ export default {
 
 <style lang="scss" scoped>
 a:deep {
-  text-decoration: none!important;
+  text-decoration: none !important;
 }
 </style>

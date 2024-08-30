@@ -1,6 +1,8 @@
 <template>
   <v-carousel
-    :vertical-delimiters="verticalDelimiters != false ? verticalDelimiters : false"
+    :vertical-delimiters="
+      verticalDelimiters != false ? verticalDelimiters : false
+    "
     :hide-delimiters="!showDelimeters"
     hide-delimiter-background
     :show-arrows="showArrows"
@@ -11,14 +13,14 @@
     touch
     :height="height"
   >
-    <v-carousel-item v-for="hero in heros" :key="hero.i" class="d-flex align-center">
-      <basic-hero v-bind="hero" :carouselHeight="height" />
-    </v-carousel-item>
+    <v-carousel-item v-for="(hero, i) in heros" :key="i">
+      <basic-hero v-bind="hero" :carouselHeight="height"
+    /></v-carousel-item>
   </v-carousel>
 </template>
 
 <script>
-import colors from '~/mixin/colors'
+import colors from "~/mixin/colors";
 export default {
   mixins: [colors],
   props: {
@@ -44,7 +46,7 @@ export default {
     },
     height: {
       type: String,
-      default: '',
+      default: "",
     },
     delimiterColor: {
       type: Array,
@@ -62,14 +64,32 @@ export default {
   computed: {
     color() {
       let result;
-      const delimiterColor = this.delimiterColor
+      const delimiterColor = this.delimiterColor;
       if (delimiterColor.length > 0) {
         result = this.basicColor(delimiterColor[0]);
       }
       return result;
-    }
+    },
   },
-}
+  data() {
+    return {
+      items: [
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped></style>

@@ -13,72 +13,13 @@
         :height="heroHeight"
       >
         <v-row
-          v-if="
-            textLocation != 'center' &&
-            textBelowOnMobile &&
-            !breakpoint.smAndDown
-          "
-          class="c-hero__overlay d-flex my-0"
-          :class="overlayClass"
-          :style="overlayStyle"
-        >
-          <v-col>
-            <typography
-              v-if="title && title.length > 0"
-              v-bind="title[0]"
-              class="c-hero__title"
-            />
-            <typography
-              v-if="subtitle && subtitle.length > 0"
-              v-bind="subtitle[0]"
-              class="c-hero__subtitle"
-            />
-            <typography
-              v-if="description && description.length > 0"
-              v-bind="description[0]"
-              class="c-hero__description"
-            />
-          </v-col>
-        </v-row>
-        <v-row
-          v-else-if="
-            textLocation == 'center' &&
-            textBelowOnMobile &&
-            !breakpoint.smAndDown
-          "
-          class="c-hero__overlay d-flex my-0 justify-center"
-          :class="overlayClass"
-          :style="overlayStyle"
-        >
-          <v-col>
-            <typography
-              v-if="title && title.length > 0"
-              v-bind="title[0]"
-              class="c-hero__title"
-            />
-            <typography
-              v-if="subtitle && subtitle.length > 0"
-              v-bind="subtitle[0]"
-              class="c-hero__subtitle"
-            />
-            <typography
-              v-if="description && description.length > 0"
-              v-bind="description[0]"
-              class="c-hero__description"
-            />
-          </v-col>
-        </v-row>
-        <v-row
-          v-else
           class="c-hero__overlay d-flex my-0"
           :class="overlayClass"
           :style="overlayStyle"
         >
           <v-col
             v-bind="columnLayout"
-            :class="
-              (hasForm && 'd-flex align-center justify-center text-left') || 'mx-auto'
-            "
+            class="mx-auto mt-16"
             cols="auto"
           >
             <div class="bg-textOverlay pa-5">
@@ -106,59 +47,20 @@
               />
             </div>
           </v-col>
-          <v-col
-            v-if="column && column.length > 0 && breakpoint.mdAndUp"
-            :key="column.i"
-            v-bind="columnLayout"
-            class="d-flex align-center justify-end"
-          >
-            <div class="bg-textOverlay pa-5 text-white">
-              <form-element
-                v-if="column[0].component == 'formElement'"
-                v-bind="column[0]"
-                class="pa-5"
-              />
-            </div>
-          </v-col>
         </v-row>
       </v-img>
+      <v-row justify="center" class="form-container">
+        <v-col cols="12" md="7" lg="5">
+          <v-card elevation="3" tile width="100%" class="block">
+            <form-element
+              v-if="form[0].component == 'formElement'"
+              v-bind="form[0]"
+              class="pa-5"
+            />
+          </v-card>
+        </v-col>
+      </v-row>
     </v-col>
-    <v-col
-      v-if="breakpoint.smAndDown && textBelowOnMobile && !hasForm"
-      cols="12"
-      class="text-center mx-auto"
-    >
-      <typography
-        v-if="title && title.length > 0"
-        v-bind="title[0]"
-        :color-reset="true"
-        class="c-hero__title"
-      />
-      <typography
-        v-if="subtitle && subtitle.length > 0"
-        v-bind="subtitle[0]"
-        :color-reset="true"
-        class="c-hero__subtitle"
-        :headingStyle="
-          subtitle.length > 0 ? subtitle[0].headingStyle : 'text-h6'
-        "
-      />
-      <typography
-        v-if="description && description.length > 0"
-        v-bind="description[0]"
-        :color-reset="true"
-        class="c-hero__description"
-      />
-    </v-col>
-    <div v-if="hasForm" class="mobile_form">
-      <div class="d-flex align-center justify-end" cols="12">
-        <form-element
-          v-if="column[0].component == 'formElement'"
-          v-bind="column[0]"
-          class="pa-5"
-        />
-      </div>
-    </div>
   </v-row>
 </template>
 
@@ -171,7 +73,7 @@ export default {
       type: Array,
       default: () => [],
     },
-    column: {
+    form: {
       type: Array,
       default: () => [],
     },
@@ -218,10 +120,6 @@ export default {
     textPosition: {
       type: String,
       default: "align-center",
-    },
-    textBelowOnMobile: {
-      type: Boolean,
-      default: false,
     },
   },
   mixins: [Breakpoint],
@@ -318,7 +216,6 @@ export default {
 }
 .c-hero {
   position: relative;
-  // width: 100%;
   &__container {
     width: 100%;
   }
@@ -348,5 +245,9 @@ export default {
 .mobile_form {
   position: absolute;
   bottom: 100%;
+}
+
+.form-container {
+  margin-top: -250px;
 }
 </style>

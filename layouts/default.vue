@@ -16,16 +16,18 @@ export default {
   },
   async beforeMount() {
     const config = useRuntimeConfig();
-    let environmnet = config.public.NUXT_PUBLIC_NODE_ENV;
+    let environment = config.public.NUXT_PUBLIC_NODE_ENV;
     const story = await useAsyncStoryblok("globalNavigation", {
-      version: environmnet === "production" ? "published" : "draft",
+      version: environment === "production" ? "published" : "draft",
     });
+    console.log("story", story);
     this.nav = story;
   },
   computed: {
     navActive() {
       let result = false;
       const nav = this.nav;
+      console.log("nav", nav);
       if (nav && nav.content) {
         result = true;
       }
@@ -151,6 +153,6 @@ a {
 }
 
 .clickable {
-  cursor: pointer;
+  cursor: pointer!important;
 }
 </style>
