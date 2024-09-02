@@ -208,19 +208,46 @@
       v-if="navigationDrawer"
       temporary
       class="c-navigation__drawer"
+      width="400"
     >
-      <v-list class="c-navigation__drawer-list py-0">
-        <v-list-item
-          v-for="item in navigationDrawer[0].navItems"
-          :key="item.i"
-          :to="item.url"
-          :value="item.linkText"
-          class="c-navigation__drawer-list-item"
-        >
-          <v-list-item-title>
-            {{ item.linkText }}
-          </v-list-item-title>
-        </v-list-item>
+      <v-list>
+        <template v-for="item in navigationDrawer[0].navItems" :key="item.i">
+          <v-list-item
+            v-if="!item.menuTitle"
+            :title="item.linkText"
+            :to="item.url"
+          />
+          <v-list-group v-else :value="item.menuTitle" :to="item.url">
+            <template v-slot:activator="{ props }">
+              <v-list-item
+                v-bind="props"
+                :title="item.menuTitle"
+                :to="item.url"
+              />
+            </template>
+
+            <v-list-group
+              v-for="subItem in item.navItems"
+              :value="subItem.menuTitle"
+            >
+              <template v-slot:activator="{ props }">
+                <v-list-item
+                  v-bind="props"
+                  :title="subItem.menuTitle"
+                  :to="subItem.url"
+                />
+              </template>
+
+              <v-list-item
+                v-for="(subMenuItem, i) in subItem.navItems"
+                :key="i"
+                :title="subMenuItem.linkText"
+                :value="subMenuItem.linkText"
+                :to="subMenuItem.url"
+              />
+            </v-list-group>
+          </v-list-group>
+        </template>
       </v-list>
     </v-navigation-drawer>
   </div>
