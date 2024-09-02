@@ -1,12 +1,14 @@
 <template>
   <v-row class="blog_page mx-auto">
-    <v-col cols="8" class="mt-10 mx-auto" :class="breakpoint.mdAndUp ? 'blog_page__blogs' : ''">
+    <v-col
+      cols="12"
+      sm="8"
+      md="9"
+      class="mt-10 mx-auto"
+      :class="breakpoint.mdAndUp ? 'blog_page__blogs' : ''"
+    >
       <div class="scrollable-content">
-        <post
-          v-for="post in blogPosts"
-          :key="post.id"
-          v-bind="post.content"
-        />
+        <post v-for="post in blogPosts" :key="post.id" v-bind="post.content" />
         <v-pagination
           v-model="currentPageNumber"
           :length="totalPages"
@@ -15,7 +17,7 @@
         />
       </div>
     </v-col>
-    <v-col cols="10" md="auto" class="mt-10 mx-auto blog_page__sidebar">
+    <v-col cols="12" sm="4" md="3" class="mt-10 mx-auto blog_page__sidebar">
       <blog-side-bar />
     </v-col>
   </v-row>

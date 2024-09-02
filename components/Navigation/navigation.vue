@@ -153,7 +153,8 @@
                       :key="item.i"
                       link
                       class="py-0"
-                      :to="item.url"
+                      :to="!item.externalLink && item.url"
+                      :href="item.url"
                       :ripple="false"
                     >
                       <v-list-item-title>
@@ -180,7 +181,8 @@
                             v-for="subItem in item.navItems"
                             :key="subItem.i"
                             link
-                            :to="subItem.url"
+                            :to="!subItem.externalLink && subItem.url"
+                            :href="subItem.url"
                             active-class="text-primary active bg-white"
                             :ripple="false"
                             variant="plain"

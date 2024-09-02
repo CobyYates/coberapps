@@ -9,10 +9,20 @@
     <ul v-if="posts && posts.length > 0">
       <li v-for="post in posts" :key="post.id">
         <nuxt-link :to="`/${post.full_slug}`">
-          <p v-if="post.content.title" class="mb-2">{{ post.content.title }}</p>
-          <p class="text-grey-darken-2" v-if="post.content.firstPublishedAt">
-            {{ dateFormat(post.content.firstPublishedAt) }}
-          </p>
+          <div class="d-flex">
+            <v-img :src="post.content.featuredImage.filename" cover max-width="100" width="100" height="100" />
+            <div class="pl-2">
+              <p v-if="post.content.title" class="mb-2">
+                {{ post.content.title }}
+              </p>
+              <p
+                class="text-grey-darken-2"
+                v-if="post.content.firstPublishedAt"
+              >
+                {{ dateFormat(post.content.firstPublishedAt) }}
+              </p>
+            </div>
+          </div>
         </nuxt-link>
       </li>
     </ul>

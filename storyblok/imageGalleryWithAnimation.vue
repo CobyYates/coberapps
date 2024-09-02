@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <v-row class="c-image_gallery_with_animation mx-auto">
     <v-col
       v-for="(card, i) in cards"
       :key="card.title"
@@ -12,12 +12,13 @@
         <v-card
           class="card_animation"
           width="100%"
-          height="auto"
+          height="450"
           v-bind="props"
           tile
-          :to="card.link.cached_url"
+          elevation="0"
+          :to="card.link"
         >
-          <v-img :src="cards[i].image.filename">
+          <v-img :src="cards[i].image.filename" cover min-height="100%">
             <div class="card_animation__square_animation" v-if="!!isHovering" />
             <v-overlay
               :model-value="overlay"
@@ -57,6 +58,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.c-image_gallery_with_animation {
+  max-width: 1200px;
+}
 .card_animation {
   position: relative;
   img {

@@ -102,7 +102,6 @@ export default {
   },
   computed: {
     typographyClass() {
-      // console.log('text heading', this.$props)
       const result = [];
       const alignment = this.alignment;
       const headingStyle = this.headingStyle;
@@ -171,7 +170,6 @@ export default {
   methods: {
     removeMarkers() {
       this.$nextTick(() => {
-        // Existing code for handling <li> elements
         const listItems = this.$el.querySelectorAll("li");
         listItems.forEach((item) => {
           item.style.listStyleType = "none";
@@ -184,13 +182,11 @@ export default {
           item.insertBefore(checkMark, item.firstChild);
         });
 
-        // Code to add "mb-5" to all <p> tags
         const paragraphs = this.$el.querySelectorAll("p");
         paragraphs.forEach((p) => {
           p.classList.add("mb-5");
         });
 
-        // New code to add "text-primary text-decoration-none" to all <a> tags
         const anchorElements = this.$el.querySelectorAll("a");
         anchorElements.forEach((a) => {
           a.classList.add("text-primary", "text-decoration-none");

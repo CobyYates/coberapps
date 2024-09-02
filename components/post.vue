@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col cols="auto" class="text-center">
+    <v-col cols="2" class="text-center">
       <p class="text-grey-darken-2 mt-16">{{ dateFormat.month }}</p>
       <p class="text-primary text-h4 font-weight-bold">
         {{ dateFormat.day }}
@@ -11,7 +11,7 @@
         <p class="text-grey-darken-2">{{ views }}</p>
       </div>
     </v-col>
-    <v-col>
+    <v-col cols="10">
       <v-img
         v-if="featuredImage && featuredImage.filename"
         height="400"

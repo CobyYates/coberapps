@@ -32,6 +32,11 @@
           v-bind="item.description[0]"
           class="c-section__description"
         />
+        <btn
+          v-if="item.btn && item.btn.length > 0"
+          v-bind="item.btn[0]"
+          class="c-section__cta"
+        />
         <div v-if="item && item.sections && item.sections.length > 0">
           <card-with-layout
             v-if="

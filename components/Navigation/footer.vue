@@ -1,5 +1,5 @@
 <template>
-  <v-row :class="rowClass">
+  <v-row :class="rowClass" class="mt-10">
     <v-col class="d-flex justify-center">
       <component
         v-for="section in row"
@@ -75,7 +75,6 @@ export default {
   },
   computed: {
     rowClass() {
-        console.log('footerColumns', this.footerColumns)
       let result = [];
       const backgroundColor = this.backgroundColor;
       if (backgroundColor && backgroundColor.length > 0) {
@@ -90,7 +89,6 @@ export default {
       return result;
     },
     columnCount() {
-      console.log("icons", this.footerColumns);
       const columns = this.footerColumns;
       let result;
       if (columns && columns.length > 0) {

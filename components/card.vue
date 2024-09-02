@@ -10,6 +10,8 @@
     min-width="100%"
     :rounded="false"
     :to="`/${link.cached_url || ''}`"
+    :ripple="false"
+    :hover="false"
   >
     <v-img
       v-if="image && image.filename"
@@ -48,6 +50,8 @@
     :elevation="elevation || '3'"
     min-width="100%"
     :rounded="false"
+    :ripple="false"
+    :hover="false"
   >
     <v-img
       v-if="image && image.filename"
@@ -189,4 +193,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.v-card:hover {
+  background: white!important;
+}
+</style>
