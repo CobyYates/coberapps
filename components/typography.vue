@@ -184,10 +184,16 @@ export default {
           item.insertBefore(checkMark, item.firstChild);
         });
 
-        // New code to add "mb-10" to all <p> tags
+        // Code to add "mb-5" to all <p> tags
         const paragraphs = this.$el.querySelectorAll("p");
         paragraphs.forEach((p) => {
           p.classList.add("mb-5");
+        });
+
+        // New code to add "text-primary text-decoration-none" to all <a> tags
+        const anchorElements = this.$el.querySelectorAll("a");
+        anchorElements.forEach((a) => {
+          a.classList.add("text-primary", "text-decoration-none");
         });
       });
     },
@@ -198,5 +204,6 @@ export default {
 <style lang="scss" scoped>
 a:deep {
   text-decoration: none !important;
+  color: var(--v-theme-primary) !important;
 }
 </style>
