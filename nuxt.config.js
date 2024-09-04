@@ -70,20 +70,45 @@ export default defineNuxtConfig({
   // ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
   ssr: false,
   target: "static",
-  head: [
-    {
-      rel: "stylesheet",
-      href: "https://fonts.cdnfonts.com/css/tw-cen-mt",
-    },
-    {
-      rel: "stylesheet",
-      href: "https://fonts.cdnfonts.com/css/tw-cen-mt-std",
-    },
-    {
-      rel: "stylesheet",
-      href: "https://fonts.cdnfonts.com/css/tw-cen-mt-condensed",
-    },
-  ],
+  app: {
+    head: {
+      title: 'Appliance by Design',
+      meta: [
+        { hid: "og:site_name", property: "og:site_name", content: "Appliance by Design" },
+        { hid: "og:description", property: "og:description", content: "" },
+        { hid: "og:title", property: "og:title", content: "Appliance by Design" },
+        { hid: "og:url", property: "og:url", content: "" },
+        { hid: "og:image", property: "og:image", content: "" },
+        { property: "og:updated_time", content: new Date().toISOString() },
+        { name: 'p:domain_verify', content: process.env.DOMAIN_VERIFY_CODE },
+        { name: "twitter:title", content: "Appliance by Design" },
+        { name: "twitter:description", content: "" },
+        { name: "twitter:image", content: "" },
+        { name: "twitter:image:alt", content: "Appliance By Design" },
+      ],
+      link: [
+        { rel: "stylesheet", href: "https://fonts.cdnfonts.com/css/tw-cen-mt" },
+        { rel: "stylesheet", href: "https://fonts.cdnfonts.com/css/tw-cen-mt-std" },
+        { rel: "stylesheet", href: "https://fonts.cdnfonts.com/css/tw-cen-mt-condensed" },
+      ],
+      script: [
+        { src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID}`, async: true },
+        { src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID_2}`, async: true },
+        {
+          innerHTML: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.GTAG_ID}');
+            gtag('config', '${process.env.GTAG_AW_ID}');
+          `,
+          type: 'text/javascript',
+          charset: 'utf-8',
+        }
+      ],
+      __dangerouslyDisableSanitizers: ['script'],
+    }
+  },
   modules: [
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
@@ -104,6 +129,30 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  /*
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124639262-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124639262-1');  
+gtag('config', 'AW-756669483');
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-140374100-1">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-140374100-1');
+</script>
+
+<meta name="p:domain_verify" content="f59b370cf44dbb031acdf38470482d5b"/>
+  */
   plugins: [
     { src: "~/plugins/flickity.js", ssr: false },
     "~/plugins/composition-api.js",

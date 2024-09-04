@@ -125,7 +125,7 @@ h4,
 p,
 a,
 .v-btn {
-  font-family: "Tw Cen MT", sans-serif !important;
+  // font-family: "Tw Cen MT", sans-serif !important;
 }
 h3 {
   // font-size: 1.5rem;
