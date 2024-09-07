@@ -38,7 +38,7 @@
               :rounded="input.settings[0].rounded"
               :clearable="input.clearable"
               :required="input.settings[0].required"
-              hide-details="auto"
+              :rules="getInputRules(input)"
             />
             <v-textarea
               v-if="input.component == 'textarea'"
@@ -58,8 +58,7 @@
               :placeholder="input.settings[0].placeholder"
               :rounded="input.settings[0].rounded"
               :required="input.settings[0].required"
-              :rows="input.rows"
-              hide-details="auto"
+              :rules="getInputRules(input)"
             />
             <v-autocomplete
               v-if="input.component == 'autocomplete'"
@@ -183,7 +182,21 @@
           </v-col>
         </template>
       </v-row>
-      <btn type="submit" v-bind="formButton[0]" @click="submitForm" />
+      <!-- <div class="g-recaptcha" :data-sitekey="recaptchaKey"></div> -->
+      <div v-if="!submitted" class="d-flex align-baseline">
+        <btn type="submit" v-bind="formButton[0]" @click="submitForm" />
+        <p class="text-red font-weight-bold ml-4" v-if="error">
+          An error occured
+        </p>
+      </div>
+      <v-btn
+        v-else-if="submitted"
+        prepend-icon="mdi-check"
+        size="large"
+        color="success"
+        disabled
+        text="Sent"
+      />
     </form>
   </div>
 </template>
@@ -249,6 +262,8 @@ export default {
     ],
     select: null,
     checkbox: false,
+    submitted: false,
+    error: false,
   }),
   props: {
     inputs: Array,
@@ -260,15 +275,41 @@ export default {
     publicKey: String,
     templateId: String,
     serviceId: String,
-    rows: Number,
     formButton: {
       type: Array,
       default: () => [],
     },
     spacing: Array,
     required: Boolean,
+    formMessage: String,
+    // recaptchaSecret: String,
+  },
+  computed: {
+    inputRules() {
+      let result = (v) => !!v || `${this.input.settings[0].name} is required`;
+      return `${result} is required`;
+    },
+    // recaptchaKey() {
+    //   const result = this.recaptchaSecret
+    //   console.log('RECAPTCHA_KEY',result)
+    //   return result
+    // }
   },
   methods: {
+    getInputRules(input) {
+      const name = input.settings[0].name;
+      const rules = [];
+
+      if (input.settings[0].required) {
+        rules.push((v) => !!v || `${name} is required`);
+      }
+
+      if (input.settings[0].name === "email") {
+        rules.push((v) => /.+@.+\..+/.test(v) || "E-mail must be valid");
+      }
+
+      return rules;
+    },
     async validate() {
       const { valid } = await this.$refs.form.validate();
 
@@ -288,18 +329,35 @@ export default {
       return result;
     },
     async submitForm() {
+      const recaptchaResponse = grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        alert("Please complete the reCAPTCHA");
+        return;
+      }
       let form = this.form;
+      // form["g-recaptcha-response"] = recaptchaResponse;
+      form.formMessage =
+        this.formMessage.replace(`{email}`, form.email) || null;
       const serviceId = this.serviceId;
       const publicKey = this.publicKey;
       const templateId = this.templateId;
+      const confirmationTemplateID =
+        process.env.EMAIL_JS_CONFIRMATION_TEMPLATE_ID;
       try {
-        const response = await emailjs.send(
-          serviceId,
-          templateId,
-          form, // Assuming your form data is stored in the component's data
-          publicKey
-        );
+        const response = await emailjs
+          .send(serviceId, templateId, form, publicKey)
+          .then(() => {
+            this.submitted = true;
+            if (confirmationTemplateID) {
+              const reply = emailjs.send(
+                serviceId,
+                publicKey,
+                confirmationTemplateID
+              );
+            }
+          });
       } catch (error) {
+        this.error = true;
         console.error("Error sending email", error);
       }
     },
