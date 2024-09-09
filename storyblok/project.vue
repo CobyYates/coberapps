@@ -171,7 +171,6 @@ export default {
       this.index = i;
       this.dialog = true;
       this.images = gallery;
-      console.log("gallery", image, size);
     },
     previous() {
       if (this.index != 0) {

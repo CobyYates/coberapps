@@ -7,7 +7,6 @@ export default {
       let story = null;
       let blogPosts = [];
       let totalPosts = 0;
-      console.log("getPageBySlug", slug, page, postsPerPage);
 
       try {
         const { data } = await storyblokApi.get("cdn/stories/", {
@@ -20,6 +19,7 @@ export default {
       }
 
       if (story && story.content && story.content.blogPage && page) {
+        console.log('story', story)
         try {
           // First, get the total number of posts
           const { total } = await storyblokApi.get("cdn/stories/", {

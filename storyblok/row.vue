@@ -133,7 +133,6 @@ export default {
       return result;
     },
     rowStyle() {
-      console.log("columns", this.columns);
       const styles = {};
       // const backgroundColor = this.backgroundColor
       const maxWidth = this.maxWidth || null;

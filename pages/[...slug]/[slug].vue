@@ -42,7 +42,6 @@ export default {
       } else {
         this.currentPage = null
       }
-      console.log("loadPageData", path, this.currentPage, this.$route);
       this.page = await this.getPageBySlug(path, this.currentPage);
     },
     updatePage(page) {
@@ -51,8 +50,7 @@ export default {
   },
   computed: {
     isBlog() {
-      const route = this.$route.path.includes('/post'); 
-      console.log('isBlog', route)    
+      const route = this.$route.path.includes('/post');
       return route;
     },
   },

@@ -310,7 +310,6 @@ export default {
       return result;
     },
     backgroundColorVal() {
-      console.log("testing", this.topNavigationVal);
       let result = "white";
       const backgroundColor = this.backgroundColor;
       if (backgroundColor && backgroundColor.length > 0) {

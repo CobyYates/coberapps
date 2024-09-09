@@ -39,6 +39,7 @@
               :clearable="input.clearable"
               :required="input.settings[0].required"
               :rules="getInputRules(input)"
+              hide-details="auto"
             />
             <v-textarea
               v-if="input.component == 'textarea'"
@@ -59,6 +60,7 @@
               :rounded="input.settings[0].rounded"
               :required="input.settings[0].required"
               :rules="getInputRules(input)"
+              hide-details="auto"
             />
             <v-autocomplete
               v-if="input.component == 'autocomplete'"

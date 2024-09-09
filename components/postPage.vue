@@ -55,9 +55,6 @@ export default {
       postsPerPage: 9,
     };
   },
-  mounted() {
-    console.log("icon card", this);
-  },
 };
 </script>
 

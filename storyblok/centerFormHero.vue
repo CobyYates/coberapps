@@ -125,7 +125,6 @@ export default {
   mixins: [Breakpoint],
   computed: {
     imageData() {
-      console.log("column information", this.column);
       const image = this.image;
       if (image[0] && image[0].desktopImage && image[0].desktopImage.filename) {
         return {

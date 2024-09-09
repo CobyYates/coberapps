@@ -45,7 +45,6 @@ export default {
   methods: {
     async loadPostData() {
       this.posts = await this.getRecentPosts();
-      console.log("loadPostData", this.posts);
     },
     dateFormat(timestamp) {
       if (!timestamp && !timestamp.length) return;

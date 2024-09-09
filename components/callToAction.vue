@@ -103,7 +103,6 @@ export default {
       } else {
         result.push("bg-primary");
       }
-      console.log("color results", result);
       return result;
     },
     rowStyle() {

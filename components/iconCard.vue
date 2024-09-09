@@ -143,7 +143,6 @@ export default {
       if (color && color.length > 0) {
         result = `bg-${color[0].themeColor}`;
       }
-      console.log('colorValue', result)
       return result;
     },
     imageStyle() {
@@ -154,9 +153,6 @@ export default {
       }
       return styles;
     },
-  },
-  mounted () {
-    console.log('icon card', this);
   },
 };
 </script>

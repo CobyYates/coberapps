@@ -20,14 +20,12 @@ export default {
     const story = await useAsyncStoryblok("globalNavigation", {
       version: environment === "production" ? "published" : "draft",
     });
-    console.log("story", story);
     this.nav = story;
   },
   computed: {
     navActive() {
       let result = false;
       const nav = this.nav;
-      console.log("nav", nav);
       if (nav && nav.content) {
         result = true;
       }
