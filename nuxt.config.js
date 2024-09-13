@@ -64,7 +64,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       NUXT_PUBLIC_NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
-      THEME_COLORS_PRIMARY: process.env.THEME_COLORS_PRIMARY,
+      THEME_COLORS_PRIMARY: process.env.NUXT_THEME_COLORS_PRIMARY,
+      EMAIL_JS_CONFIRMATION_TEMPLATE_ID: process.env.NUXT_EMAIL_JS_CONFIRMATION_TEMPLATE_ID
     },
   },
   // ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
@@ -119,7 +120,7 @@ export default defineNuxtConfig({
     [
       "@storyblok/nuxt",
       {
-        accessToken: process.env.STORYBLOK_API_TOKEN,
+        accessToken: process.env.NUXT_STORYBLOK_API_TOKEN,
         apiOptions: {
           region: "us",
         },

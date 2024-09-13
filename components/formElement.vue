@@ -1,22 +1,22 @@
 <template>
   <div>
     <typography
-      v-if="title && title.length > 0"
+      v-if="title && title[0]"
       v-bind="title[0]"
       class="c-section__title"
     />
     <typography
-      v-if="subtitle && subtitle.length > 0"
+      v-if="subtitle && subtitle[0]"
       v-bind="subtitle[0]"
       class="c-section__subtitle"
     />
     <typography
-      v-if="description && description.length > 0"
+      v-if="description && description[0]"
       v-bind="description[0]"
       class="c-section__description"
     />
-    <form @submit.prevent="submit" ref="form">
-      <v-row class="mb-2">
+    <form @submit.prevent="submitForm" ref="form">
+      <v-row class="mb-2" v-if="inputs">
         <template v-for="input in inputs" :key="input.i">
           <v-col cols="12" :md="input.settings[0].desktopColumns || 12">
             <v-text-field
@@ -38,8 +38,9 @@
               :rounded="input.settings[0].rounded"
               :clearable="input.clearable"
               :required="input.settings[0].required"
-              :rules="getInputRules(input)"
+              :error-messages="errors[input.settings[0].name]"
               hide-details="auto"
+              @blur="validateField(input)"
             />
             <v-textarea
               v-if="input.component == 'textarea'"
@@ -59,10 +60,11 @@
               :placeholder="input.settings[0].placeholder"
               :rounded="input.settings[0].rounded"
               :required="input.settings[0].required"
-              :rules="getInputRules(input)"
+              :error-messages="errors[input.settings[0].name]"
               hide-details="auto"
+              @blur="validateField(input)"
             />
-            <v-autocomplete
+            <!-- <v-autocomplete
               v-if="input.component == 'autocomplete'"
               v-model="form[input.settings[0].name]"
               :for="input.settings[0].name"
@@ -180,15 +182,14 @@
               :placeholder="input.settings[0].placeholder"
               :rounded="input.settings[0].rounded"
               hide-details="auto"
-            />
+            /> -->
           </v-col>
         </template>
       </v-row>
-      <!-- <div class="g-recaptcha" :data-sitekey="recaptchaKey"></div> -->
       <div v-if="!submitted" class="d-flex align-baseline">
-        <btn type="submit" v-bind="formButton[0]" @click="submitForm" />
+        <btn type="submit" v-bind="formButton[0]" :disabled="!isFormValid" />
         <p class="text-red font-weight-bold ml-4" v-if="error">
-          An error occured
+          An error occurred
         </p>
       </div>
       <v-btn
@@ -205,74 +206,26 @@
 
 <script>
 import emailjs from "@emailjs/browser";
-// import { ref } from "vue";
-// import { useGoogleRecaptcha } from "your-google-recaptcha-package";
-// import { useApiData } from "your-api-package";
+
 export default {
-  // setup() {
-  //   const formData = ref({}); // Initialize your formData object
-  //   const isSubmitting = ref(false);
-  //   const showSuccess = ref(false);
-  //   const showFail = ref(false);
-
-  //   const { executeRecaptcha } = useGoogleRecaptcha();
-
-  //   const submitForm = async (values) => {
-  //     isSubmitting.value = true;
-  //     const { token } = await executeRecaptcha("submit");
-
-  //     const bodyData = {
-  //       ...formData.value,
-  //       "g-recaptcha-response": token,
-  //     };
-
-  //     const { pending, error } = await useApiData(`/api/form_submissions`, {
-  //       method: "post",
-  //       cache: false,
-  //       body: bodyData,
-  //     });
-
-  //     if (error.value) {
-  //       isSubmitting.value = pending.value;
-  //       showFail.value = true;
-  //     } else {
-  //       isSubmitting.value = pending.value;
-  //       clearForm();
-  //       showSuccess.value = true;
-  //     }
-  //   };
-
-  //   const clearForm = () => {
-  //     // Implement your logic to clear the form data here
-  //   };
-
-  //   // Optionally expose some variables or functions to the template
-  //   return {
-  //     formData,
-  //     isSubmitting,
-  //     showSuccess,
-  //     showFail,
-  //     submitForm,
-  //   };
-  // },
-  data: () => ({
-    name: "",
-    form: {},
-    nameRules: [
-      (v) => !!v || "Name is required",
-      (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
-    ],
-    select: null,
-    checkbox: false,
-    submitted: false,
-    error: false,
-  }),
   props: {
-    inputs: Array,
+    inputs: {
+      type: Array,
+      default: () => [],
+    },
     endpoint: String,
-    title: Array,
-    subtitle: Array,
-    description: Array,
+    title: {
+      type: Array,
+      default: () => [],
+    },
+    subtitle: {
+      type: Array,
+      default: () => [],
+    },
+    description: {
+      type: Array,
+      default: () => [],
+    },
     columns: String,
     publicKey: String,
     templateId: String,
@@ -284,80 +237,63 @@ export default {
     spacing: Array,
     required: Boolean,
     formMessage: String,
-    // recaptchaSecret: String,
+  },
+  data() {
+    return {
+      form: {},
+      submitted: false,
+      error: false,
+      errors: {},
+    };
   },
   computed: {
-    inputRules() {
-      let result = (v) => !!v || `${this.input.settings[0].name} is required`;
-      return `${result} is required`;
+    isFormValid() {
+      return (
+        Object.values(this.errors).every((error) => error === "") &&
+        this.inputs.every((input) => this.form[input.settings[0].name])
+      );
     },
-    // recaptchaKey() {
-    //   const result = this.recaptchaSecret
-    //   console.log('RECAPTCHA_KEY',result)
-    //   return result
-    // }
   },
   methods: {
-    getInputRules(input) {
-      const name = input.settings[0].name;
-      const rules = [];
-
-      if (input.settings[0].required) {
-        rules.push((v) => !!v || `${name} is required`);
-      }
-
-      if (input.settings[0].name === "email") {
-        rules.push((v) => /.+@.+\..+/.test(v) || "E-mail must be valid");
-      }
-
-      return rules;
-    },
-    async validate() {
-      const { valid } = await this.$refs.form.validate();
-
-      if (valid) alert("Form is valid");
-    },
-    reset() {
-      this.$refs.form.reset();
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation();
-    },
     iconValue(input, def) {
-      let result;
-      if (input.iconLocation == def) {
-        result = input.icon;
+      return input.iconLocation === def ? input.icon : undefined;
+    },
+    validateField(input) {
+      const name = input.settings[0].name;
+      const value = this.form[name];
+      let errorMessage = "";
+
+      // Hardcoded validation logic for email, phone, and text fields
+      if (input.settings[0].required && !value) {
+        errorMessage = `${input.settings[0].label} is required`;
+      } else if (name === "email" && value && !/.+@.+\..+/.test(value)) {
+        errorMessage = "E-mail must be valid";
+      } else if (
+        name === "phone" &&
+        value &&
+        !/^\+?[1-9]\d{1,14}$/.test(value)
+      ) {
+        errorMessage = "Phone number must be valid";
+      } else if (
+        input.settings[0].minLength &&
+        value.length < input.settings[0].minLength
+      ) {
+        errorMessage = `${input.settings[0].label} must be at least ${input.settings[0].minLength} characters`;
       }
-      return result;
+
+      this.$set(this.errors, name, errorMessage);
     },
     async submitForm() {
-      const recaptchaResponse = grecaptcha.getResponse();
-      if (!recaptchaResponse) {
-        alert("Please complete the reCAPTCHA");
-        return;
-      }
-      let form = this.form;
-      // form["g-recaptcha-response"] = recaptchaResponse;
-      form.formMessage =
-        this.formMessage.replace(`{email}`, form.email) || null;
-      const serviceId = this.serviceId;
-      const publicKey = this.publicKey;
-      const templateId = this.templateId;
-      const confirmationTemplateID =
-        process.env.EMAIL_JS_CONFIRMATION_TEMPLATE_ID;
+      if (!this.isFormValid) return;
+
       try {
-        const response = await emailjs
-          .send(serviceId, templateId, form, publicKey)
-          .then(() => {
-            this.submitted = true;
-            if (confirmationTemplateID) {
-              const reply = emailjs.send(
-                serviceId,
-                publicKey,
-                confirmationTemplateID
-              );
-            }
-          });
+        await emailjs.send(
+          this.serviceId,
+          this.templateId,
+          this.form,
+          this.publicKey
+        );
+        this.submitted = true;
       } catch (error) {
         this.error = true;
         console.error("Error sending email", error);
