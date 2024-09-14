@@ -196,9 +196,10 @@
         v-else-if="submitted"
         prepend-icon="mdi-check"
         size="large"
-        color="success"
+        color="primary"
         disabled
         text="Sent"
+        block
       />
     </form>
   </div>
