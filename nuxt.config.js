@@ -1,8 +1,6 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
-// import { fetchStories } from './fetchStories.js'
-// import { apiPlugin } from '@storyblok/vue'
-import dotenv from "dotenv";
 
+// Use process.env to access environment variables during build-time in nuxt.config
 const OPEN_GRAPH = [
   {
     hid: "og:site_name",
@@ -56,7 +54,6 @@ const TWITTER = [
     content: "Appliance By Design",
   },
 ];
-
 export default defineNuxtConfig({
   build: {
     transpile: ["vuetify", "class-validator"],
@@ -65,23 +62,36 @@ export default defineNuxtConfig({
     public: {
       NUXT_PUBLIC_NODE_ENV: process.env.NUXT_PUBLIC_NODE_ENV,
       THEME_COLORS_PRIMARY: process.env.NUXT_THEME_COLORS_PRIMARY,
-      EMAIL_JS_CONFIRMATION_TEMPLATE_ID: process.env.NUXT_EMAIL_JS_CONFIRMATION_TEMPLATE_ID
+      EMAIL_JS_CONFIRMATION_TEMPLATE_ID:
+        process.env.NUXT_EMAIL_JS_CONFIRMATION_TEMPLATE_ID,
+      DOMAIN_VERIFY_CODE: process.env.DOMAIN_VERIFY_CODE,
+      GTAG_ID: process.env.GTAG_ID,
+      GTAG_ID_2: process.env.GTAG_ID_2,
+      GTAG_AW_ID: process.env.GTAG_AW_ID,
+      NUXT_STORYBLOK_API_TOKEN: process.env.NUXT_STORYBLOK_API_TOKEN,
     },
   },
-  // ssr: process.env.NUXT_PUBLIC_NODE_ENV === 'production' ? true : false,
   ssr: false,
   target: "static",
   app: {
     head: {
-      title: 'Appliance by Design',
+      title: "Appliance by Design",
       meta: [
-        { hid: "og:site_name", property: "og:site_name", content: "Appliance by Design" },
+        {
+          hid: "og:site_name",
+          property: "og:site_name",
+          content: "Appliance by Design",
+        },
         { hid: "og:description", property: "og:description", content: "" },
-        { hid: "og:title", property: "og:title", content: "Appliance by Design" },
+        {
+          hid: "og:title",
+          property: "og:title",
+          content: "Appliance by Design",
+        },
         { hid: "og:url", property: "og:url", content: "" },
         { hid: "og:image", property: "og:image", content: "" },
         { property: "og:updated_time", content: new Date().toISOString() },
-        { name: 'p:domain_verify', content: process.env.DOMAIN_VERIFY_CODE },
+        { name: "p:domain_verify", content: process.env.DOMAIN_VERIFY_CODE },
         { name: "twitter:title", content: "Appliance by Design" },
         { name: "twitter:description", content: "" },
         { name: "twitter:image", content: "" },
@@ -89,12 +99,24 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: "stylesheet", href: "https://fonts.cdnfonts.com/css/tw-cen-mt" },
-        { rel: "stylesheet", href: "https://fonts.cdnfonts.com/css/tw-cen-mt-std" },
-        { rel: "stylesheet", href: "https://fonts.cdnfonts.com/css/tw-cen-mt-condensed" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.cdnfonts.com/css/tw-cen-mt-std",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.cdnfonts.com/css/tw-cen-mt-condensed",
+        },
       ],
       script: [
-        { src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID}`, async: true },
-        { src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID_2}`, async: true },
+        {
+          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID}`,
+          async: true,
+        },
+        {
+          src: `https://www.googletagmanager.com/gtag/js?id=${process.env.GTAG_ID_2}`,
+          async: true,
+        },
         {
           innerHTML: `
             window.dataLayer = window.dataLayer || [];
@@ -103,12 +125,12 @@ export default defineNuxtConfig({
             gtag('config', '${process.env.GTAG_ID}');
             gtag('config', '${process.env.GTAG_AW_ID}');
           `,
-          type: 'text/javascript',
-          charset: 'utf-8',
-        }
+          type: "text/javascript",
+          charset: "utf-8",
+        },
       ],
-      __dangerouslyDisableSanitizers: ['script'],
-    }
+      __dangerouslyDisableSanitizers: ["script"],
+    },
   },
   modules: [
     (_options, nuxt) => {
