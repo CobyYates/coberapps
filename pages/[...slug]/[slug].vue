@@ -1,5 +1,5 @@
 <template>
-  <div v-if="page && page.story.content">
+  <div v-if="page && page?.story?.content">
     <component
       v-for="section in page.story.content.sections"
       :key="section.i"
@@ -43,6 +43,10 @@ export default {
         this.currentPage = null
       }
       this.page = await this.getPageBySlug(path, this.currentPage);
+      if(this.page && !this.page?.story) {
+        console.log('no content ')
+        this.$router.push('/404')
+      }
     },
     updatePage(page) {
       this.$router.push(`${this.$route.path}?page=${page}`);

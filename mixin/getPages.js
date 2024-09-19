@@ -15,7 +15,7 @@ export default {
         });
         story = data.stories[0];
       } catch (error) {
-        console.error("Error fetching page by slug:", error);
+        console.log("Error fetching page by slug:", error);
       }
 
       if (story && story.content && story.content.blogPage && page) {

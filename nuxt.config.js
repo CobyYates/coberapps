@@ -71,7 +71,7 @@ export default defineNuxtConfig({
       NUXT_STORYBLOK_API_TOKEN: process.env.NUXT_STORYBLOK_API_TOKEN,
     },
   },
-  ssr: false,
+  ssr: true,
   target: "static",
   app: {
     head: {
