@@ -16,13 +16,13 @@
     </v-avatar>
     <div>
       <v-card-title v-if="title && title.length > 0">
-        <typography v-bind="title[0]" class="c-section__title" />
+        <typography v-bind="title[0]" class="c-section__title text-wrap" />
       </v-card-title>
       <v-card-subtitle v-if="subtitle && subtitle.length > 0">
-        <typography v-bind="subtitle[0]" class="c-section__subtitle" />
+        <typography v-bind="subtitle[0]" class="c-section__subtitle text-wrap" />
       </v-card-subtitle>
       <v-card-text v-if="description && description.length > 0">
-        <typography v-bind="description[0]" class="c-section__description" />
+        <typography v-bind="description[0]" class="c-section__description text-wrap" />
       </v-card-text>
       <v-card-text>
         <v-btn
