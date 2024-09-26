@@ -67,7 +67,7 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100vh; /* Adjust the height as needed */
-    overflow-y: auto;
+    overflow-y: scroll;
     scrollbar-width: none;
   }
 

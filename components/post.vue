@@ -25,30 +25,36 @@
       </div>
       <div v-if="category" class="d-flex align-baseline my-2">
         <p class="pr-2">In:</p>
-        <v-chip
-          v-for="(item, i) in category"
-          :key="i"
-          color="primary"
-          variant="flat"
-          class="mr-2"
-        >
-          {{ item }}
-        </v-chip>
+        <div class="d-flex flex-wrap">
+          <p
+            v-for="(item, i) in category"
+            :key="i"
+            color="primary"
+            variant="flat"
+            width="150"
+            class="mr-1"
+          >
+            {{ item }}{{ i != category.length - 1 ? `,` : "" }}
+          </p>
+        </div>
       </div>
       <div
         v-if="showTags && tags && tags.length > 0"
         class="d-flex align-baseline my-2"
       >
         <p class="pr-2">Tags:</p>
-        <v-chip
-          v-for="(item, i) in parsedTags"
-          :key="i"
-          color="grey-darken-1"
-          variant="flat"
-          class="mr-2"
-        >
-          {{ item }}
-        </v-chip>
+        <div class="d-flex flex-wrap">
+          <v-chip
+            v-for="(item, i) in parsedTags"
+            :key="i"
+            color="primary"
+            variant="tonal"
+            class="mr-1"
+            size="small"
+          >
+            {{ item }}
+          </v-chip>
+        </div>
       </div>
       <Typography
         element="h2"
@@ -64,6 +70,10 @@
         :richText="content"
         :max-words="maxWords"
       />
+      <div class="scroll-down">
+        <v-icon>mdi-arrow-down</v-icon>
+        Scroll Down
+      </div>
     </v-col>
   </v-row>
 </template>
@@ -128,11 +138,18 @@ export default {
     parsedTags() {
       let result = [];
       const tags = this.tags;
-      result = tags.split(",").map((value) => value.trim());
+      result = tags.split(/[,|]/).map((value) => value.trim());
       return result;
     },
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.scroll-down {
+  position: absolute;
+  bottom: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>

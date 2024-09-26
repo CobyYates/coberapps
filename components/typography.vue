@@ -170,6 +170,7 @@ export default {
   methods: {
     removeMarkers() {
       this.$nextTick(() => {
+        // Handle list items
         const listItems = this.$el.querySelectorAll("li");
         listItems.forEach((item) => {
           item.style.listStyleType = "none";
@@ -182,14 +183,24 @@ export default {
           item.insertBefore(checkMark, item.firstChild);
         });
 
+        // Handle paragraphs
         const paragraphs = this.$el.querySelectorAll("p");
         paragraphs.forEach((p) => {
           p.classList.add("mb-5");
         });
 
+        // Handle anchor elements
         const anchorElements = this.$el.querySelectorAll("a");
         anchorElements.forEach((a) => {
           a.classList.add("text-primary", "text-decoration-none");
+        });
+
+        // Handle images
+        const images = this.$el.querySelectorAll("img");
+        images.forEach((img) => {
+          img.style.objectFit = "contain";
+          img.style.maxWidth = "100%";
+          img.style.height = "auto";
         });
       });
     },
