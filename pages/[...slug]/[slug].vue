@@ -1,5 +1,5 @@
 <template>
-  <div v-if="page && page.story.content">
+  <div v-if="page && page?.story?.content">
     <component
       v-for="section in page.story.content.sections"
       :key="section.i"
@@ -19,6 +19,8 @@
 
 <script>
 import getPage from "~/mixin/getPages";
+import { useSeoMeta } from "#app"; // Import the new useSeoMeta composable
+
 export default {
   data() {
     return {
@@ -36,17 +38,35 @@ export default {
   methods: {
     async loadPageData() {
       let path = this.$route.path.slice(1);
-      let slug = this.$route.params.slug
-      if(slug == 'news') {
+      let slug = this.$route.params.slug;
+      
+      if (slug == 'news') {
         this.currentPage = parseInt(this.$route.query.page) || 1;
       } else {
-        this.currentPage = null
+        this.currentPage = null;
       }
+
       this.page = await this.getPageBySlug(path, this.currentPage);
+      
+      if (this.page && !this.page?.story) {
+        this.$router.push('/404');
+      }
+
+      // Update the canonical link after page data is loaded
+      this.updateCanonicalLink();
     },
     updatePage(page) {
       this.$router.push(`${this.$route.path}?page=${page}`);
     },
+    updateCanonicalLink() {
+      // Set the canonical link dynamically based on the current route
+      useSeoMeta({
+        link: {
+          rel: 'canonical',
+          href: `${process.env.BASE_URL}${this.$route.path}`, // Use environment variable for base URL
+        }
+      });
+    }
   },
   computed: {
     isBlog() {
