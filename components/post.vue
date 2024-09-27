@@ -23,6 +23,7 @@
       <div v-if="author" class="d-flex align-baseline my-2">
         <p>By: {{ author }}</p>
       </div>
+
       <div v-if="category" class="d-flex align-baseline my-2">
         <p class="pr-2">In:</p>
         <v-chip
@@ -64,6 +65,9 @@
         :richText="content"
         :max-words="maxWords"
       />
+      <v-btn v-if="showReadMore" color="primary" class="mt-3" rounded="xl">
+        Read more
+      </v-btn>
     </v-col>
   </v-row>
 </template>
@@ -115,6 +119,7 @@ export default {
       type: Boolean,
       default: false,
     },
+    showReadMore: Boolean,
   },
   computed: {
     dateFormat() {
