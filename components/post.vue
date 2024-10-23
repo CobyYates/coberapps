@@ -55,7 +55,7 @@
         element="h2"
         :text="title"
         addAccentLeft
-        headingStyle="text-h4"
+        headingStyle="text-h4 text-uppercase"
         fontWeight="font-weight-bold"
       />
       <Typography v-if="summary && !blogPost" element="p" :text="summary" />
