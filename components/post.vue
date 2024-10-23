@@ -133,7 +133,7 @@ export default {
     parsedTags() {
       let result = [];
       const tags = this.tags;
-      result = tags.split(",").map((value) => value.trim());
+      result = tags.split(/[,|]/).map((value) => value.trim());
       return result;
     },
   },
