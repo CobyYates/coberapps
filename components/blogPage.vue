@@ -8,7 +8,16 @@
       :class="breakpoint.mdAndUp ? 'blog_page__blogs' : ''"
     >
       <div class="scrollable-content">
-        <post v-for="post in blogPosts" :key="post.id" v-bind="post.content" />
+        <nuxt-link
+          v-for="post in blogPosts"
+          :key="post.id"
+          :to="`/posts/${post.slug}`"
+          variant="flat"
+          elevation="0"
+          class="mb-5"
+        >
+          <post v-bind="post.content" show-read-more />
+        </nuxt-link>
         <v-pagination
           v-model="currentPageNumber"
           :length="totalPages"
@@ -91,6 +100,10 @@ export default {
   .scrollable-content {
     display: flex;
     flex-direction: column;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 }
 </style>
