@@ -1,22 +1,26 @@
 <template>
-  <v-carousel
-    :vertical-delimiters="
-      verticalDelimiters != false ? verticalDelimiters : false
-    "
-    :hide-delimiters="!showDelimeters"
-    hide-delimiter-background
-    :show-arrows="showArrows"
-    :interval="interval.toString()"
-    :continuous="continuous"
-    :cycle="cycleSlides"
-    :color="color"
-    touch
-    :height="height"
-  >
-    <v-carousel-item v-for="(hero, i) in heros" :key="i">
-      <basic-hero v-bind="hero" :carouselHeight="height"
-    /></v-carousel-item>
-  </v-carousel>
+  <v-row>
+    <v-col>
+      <v-carousel
+        :vertical-delimiters="
+          verticalDelimiters != false ? verticalDelimiters : false
+        "
+        :hide-delimiters="!showDelimeters"
+        hide-delimiter-background
+        :show-arrows="showArrows"
+        :interval="interval.toString()"
+        :continuous="continuous"
+        :cycle="cycleSlides"
+        :color="color"
+        touch
+        :height="height"
+      >
+        <v-carousel-item v-for="(hero, i) in heros" :key="i">
+          <basic-hero v-bind="hero" :carouselHeight="height" />
+        </v-carousel-item>
+      </v-carousel>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
@@ -73,20 +77,7 @@ export default {
   },
   data() {
     return {
-      items: [
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg",
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
-        },
-      ],
+      activeSlide: 0
     };
   },
 };

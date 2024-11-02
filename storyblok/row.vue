@@ -4,6 +4,10 @@
     :style="rowStyle"
     class="c-section my-0 mx-auto"
     justify="center"
+    v-if="
+      (!hideOnDesktop && breakpoint.mdAndUp) ||
+      (!hideOnMobile && breakpoint.smAndDown)
+    "
   >
     <template v-for="item in columns" :key="item.i">
       <v-col
@@ -37,7 +41,7 @@
           v-bind="item.btn[0]"
           class="c-section__cta"
         />
-        <div v-if="item && item.sections && item.sections.length > 0">
+        <div v-if="item && item.sections && item.sections.length > 0" :class="item?.centerContent ? 'd-flex justify-center' : ''">
           <card-with-layout
             v-if="
               item.sections[0].component == 'card' &&
@@ -74,13 +78,18 @@
       </v-col>
     </template>
   </v-row>
+  <v-row v-else>
+    {{ (!hideOnDesktop && breakpoint.mdAndUp) ||
+      (!hideOnMobile && breakpoint.smAndDown) }}
+  </v-row>
 </template>
 
 <script>
+import breakpoint from "~/mixin/breakpoint";
 import colors from "~/mixin/colors";
 
 export default {
-  mixins: [colors],
+  mixins: [colors,breakpoint],
   props: {
     columns: {
       type: Array,
@@ -105,6 +114,14 @@ export default {
     minWidth: {
       type: String,
       default: null,
+    },
+    hideOnDesktop: {
+      type: Boolean,
+      defaul: false
+    },
+    hideOnMobile: {
+      type: Boolean,
+      defaul: false
     },
   },
   computed: {

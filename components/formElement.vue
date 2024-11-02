@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="c-form" style="height: auto">
     <typography
       v-if="title && title[0]"
       v-bind="title[0]"
@@ -15,7 +15,8 @@
       v-bind="description[0]"
       class="c-section__description"
     />
-    <form @submit.prevent="submitForm" ref="form">
+    <iframe v-if="embedUrl" :src="embedUrl" width="100%" height="540px" />
+    <form v-else @submit.prevent="submitForm" ref="form">
       <v-row class="mb-2" v-if="inputs">
         <template v-for="input in inputs" :key="input.i">
           <v-col cols="12" :md="input.settings[0].desktopColumns || 12">
@@ -231,6 +232,8 @@ export default {
     publicKey: String,
     templateId: String,
     serviceId: String,
+    embedUrl: String,
+    height: String,
     formButton: {
       type: Array,
       default: () => [],
@@ -301,7 +304,19 @@ export default {
       }
     },
   },
+  mounted() {
+    console.log("height", this.height);
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.c-form {
+  width: 460px;
+}
+
+iframe {
+  overflow-y: hidden;
+  border: none;
+}
+</style>

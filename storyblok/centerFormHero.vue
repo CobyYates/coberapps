@@ -51,7 +51,7 @@
       </v-img>
       <v-row justify="center" class="form-container">
         <v-col cols="12" md="7" lg="5">
-          <v-card elevation="3" tile width="100%" class="block">
+          <v-card elevation="3" tile width="100%" class="block d-flex justify-center">
             <form-element
               v-if="form[0].component == 'formElement'"
               v-bind="form[0]"

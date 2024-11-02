@@ -77,7 +77,8 @@
           <v-col
             v-bind="columnLayout"
             :class="
-              (hasForm && 'd-flex align-center justify-center text-left') || 'mx-auto'
+              (hasForm && 'd-flex align-center justify-center text-left') ||
+              'mx-auto'
             "
             cols="auto"
           >
@@ -116,6 +117,7 @@
               <form-element
                 v-if="column[0].component == 'formElement'"
                 v-bind="column[0]"
+                :height="carouselHeight"
                 class="pa-5"
               />
             </div>
@@ -151,10 +153,11 @@
       />
     </v-col>
     <div v-if="hasForm" class="mobile_form">
-      <div class="d-flex align-center justify-end" cols="12">
+      <div class="d-flex align-center justify-end">
         <form-element
           v-if="column[0].component == 'formElement'"
           v-bind="column[0]"
+          :height="carouselHeight"
           class="pa-5"
         />
       </div>
@@ -244,7 +247,7 @@ export default {
     hasForm() {
       let result = false;
       let column = this.column;
-      if (column && column.length > 0) {
+      if (column?.length > 0) {
         if (column[0].component == "formElement") {
           result = true;
         }
@@ -313,7 +316,7 @@ export default {
 
 <style lang="scss" scoped>
 .has-form {
-  height: 800px;
+  height: 1000px;
 }
 .c-hero {
   position: relative;

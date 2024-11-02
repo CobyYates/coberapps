@@ -5,7 +5,6 @@ export default {
         const storyblokApi = useStoryblokApi();
         const config = useRuntimeConfig();
         const environment = config.public.NUXT_PUBLIC_NODE_ENV;
-        console.log('storyId', storyId)
         const STORYBLOK_API_TOKEN = config.public.NUXT_STORYBLOK_API_TOKEN
   
         try {
