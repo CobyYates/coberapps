@@ -1,6 +1,6 @@
 <template>
-  <v-row>
-    <v-col>
+  <v-row justify="center">
+    <v-col class="d-flex justify-center">
       <v-slide-group v-model="model" class="pa-4" center-active show-arrows>
         <v-slide-group-item
           v-for="image in imageValues"
