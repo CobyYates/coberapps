@@ -7,7 +7,7 @@
       :content="story.content.keywords.join(',')"
       v-if="story.content.keywords"
     />
-    <Meta property="og:title" :content="story.content.title" />
+    <Meta property="og:title" :content="story.content.title || `Coby Yates Portfolio | ${route?.path?.slice(1)}`" />
     <Meta property="og:description" :content="story.content.description" />
     <Meta property="og:image" :content="story.content.image.filename" />
     <Meta name="twitter:card" content="summary" />
@@ -21,14 +21,17 @@
 </template>
 
 <script setup>
+import { useRoute } from "vue-router";
+import { computed } from "vue";
+
+const route = useRoute();
+
+const path = computed(() => route?.path);
+
 defineProps({ blok: Object });
 const config = useRuntimeConfig();
-let environmnet = config.public.NUXT_PUBLIC_NODE_ENV;
-// const story = await useStoryblok("home", {
-//   version: environmnet === "production" ? "published" : "draft",
-// });
-const story = await useAsyncStoryblok("home", { version: "draft" });
-console.log("story", story);
+
+const story = await useAsyncStoryblok(route?.path?.slice(1), { version: "draft" });
 </script>
 <!-- https://blog.logrocket.com/building-dynamic-vuetify-themes/#:~:text=Vuetify%20includes%20a%20useTheme%20method,current. -->
 

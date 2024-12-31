@@ -5,7 +5,7 @@ const OPEN_GRAPH = [
   {
     hid: "og:site_name",
     property: "og:site_name",
-    content: "Appliance by Design",
+    content: "Coby Yates - Portfolio",
   },
   {
     hid: "og:description",
@@ -15,7 +15,7 @@ const OPEN_GRAPH = [
   {
     hid: "og:title",
     property: "og:title",
-    content: "Appliance by Design",
+    content: "Coby Yates - Portfolio",
   },
   {
     hid: "og:url",
@@ -36,7 +36,7 @@ const TWITTER = [
   {
     hid: "twitter:title",
     name: "twitter:title",
-    content: "Appliance by Design",
+    content: "Coby Yates - Portfolio",
   },
   {
     hid: "twitter:description",
@@ -51,7 +51,7 @@ const TWITTER = [
   {
     hid: "twitter:image:alt",
     name: "twitter:image:alt",
-    content: "Appliance By Design",
+    content: "Coby Yates - Portfolio",
   },
 ];
 export default defineNuxtConfig({
@@ -75,27 +75,27 @@ export default defineNuxtConfig({
   target: "static",
   app: {
     head: {
-      title: "Appliance by Design",
+      title: "Coby Yates - Portfolio",
       meta: [
         {
           hid: "og:site_name",
           property: "og:site_name",
-          content: "Appliance by Design",
+          content: "Coby Yates - Portfolio",
         },
         { hid: "og:description", property: "og:description", content: "" },
         {
           hid: "og:title",
           property: "og:title",
-          content: "Appliance by Design",
+          content: "Coby Yates - Portfolio",
         },
         { hid: "og:url", property: "og:url", content: "" },
         { hid: "og:image", property: "og:image", content: "" },
         { property: "og:updated_time", content: new Date().toISOString() },
         { name: "p:domain_verify", content: process.env.DOMAIN_VERIFY_CODE },
-        { name: "twitter:title", content: "Appliance by Design" },
+        { name: "twitter:title", content: "Coby Yates - Portfolio" },
         { name: "twitter:description", content: "" },
         { name: "twitter:image", content: "" },
-        { name: "twitter:image:alt", content: "Appliance By Design" },
+        { name: "twitter:image:alt", content: "Coby Yates - Portfolio" },
       ],
       link: [
         { rel: "stylesheet", href: "https://fonts.cdnfonts.com/css/tw-cen-mt" },
@@ -146,12 +146,21 @@ export default defineNuxtConfig({
         apiOptions: {
           region: "us",
         },
+        componenetsDir: '~/storyblok',
         bridge: true,
         useApiClient: true,
-        devtools: false,
+        devtools: true,
       },
     ],
   ],
+  // components: {
+  //   dirs: [
+  //     {
+  //       path: '~/storyblok',
+  //       global: true,
+  //     }
+  //   ]
+  // },
   /*
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-124639262-1"></script>
@@ -177,9 +186,9 @@ gtag('config', 'AW-756669483');
 <meta name="p:domain_verify" content="f59b370cf44dbb031acdf38470482d5b"/>
   */
   plugins: [
-    { src: "~/plugins/flickity.js", ssr: false },
-    "~/plugins/composition-api.js",
-    "~/plugins/rich-text-renderer.js",
+    // { src: "~/plugins/flickity.js", ssr: false },
+    // "~/plugins/composition-api.js",
+    // "~/plugins/rich-text-renderer.js",
   ],
   // hooks: {
   //   async 'nitro:config'(nitroConfig) {
@@ -238,10 +247,6 @@ gtag('config', 'AW-756669483');
   //     return [];
   //   },
   // },
-  components: {
-    global: true,
-    dirs: ["~/components"],
-  },
   vite: {
     vue: {
       template: {

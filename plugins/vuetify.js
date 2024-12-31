@@ -11,7 +11,7 @@ export default defineNuxtPlugin((app) => {
         light: {
           dark: false,
           colors: {
-            primary: `#${config.public.THEME_COLORS_PRIMARY}`,
+            primary: `#7D449C`,
             typography: "#000",
             secondary: "rgb(139, 195, 74)",
             accent: "#82B1FF",
@@ -20,7 +20,7 @@ export default defineNuxtPlugin((app) => {
             success: "#4CAF50",
             warning: "#FFC107",
             red: "#F44336",
-            black: "#000000",
+            black: "#1F1F1F",
             white: "#FFFFFF",
             transparent: "#FFFFFF00",
             textOverlay: "#FFFFFF",

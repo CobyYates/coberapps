@@ -1,193 +1,282 @@
 <template>
-  <v-row v-editable="blok" class="c-project mx-auto my-10">
-    <v-col>
-      <v-row class="mb-10" justify="center">
-        <v-col cols="11" md="6">
-          <v-carousel
-            hide-delimiter-background
-            :show-arrows="imageGallerySmall.length > 1"
-            :show-delimiters="imageGallerySmall.length > 1"
-          >
-            <v-carousel-item
-              v-for="(item, i) in imageGallerySmall"
-              :key="i"
-              @click="openDialog(item, i, 'small')"
-              :src="item.filename"
-              cover
-              position="center"
-              continuous
-              cycle
-              :alt="item.alt"
-            />
-          </v-carousel>
-        </v-col>
-        <v-col cols="11" md="6">
-          <typography
-            :text="title"
-            add-accent-left
-            element="h2"
-            font-weight="thin"
-          />
-          <p v-if="subDescription">{{ subDescription }}</p>
-          <v-table>
-            <tbody>
-              <tr v-for="(item, i) in tableValues" :key="i">
-                <td class="py-6">{{ item.name }}</td>
-                <td class="py-6">{{ $props[item.value] }}</td>
-              </tr>
-            </tbody>
-          </v-table>
+  <v-row v-editable="blok" class="c-project bg-black" justify="center">
+    <v-col class="text-white" cols="12" md="10">
+      <v-row class="c-project__container" justify="center">
+        <v-col cols="12">
+          <v-row class="mb-5">
+            <v-col cols="12">
+              <v-img
+                height="auto"
+                :src="blok?.assets[0]?.image?.filename"
+                cover
+              />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col
+              cols="10"
+              md="4"
+              :class="$vuetify?.display?.smAndDown ? 'text-center mx-auto' : ''"
+            >
+              <h1 class="text-h3 mb-3">{{ blok?.company }}</h1>
+              <div class="text-body-1" v-html="richText(blok?.description)" />
+
+              <v-btn
+                v-if="blok?.url"
+                color="primary"
+                variant="outlined"
+                rounded="xl"
+                size="large"
+                class="mt-3"
+                :to="blok?.url"
+              >
+                View Website
+              </v-btn>
+              <v-btn
+                v-if="blok?.url"
+                color="primary"
+                variant="outlined"
+                rounded="xl"
+                size="43"
+                class="mt-3 ml-3"
+                icon
+                :href="blok?.url"
+                target="_blank"
+              >
+                <v-icon>mdi-github</v-icon>
+              </v-btn>
+            </v-col>
+            <v-col
+              cols="6"
+              md="4"
+              :class="$vuetify?.display?.smAndDown ? 'px-6' : ''"
+            >
+              <h3 class="font-weight-light text-grey">Category</h3>
+              <template
+                v-for="category in blok?.projectType"
+                :key="category?.i"
+              >
+                <p class="text-body-1 font-weight-bold">
+                  {{ category }}
+                </p>
+              </template>
+            </v-col>
+            <v-col
+              cols="6"
+              md="4"
+              :class="$vuetify?.display?.smAndDown ? 'px-6' : ''"
+            >
+              <h3 class="font-weight-light text-grey mb-1">Languages</h3>
+              <v-avatar
+                size="30"
+                v-for="language in blok?.languages"
+                :key="language?.i"
+                tile
+                class="mr-2"
+              >
+                <v-img
+                  :src="
+                    languages?.filter((e) => e?.language == language)[0]?.image
+                  "
+                  :alt="`${language} logo`"
+                  max-height="100%"
+                />
+              </v-avatar>
+              <h3 class="font-weight-light text-grey mt-2 mb-1">Platforms</h3>
+              <v-avatar
+                size="30"
+                v-for="platform in blok?.platforms"
+                :key="platform?.i"
+                tile
+                class="mr-2"
+              >
+                <v-img
+                  :src="
+                    platforms?.filter((e) => e?.platform == platform)[0]?.image
+                  "
+                  :alt="`${platform} logo`"
+                />
+              </v-avatar>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <h2 class="text-center text-h4">Project Details</h2>
+            </v-col>
+          </v-row>
+          <v-row v-for="(asset, i) in blok?.assets" :key="i" align="center">
+            <v-col cols="12" md="6">
+              <v-img :src="asset?.image?.filename" width="100%" />
+            </v-col>
+            <v-col
+              cols="10"
+              sm="8"
+              md="6"
+              :class="$vuetify?.display?.smAndDown ? 'mx-auto' : ''"
+            >
+              <h3
+                class="text-h5 mb-3 md-text-center"
+                :class="$vuetify?.display?.smAndDown ? 'text-center' : ''"
+              >
+                {{ asset?.title }}
+              </h3>
+              <div
+                class="text-body-1"
+                :class="$vuetify?.display?.smAndDown ? 'text-center' : ''"
+                v-html="richText(asset?.description)"
+              />
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
-      <v-row
-        justify="center"
-        v-if="imageGalleryLarge && imageGalleryLarge.length > 0"
-      >
-        <v-col cols="11" md="12">
-          <v-carousel
-            :height="breakpoint.mdAndUp ? '800' : '400'"
-            hide-delimiter-background
-            :show-arrows="imageGalleryLarge.length > 1"
-            :show-delimiters="imageGalleryLarge.length > 1"
-          >
-            <v-carousel-item
-              v-for="(item, i) in imageGalleryLarge"
-              :key="i"
-              @click="openDialog(item, i, 'large')"
-              :src="item.filename"
-              cover
-              position="center"
-              continuous
-              cycle
-              :alt="item.alt"
-            />
-          </v-carousel>
-        </v-col>
-      </v-row>
-      <v-dialog v-model="dialog" max-width="60vw">
-        <v-carousel
-          :height="breakpoint.mdAndUp ? '90vh' : '400'"
-          hide-delimiter-background
-          v-model="index"
-          :show-arrows="images.length > 1"
-          :show-delimiters="images.length > 1"
-        >
-          <v-carousel-item
-            v-for="(item, i) in images"
-            :key="i"
-            :src="item.filename"
-            contain
-            position="center"
-            continuous
-            cycle
-            :alt="item.alt"
-          />
-        </v-carousel>
-      </v-dialog>
     </v-col>
   </v-row>
 </template>
 
-<script>
-import Breakpoint from "~/mixin/breakpoint";
+<script setup>
+import RichTextResolver from "storyblok-js-client/richTextResolver";
+defineProps({ blok: Object });
 
-export default {
-  props: {
-    title: {
-      type: String,
-      default: "",
-    },
-    subDescription: {
-      type: String,
-      default: "",
-    },
-    projectName: {
-      type: String,
-      default: "",
-    },
-    designer: {
-      type: String,
-      default: "",
-    },
-    remodelStyle: {
-      type: String,
-      default: "",
-    },
-    location: {
-      type: String,
-      default: "",
-    },
-    description: {
-      type: String,
-      default: "",
-    },
-    imageGallerySmall: {
-      type: Array,
-      default: () => [],
-    },
-    imageGalleryLarge: {
-      type: Array,
-      default: () => [],
-    },
-  },
-  mixins: [Breakpoint],
-  data() {
-    return {
-      tableValues: [
-        {
-          name: "Project Name",
-          value: "projectName",
-        },
-        {
-          name: "Designer",
-          value: "designer",
-        },
-        {
-          name: "Remodel Style",
-          value: "remodelStyle",
-        },
-        {
-          name: "Location",
-          value: "location",
-        },
-        {
-          name: "Project Description",
-          value: "description",
-        },
-      ],
-      tab: 0,
-      dialog: false,
-      images: null,
-      index: null,
-      count: 0,
-    };
-  },
-  methods: {
-    openDialog(image, i, size) {
-      let gallery = this.imageGalleryLarge;
-      if (size === "small") {
-        gallery = this.imageGallerySmall;
-      }
-      this.index = i;
-      this.dialog = true;
-      this.images = gallery;
-    },
-    previous() {
-      if (this.index != 0) {
-        this.image = this.images[(this.index -= 1)];
-      }
-    },
-    next() {
-      if (this.index != this.images.length - 1) {
-        this.image = this.images[(this.index += 1)];
-      }
-    },
-  },
+const richText = (text) => {
+  const resolver = new RichTextResolver();
+  let result;
+  result = resolver?.render(text);
+  return result;
 };
+
+const languages = [
+  {
+    language: "HTML",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/54b7a89046/html.png?cv=1735231028991",
+  },
+  {
+    language: "CSS",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/511b1d0bd5/css.png?cv=1735231027524",
+  },
+  {
+    language: "JavaScript",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/d995787445/javascript.png?cv=1735231029122",
+  },
+  {
+    language: "Vue",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/ea8aa6b1f0/vue.png?cv=1735231028987",
+  },
+  {
+    language: "Vuetify",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/0308317130/vuetify.png?cv=1735231027690",
+  },
+  {
+    language: "Nuxt",
+    image:
+      "https://s3.amazonaws.com/a-us.storyblok.com/f/1020159/512x512/5d948fd244/nuxt-logo.svg?cv=1735649207155",
+  },
+  {
+    language: "React",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/c5875dd018/react.png/m/82x0?cv=1735231029074",
+  },
+  {
+    language: "Sass",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/103968ca86/sass.png/m/82x0?cv=1735231027606",
+  },
+  {
+    language: "Tailwind",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/7ac8aecd14/tailwind.png/m/82x0?cv=1735231027528",
+  },
+  {
+    language: "PHP",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/cf8f6f8b8b/mysql.png/m/82x0?cv=1735231027576",
+  },
+  {
+    language: "Bootstrap",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/824c415010/bootstrap.png/m/82x0?cv=1735231027632",
+  },
+  {
+    language: "jQuery",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/3f408a9ff1/jquery.png/m/82x0?cv=1735231027498",
+  },
+  {
+    language: "C#",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/fe2bfdb42e/c.png/m/82x0?cv=1735231027451",
+  },
+  {
+    language: "GraphQL",
+    image:
+      "https://a-us.storyblok.com/f/1020159/82x82/2508dceb45/graphql.png/m/82x0?cv=1735231027522",
+  },
+];
+
+const platforms = [
+  {
+    platform: "Shopify",
+    image:
+      "https://a-us.storyblok.com/f/1020159/147x147/f03ec5023d/shopify-logo.png/m/147x0?cv=1735227654510",
+  },
+  {
+    platform: "Contentful",
+    image:
+      "https://a-us.storyblok.com/f/1020159/147x147/24c6ff9848/contentful-logo.png?cv=1735398224147",
+  },
+  {
+    platform: "Storyblok",
+    image:
+      "https://a-us.storyblok.com/f/1020159/125x147/62d608315d/storyblok-logo.png/m/0x140?cv=1735227700056",
+  },
+  {
+    platform: "Firebase",
+    image:
+      "https://a-us.storyblok.com/f/1020159/120x147/b4fcb047a6/firebase-logo.png?cv=1735398269770",
+  },
+  {
+    platform: "Adobe XD",
+    image:
+      "https://a-us.storyblok.com/f/1020159/151x147/1143a0b096/adobe-xd-logo.png/m/151x0?cv=1735398256971",
+  },
+  {
+    platform: "Adobe Illustrator",
+    image:
+      "https://a-us.storyblok.com/f/1020159/151x147/c0f588080d/adobe-illustrator-logo.png/m/151x0?cv=1735398257015",
+  },
+  {
+    platform: "WordPress",
+    image:
+      "https://a-us.storyblok.com/f/1020159/147x147/c52a8ff2e4/wordpress-lgo.png/m/147x0?cv=1735398302212",
+  },
+  {
+    platform: "XAMP",
+    image:
+      "https://a-us.storyblok.com/f/1020159/146x147/2327da4196/xampp.png/m/0x140?cv=1735398342817",
+  },
+  {
+    platform: "Cloudflare",
+    image:
+      "https://a-us.storyblok.com/f/1020159/147x147/a50b774700/cloudflare-logo.png/m/147x0?cv=1735398342835",
+  },
+  {
+    platform: "Vercel",
+    image:
+      "https://a-us.storyblok.com/f/1020159/147x147/1e782de262/vercel-logo.png/m/147x0?cv=1735398342761",
+  },
+  {
+    platform: "Netlify",
+    image:
+      "https://a-us.storyblok.com/f/1020159/167x147/edeec18a93/nacelle-logo.png/m/167x0?cv=1735398344317",
+  },
+];
 </script>
 
 <style lang="scss" scoped>
 .c-project {
-  max-width: 1200px;
 }
 </style>
