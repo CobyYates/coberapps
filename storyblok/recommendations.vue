@@ -1,21 +1,25 @@
 <template>
   <v-row v-editable="blok" class="c-education bg-black py-10">
     <v-col class="pt-12 pb-16 text-white">
-      <h1 v-if="blok?.aboveTheFold" class="text-h2 mb-8 text-center">{{ blok?.title }}</h1>
+      <h1 v-if="blok?.aboveTheFold" class="text-h2 mb-8 text-center">
+        {{ blok?.title }}
+      </h1>
       <h2 v-else class="text-h2 mb-8 text-center">{{ blok?.title }}</h2>
       <p class="mb-10 text-center">{{ blok?.description }}</p>
       <v-row class="c-education__container" justify="center">
-        <v-col cols="12" md="11" xl="8" class="d-flex flex-column ga-8">
+        <v-col cols="12" md="10" xl="8" class="d-flex flex-column ga-8">
           <v-row
             v-for="(recommendation, index) in blok?.recommendations"
             :key="school?.schoolName"
-            class="d-flex fill-height"
+            class="d-flex fill-height px-4"
           >
-            <v-col cols="3">
-              <v-img
+            <v-col cols="12" sm="auto">
+              <NuxtImg
                 v-if="recommendation?.image"
                 :src="recommendation?.image?.filename"
-                height="200"
+                provider="storyblok"
+                format="webp"
+                sizes="xs:150 md:200"
               />
             </v-col>
 

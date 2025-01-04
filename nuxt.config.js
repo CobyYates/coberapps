@@ -69,13 +69,16 @@ export default defineNuxtConfig({
       GTAG_ID_2: process.env.GTAG_ID_2,
       GTAG_AW_ID: process.env.GTAG_AW_ID,
       NUXT_STORYBLOK_API_TOKEN: process.env.NUXT_STORYBLOK_API_TOKEN,
+      EMAILJS_SERVICE_ID: EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID: EMAILJS_TEMPLATE_ID,
+      EMAILJS_PUBLIC_KEY: EMAILJS_PUBLIC_KEY,
     },
   },
   ssr: false,
   target: "static",
   app: {
     head: {
-      title: "Coby Yates - Portfolio",
+      title: "Coby Yates Portfolio",
       meta: [
         {
           hid: "og:site_name",
@@ -131,8 +134,26 @@ export default defineNuxtConfig({
       ],
       __dangerouslyDisableSanitizers: ["script"],
     },
+    layoutTransition: false,
+    layout: "test",
+  },
+  image: {
+    storyblok: {
+      name: 'storyblok',
+      baseURL: 'https://a-us.storyblok.com'
+    },
+    format: ['webp'],
+    screens: {
+      'xs': 320,
+      'sm': 600,
+      'md': 960,
+      'lg': 1280,
+      'xl': 1920,
+      'xxl': 2560,
+    },
   },
   modules: [
+    '@nuxt/image',
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error
@@ -146,7 +167,7 @@ export default defineNuxtConfig({
         apiOptions: {
           region: "us",
         },
-        componenetsDir: '~/storyblok',
+        componenetsDir: "~/storyblok",
         bridge: true,
         useApiClient: true,
         devtools: true,

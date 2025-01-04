@@ -4,7 +4,7 @@
       <h2 class="text-h2 mb-8 text-center">{{ blok?.title }}</h2>
       <p class="mb-10 text-center">{{ blok?.description }}</p>
       <v-row class="c-languages__container" justify="center">
-        <v-col cols="12" md="11" xl="8" class="d-flex flex-wrap">
+        <v-col cols="12" lg="10" xl="8" class="d-flex flex-wrap">
           <v-timeline align="start" side="end">
             <v-timeline-item
               v-for="(job, i) in blok?.job"
@@ -13,9 +13,9 @@
               :dot-color="job?.dotColor?.value"
               fill-dot
             >
-              <template v-slot:opposite>
+              <template v-slot:opposite v-if="$vuetify?.display?.mdAndUp">
                 <div
-                  :class="`pt-1 headline font-weight-bold text-h5 text-primary`"
+                  :class="`pt-1 headline font-weight-light text-h5 text-white`"
                 >
                   {{ format(parseISO(job?.startDate), "MMM yyyy") }} -
                   {{
@@ -25,6 +25,17 @@
                   }}
                 </div>
               </template>
+              <div
+              v-if="$vuetify?.display?.smAndDown"
+                :class="`headline font-weight-light text-h5 text-white`"
+              >
+                {{ format(parseISO(job?.startDate), "MMM yyyy") }} -
+                {{
+                  job?.endDate
+                    ? format(parseISO(job?.endDate), "MMM yyyy")
+                    : "Current"
+                }}
+              </div>
               <div>
                 <h2
                   :class="`mt-n1 headline font-weight-light d-flex align-baseline mb-4 text-primary text-wrap`"

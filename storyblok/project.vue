@@ -4,11 +4,12 @@
       <v-row class="c-project__container" justify="center">
         <v-col cols="12">
           <v-row class="mb-5">
-            <v-col cols="12">
-              <v-img
-                height="auto"
+            <v-col cols="12" class="mx-auto">
+              <NuxtImg
                 :src="blok?.assets[0]?.image?.filename"
-                cover
+                provider="storyblok"
+                format="webp"
+                sizes="xs:100vw sm:100vw md:80vw lg:80vw"
               />
             </v-col>
           </v-row>
@@ -68,34 +69,51 @@
             >
               <h3 class="font-weight-light text-grey mb-1">Languages</h3>
               <v-avatar
-                size="30"
+                size="40"
                 v-for="language in blok?.languages"
                 :key="language?.i"
                 tile
                 class="mr-2"
               >
-                <v-img
-                  :src="
-                    languages?.filter((e) => e?.language == language)[0]?.image
-                  "
-                  :alt="`${language} logo`"
-                  max-height="100%"
-                />
+                <v-tooltip :text="language" location="bottom">
+                  <template v-slot:activator="{ props }">
+                    <NuxtImg
+                      :src="
+                        languages?.filter((e) => e?.language == language)[0]
+                          ?.image
+                      "
+                      :alt="`${language} logo`"
+                      provider="storyblok"
+                      format="webp"
+                      sizes="40"
+                      v-bind="props"
+                    />
+                  </template>
+                </v-tooltip>
               </v-avatar>
               <h3 class="font-weight-light text-grey mt-2 mb-1">Platforms</h3>
               <v-avatar
-                size="30"
+                size="40"
                 v-for="platform in blok?.platforms"
                 :key="platform?.i"
                 tile
                 class="mr-2"
               >
-                <v-img
-                  :src="
-                    platforms?.filter((e) => e?.platform == platform)[0]?.image
-                  "
-                  :alt="`${platform} logo`"
-                />
+                <v-tooltip :text="platform" location="bottom">
+                  <template v-slot:activator="{ props }">
+                    <NuxtImg
+                      :src="
+                        platforms?.filter((e) => e?.platform == platform)[0]
+                          ?.image
+                      "
+                      :alt="`${platform} logo`"
+                      provider="storyblok"
+                      format="webp"
+                      sizes="40"
+                      v-bind="props"
+                    />
+                  </template>
+                </v-tooltip>
               </v-avatar>
             </v-col>
           </v-row>
@@ -106,7 +124,12 @@
           </v-row>
           <v-row v-for="(asset, i) in blok?.assets" :key="i" align="center">
             <v-col cols="12" md="6">
-              <v-img :src="asset?.image?.filename" width="100%" />
+              <NuxtImg
+                :src="asset?.image?.filename"
+                sizes="xs:100vw md:40vw"
+                provider="storyblok"
+                format="webp"
+              />
             </v-col>
             <v-col
               cols="10"
@@ -178,42 +201,42 @@ const languages = [
   {
     language: "React",
     image:
-      "https://a-us.storyblok.com/f/1020159/82x82/c5875dd018/react.png/m/82x0?cv=1735231029074",
+      "https://a-us.storyblok.com/f/1020159/82x82/c5875dd018/react.png?cv=1735231029074",
   },
   {
     language: "Sass",
     image:
-      "https://a-us.storyblok.com/f/1020159/82x82/103968ca86/sass.png/m/82x0?cv=1735231027606",
+      "https://a-us.storyblok.com/f/1020159/82x82/103968ca86/sass.png?cv=1735231027606",
   },
   {
     language: "Tailwind",
     image:
-      "https://a-us.storyblok.com/f/1020159/82x82/7ac8aecd14/tailwind.png/m/82x0?cv=1735231027528",
+      "https://a-us.storyblok.com/f/1020159/82x82/7ac8aecd14/tailwind.png?cv=1735231027528",
   },
   {
     language: "PHP",
     image:
-      "https://a-us.storyblok.com/f/1020159/82x82/cf8f6f8b8b/mysql.png/m/82x0?cv=1735231027576",
+      "https://a-us.storyblok.com/f/1020159/82x82/cf8f6f8b8b/mysql.png?cv=1735231027576",
   },
   {
     language: "Bootstrap",
     image:
-      "https://a-us.storyblok.com/f/1020159/82x82/824c415010/bootstrap.png/m/82x0?cv=1735231027632",
+      "https://a-us.storyblok.com/f/1020159/82x82/824c415010/bootstrap.png?cv=1735231027632",
   },
   {
     language: "jQuery",
     image:
-      "https://a-us.storyblok.com/f/1020159/82x82/3f408a9ff1/jquery.png/m/82x0?cv=1735231027498",
+      "https://a-us.storyblok.com/f/1020159/82x82/3f408a9ff1/jquery.png?cv=1735231027498",
   },
   {
     language: "C#",
     image:
-      "https://a-us.storyblok.com/f/1020159/82x82/fe2bfdb42e/c.png/m/82x0?cv=1735231027451",
+      "https://a-us.storyblok.com/f/1020159/82x82/fe2bfdb42e/c.png?cv=1735231027451",
   },
   {
     language: "GraphQL",
     image:
-      "https://a-us.storyblok.com/f/1020159/82x82/2508dceb45/graphql.png/m/82x0?cv=1735231027522",
+      "https://a-us.storyblok.com/f/1020159/82x82/2508dceb45/graphql.png?cv=1735231027522",
   },
 ];
 
@@ -221,7 +244,7 @@ const platforms = [
   {
     platform: "Shopify",
     image:
-      "https://a-us.storyblok.com/f/1020159/147x147/f03ec5023d/shopify-logo.png/m/147x0?cv=1735227654510",
+      "https://a-us.storyblok.com/f/1020159/147x147/f03ec5023d/shopify-logo.png?cv=1735227654510",
   },
   {
     platform: "Contentful",
@@ -231,47 +254,47 @@ const platforms = [
   {
     platform: "Storyblok",
     image:
-      "https://a-us.storyblok.com/f/1020159/125x147/62d608315d/storyblok-logo.png/m/0x140?cv=1735227700056",
+      "https://a-us.storyblok.com/f/1020159/125x147/62d608315d/storyblok-logo.png?cv=1735227700056",
   },
   {
     platform: "Firebase",
     image:
-      "https://a-us.storyblok.com/f/1020159/120x147/b4fcb047a6/firebase-logo.png?cv=1735398269770",
+      "https://a-us.storyblok.com/f/1020159/147x147/a9db2dd52e/adobe-xd.png?cv=1736007873812",
   },
   {
     platform: "Adobe XD",
     image:
-      "https://a-us.storyblok.com/f/1020159/151x147/1143a0b096/adobe-xd-logo.png/m/151x0?cv=1735398256971",
+      "https://a-us.storyblok.com/f/1020159/151x147/1143a0b096/adobe-xd-logo.png?cv=1735398256971",
   },
   {
     platform: "Adobe Illustrator",
     image:
-      "https://a-us.storyblok.com/f/1020159/151x147/c0f588080d/adobe-illustrator-logo.png/m/151x0?cv=1735398257015",
+      "https://a-us.storyblok.com/f/1020159/151x147/c0f588080d/adobe-illustrator-logo.png?cv=1735398257015",
   },
   {
     platform: "WordPress",
     image:
-      "https://a-us.storyblok.com/f/1020159/147x147/c52a8ff2e4/wordpress-lgo.png/m/147x0?cv=1735398302212",
+      "https://a-us.storyblok.com/f/1020159/147x147/c52a8ff2e4/wordpress-lgo.png?cv=1735398302212",
   },
   {
     platform: "XAMP",
     image:
-      "https://a-us.storyblok.com/f/1020159/146x147/2327da4196/xampp.png/m/0x140?cv=1735398342817",
+      "https://a-us.storyblok.com/f/1020159/146x147/2327da4196/xampp.png?cv=1735398342817",
   },
   {
     platform: "Cloudflare",
     image:
-      "https://a-us.storyblok.com/f/1020159/147x147/a50b774700/cloudflare-logo.png/m/147x0?cv=1735398342835",
+      "https://a-us.storyblok.com/f/1020159/147x147/a50b774700/cloudflare-logo.png?cv=1735398342835",
   },
   {
     platform: "Vercel",
     image:
-      "https://a-us.storyblok.com/f/1020159/147x147/1e782de262/vercel-logo.png/m/147x0?cv=1735398342761",
+      "https://a-us.storyblok.com/f/1020159/147x147/1e782de262/vercel-logo.png?cv=1735398342761",
   },
   {
     platform: "Netlify",
     image:
-      "https://a-us.storyblok.com/f/1020159/167x147/edeec18a93/nacelle-logo.png/m/167x0?cv=1735398344317",
+      "https://a-us.storyblok.com/f/1020159/167x147/edeec18a93/nacelle-logo.png?cv=1735398344317",
   },
 ];
 </script>

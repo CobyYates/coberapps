@@ -1,6 +1,754 @@
 <template>
   <v-row v-editable="blok" class="c-hero bg-black">
     <v-col class="pa-0">
+      <!-- <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="100vw"
+        height="auto"
+        viewBox="0 0 1920 1175"
+      >
+        <defs>
+          <clipPath id="clip-path">
+            <rect
+              id="Rectangle_32"
+              data-name="Rectangle 32"
+              width="1920"
+              height="1175"
+              transform="translate(5563 2507)"
+              fill="none"
+            />
+          </clipPath>
+          <linearGradient
+            id="linear-gradient"
+            x1="1.288"
+            y1="-0.007"
+            x2="0.128"
+            y2="0.411"
+            gradientUnits="objectBoundingBox"
+          >
+            <stop offset="0" :stop-color="$vuetify?.theme?.themes?.light?.colors?.primary" />
+            <stop offset="1" :stop-color="$vuetify?.theme?.themes?.light?.colors?.black" />
+          </linearGradient>
+          <clipPath id="clip-path-2">
+            <rect width="136" height="163" fill="none" />
+          </clipPath>
+        </defs>
+        <g
+          id="Mask_Group_132"
+          data-name="Mask Group 132"
+          transform="translate(-5563 -2507)"
+          clip-path="url(#clip-path)"
+        >
+          <g
+            id="Group_135"
+            data-name="Group 135"
+            transform="translate(5563 2507)"
+          >
+            <g
+              id="Group_134"
+              data-name="Group 134"
+              transform="translate(-95 -127)"
+            >
+              <g id="Group_133" data-name="Group 133">
+                <rect
+                  id="Rectangle_29"
+                  data-name="Rectangle 29"
+                  width="677"
+                  height="1175"
+                  transform="translate(1338 127)"
+                  fill="url(#linear-gradient)"
+                />
+                <rect
+                  id="Rectangle_30"
+                  data-name="Rectangle 30"
+                  width="1346"
+                  height="1191"
+                  transform="translate(95 111)"
+                  :fill="$vuetify?.theme?.themes?.light?.colors?.black"
+                />
+                <g
+                  id="Polygon_7"
+                  data-name="Polygon 7"
+                  transform="translate(888 305)"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.14"
+                >
+                  <path
+                    d="M71.476,45.375a30,30,0,0,1,52.047,0l45.71,79.7A30,30,0,0,1,143.21,170H51.79a30,30,0,0,1-26.024-44.925Z"
+                    stroke="none"
+                  />
+                  <path
+                    d="M 97.5 51.30003356933594 C 95.55295562744141 51.30003356933594 91.94962310791016 51.88758850097656 89.69287872314453 55.82241821289062 L 43.98258972167969 135.5224151611328 C 41.73704528808594 139.437744140625 43.03086853027344 142.8347473144531 44.001953125 144.5111999511719 C 44.97303771972656 146.1876220703125 47.276123046875 149 51.78970336914062 149 L 143.2102966308594 149 C 147.723876953125 149 150.0269622802734 146.1876220703125 150.998046875 144.5111999511719 C 151.9691162109375 142.8347930908203 153.2629547119141 139.4377899169922 151.0173797607422 135.5224151611328 L 105.3071212768555 55.82241821289062 C 103.0503768920898 51.88758850097656 99.44704437255859 51.30003356933594 97.5 51.30003356933594 M 97.5 30.30003356933594 C 107.6299362182617 30.30003356933594 117.7598724365234 35.32492065429688 123.5237045288086 45.37466430664062 L 169.2339630126953 125.0746612548828 C 180.7044982910156 145.0745391845703 166.2660369873047 170 143.2102966308594 170 L 51.78970336914062 170 C 28.73396301269531 170 14.29550170898438 145.0745391845703 25.76600646972656 125.0746612548828 L 71.47629547119141 45.37466430664062 C 77.24012756347656 35.32492065429688 87.37006378173828 30.30003356933594 97.5 30.30003356933594 Z"
+                    stroke="none"
+                    :fill="$vuetify?.theme?.themes?.light?.colors?.primary"
+                  />
+                </g>
+                <g
+                  id="Polygon_8"
+                  data-name="Polygon 8"
+                  transform="translate(723 968)"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  opacity="0.14"
+                >
+                  <path
+                    d="M71.476,45.375a30,30,0,0,1,52.047,0l45.71,79.7A30,30,0,0,1,143.21,170H51.79a30,30,0,0,1-26.024-44.925Z"
+                    stroke="none"
+                  />
+                  <path
+                    d="M 97.5 51.30003356933594 C 95.55295562744141 51.30003356933594 91.94962310791016 51.88758850097656 89.69287872314453 55.82241821289062 L 43.98258972167969 135.5224151611328 C 41.73704528808594 139.437744140625 43.03086853027344 142.8347473144531 44.001953125 144.5111999511719 C 44.97303771972656 146.1876220703125 47.276123046875 149 51.78970336914062 149 L 143.2102966308594 149 C 147.723876953125 149 150.0269622802734 146.1876220703125 150.998046875 144.5111999511719 C 151.9691162109375 142.8347930908203 153.2629547119141 139.4377899169922 151.0173797607422 135.5224151611328 L 105.3071212768555 55.82241821289062 C 103.0503768920898 51.88758850097656 99.44704437255859 51.30003356933594 97.5 51.30003356933594 M 97.5 30.30003356933594 C 107.6299362182617 30.30003356933594 117.7598724365234 35.32492065429688 123.5237045288086 45.37466430664062 L 169.2339630126953 125.0746612548828 C 180.7044982910156 145.0745391845703 166.2660369873047 170 143.2102966308594 170 L 51.78970336914062 170 C 28.73396301269531 170 14.29550170898438 145.0745391845703 25.76600646972656 125.0746612548828 L 71.47629547119141 45.37466430664062 C 77.24012756347656 35.32492065429688 87.37006378173828 30.30003356933594 97.5 30.30003356933594 Z"
+                    stroke="none"
+                    :fill="$vuetify?.theme?.themes?.light?.colors?.primary"
+                  />
+                </g>
+                <circle
+                  id="Ellipse_10"
+                  data-name="Ellipse 10"
+                  cx="349.5"
+                  cy="349.5"
+                  r="349.5"
+                  transform="translate(1007 180)"
+                  :fill="$vuetify?.theme?.themes?.light?.colors?.black"
+                  opacity="0.532"
+                />
+                <g
+                  id="Polygon_9"
+                  data-name="Polygon 9"
+                  transform="translate(1648 552)"
+                  fill="none"
+                  opacity="0.502"
+                >
+                  <path
+                    d="M128.872,0A30,30,0,0,1,154.9,15.075l31.544,55a30,30,0,0,1,0,29.851l-31.544,55A30,30,0,0,1,128.872,170H66.128A30,30,0,0,1,40.1,154.925l-31.544-55a30,30,0,0,1,0-29.851l31.544-55A30,30,0,0,1,66.128,0Z"
+                    stroke="none"
+                  />
+                  <path
+                    d="M 66.12796020507812 21 C 62.9122314453125 21 59.92073059082031 22.73286437988281 58.32087707519531 25.52241516113281 L 26.7767333984375 80.52236175537109 C 25.19273376464844 83.28427124023438 25.19268798828125 86.71572875976562 26.7767333984375 89.47763824462891 L 58.32083129882812 144.4776306152344 C 59.92068481445312 147.2671356201172 62.9122314453125 149 66.12796020507812 149 L 128.8720550537109 149 C 132.0877838134766 149 135.0792846679688 147.2671356201172 136.6791381835938 144.4775848388672 L 168.2232818603516 89.47759246826172 C 169.8073272705078 86.71572875976562 169.8072814941406 83.28427124023438 168.2232818603516 80.52240753173828 L 136.6791381835938 25.52236938476562 C 135.0792846679688 22.73286437988281 132.0877838134766 21 128.8720550537109 21 L 66.12796020507812 21 M 66.12796020507812 0 L 128.8720550537109 0 C 139.6207885742188 0 149.548095703125 5.75054931640625 154.8957366943359 15.07463073730469 L 186.4398651123047 70.07463836669922 C 191.7415924072266 79.31867980957031 191.7415924072266 90.68136596679688 186.4398651123047 99.92536163330078 L 154.8957366943359 154.9253692626953 C 149.548095703125 164.2494506835938 139.6207885742188 170 128.8720550537109 170 L 66.12796020507812 170 C 55.37919616699219 170 45.45187377929688 164.2494506835938 40.10423278808594 154.9253692626953 L 8.560150146484375 99.92536163330078 C 3.2584228515625 90.68136596679688 3.2584228515625 79.31867980957031 8.560150146484375 70.07463836669922 L 40.10427856445312 15.07463073730469 C 45.45187377929688 5.75054931640625 55.37924194335938 0 66.12796020507812 0 Z"
+                    stroke="none"
+                    :fill="$vuetify?.theme?.themes?.light?.colors?.primary"
+                  />
+                </g>
+                <g
+                  id="Polygon_10"
+                  data-name="Polygon 10"
+                  transform="translate(1718 495)"
+                  fill="none"
+                  opacity="0.286"
+                >
+                  <path
+                    d="M198.625,0a30,30,0,0,1,26.022,15.071l54.789,95.5a30,30,0,0,1,0,29.858l-54.789,95.5A30,30,0,0,1,198.625,251H89.375a30,30,0,0,1-26.022-15.071l-54.789-95.5a30,30,0,0,1,0-29.858l54.789-95.5A30,30,0,0,1,89.375,0Z"
+                    stroke="none"
+                  />
+                  <path
+                    d="M 89.37533569335938 21.00001525878906 C 86.16004943847656 21.00001525878906 83.16883850097656 22.73245239257812 81.56883239746094 25.52134704589844 L 26.77993774414062 121.0212860107422 C 25.195068359375 123.7838439941406 25.195068359375 127.2161178588867 26.77993774414062 129.9786224365234 L 81.56877136230469 225.4786224365234 C 83.16877746582031 228.2675018310547 86.16004943847656 230 89.37527465820312 230 L 198.6246643066406 230 C 201.8399353027344 230 204.8312225341797 228.2675018310547 206.4312133789062 225.4786682128906 L 261.2200012207031 129.9787292480469 C 262.804931640625 127.2161712646484 262.804931640625 123.7838973999023 261.2200622558594 121.0213928222656 L 206.4312133789062 25.52139282226562 C 204.8312225341797 22.73251342773438 201.8399353027344 21.00001525878906 198.6246643066406 21.00001525878906 L 89.37533569335938 21.00001525878906 M 89.37533569335938 1.52587890625e-05 L 198.6246643066406 1.52587890625e-05 C 209.3720092773438 1.52587890625e-05 219.2982788085938 5.749069213867188 224.6464538574219 15.0711669921875 L 279.4352722167969 110.5712280273438 C 284.7396240234375 119.8169555664062 284.7396240234375 131.1830139160156 279.4352722167969 140.4288330078125 L 224.6464538574219 235.9288330078125 C 219.2982788085938 245.2509460449219 209.3720092773438 251 198.6246643066406 251 L 89.37527465820312 251 C 78.62800598144531 251 68.70172119140625 245.2509460449219 63.35356140136719 235.9288330078125 L 8.564727783203125 140.4287872314453 C 3.2603759765625 131.1830139160156 3.2603759765625 119.8169555664062 8.564727783203125 110.5711669921875 L 63.35360717773438 15.0711669921875 C 68.70172119140625 5.749069213867188 78.62800598144531 1.52587890625e-05 89.37533569335938 1.52587890625e-05 Z"
+                    stroke="none"
+                    :fill="$vuetify?.theme?.themes?.light?.colors?.black"
+                  />
+                </g>
+                <g
+                  id="Repeat_Grid_8"
+                  data-name="Repeat Grid 8"
+                  transform="translate(1526 202)"
+                  clip-path="url(#clip-path-2)"
+                >
+                  <g transform="translate(-1537 -172)">
+                    <g
+                      id="Ellipse_11"
+                      data-name="Ellipse 11"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1513 -172)">
+                    <g
+                      id="Ellipse_12"
+                      data-name="Ellipse 12"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1489 -172)">
+                    <g
+                      id="Ellipse_13"
+                      data-name="Ellipse 13"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1465 -172)">
+                    <g
+                      id="Ellipse_14"
+                      data-name="Ellipse 14"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1441 -172)">
+                    <g
+                      id="Ellipse_15"
+                      data-name="Ellipse 15"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1417 -172)">
+                    <g
+                      id="Ellipse_16"
+                      data-name="Ellipse 16"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1537 -148)">
+                    <g
+                      id="Ellipse_17"
+                      data-name="Ellipse 17"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1513 -148)">
+                    <g
+                      id="Ellipse_18"
+                      data-name="Ellipse 18"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1489 -148)">
+                    <g
+                      id="Ellipse_19"
+                      data-name="Ellipse 19"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1465 -148)">
+                    <g
+                      id="Ellipse_20"
+                      data-name="Ellipse 20"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1441 -148)">
+                    <g
+                      id="Ellipse_21"
+                      data-name="Ellipse 21"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1417 -148)">
+                    <g
+                      id="Ellipse_22"
+                      data-name="Ellipse 22"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1537 -124)">
+                    <g
+                      id="Ellipse_23"
+                      data-name="Ellipse 23"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1513 -124)">
+                    <g
+                      id="Ellipse_24"
+                      data-name="Ellipse 24"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1489 -124)">
+                    <g
+                      id="Ellipse_25"
+                      data-name="Ellipse 25"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1465 -124)">
+                    <g
+                      id="Ellipse_26"
+                      data-name="Ellipse 26"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1441 -124)">
+                    <g
+                      id="Ellipse_27"
+                      data-name="Ellipse 27"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1417 -124)">
+                    <g
+                      id="Ellipse_28"
+                      data-name="Ellipse 28"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1537 -100)">
+                    <g
+                      id="Ellipse_29"
+                      data-name="Ellipse 29"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1513 -100)">
+                    <g
+                      id="Ellipse_30"
+                      data-name="Ellipse 30"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1489 -100)">
+                    <g
+                      id="Ellipse_31"
+                      data-name="Ellipse 31"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1465 -100)">
+                    <g
+                      id="Ellipse_32"
+                      data-name="Ellipse 32"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1441 -100)">
+                    <g
+                      id="Ellipse_33"
+                      data-name="Ellipse 33"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1417 -100)">
+                    <g
+                      id="Ellipse_34"
+                      data-name="Ellipse 34"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1537 -76)">
+                    <g
+                      id="Ellipse_35"
+                      data-name="Ellipse 35"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1513 -76)">
+                    <g
+                      id="Ellipse_36"
+                      data-name="Ellipse 36"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1489 -76)">
+                    <g
+                      id="Ellipse_37"
+                      data-name="Ellipse 37"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1465 -76)">
+                    <g
+                      id="Ellipse_38"
+                      data-name="Ellipse 38"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1441 -76)">
+                    <g
+                      id="Ellipse_39"
+                      data-name="Ellipse 39"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1417 -76)">
+                    <g
+                      id="Ellipse_40"
+                      data-name="Ellipse 40"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1537 -52)">
+                    <g
+                      id="Ellipse_41"
+                      data-name="Ellipse 41"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1513 -52)">
+                    <g
+                      id="Ellipse_42"
+                      data-name="Ellipse 42"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1489 -52)">
+                    <g
+                      id="Ellipse_43"
+                      data-name="Ellipse 43"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1465 -52)">
+                    <g
+                      id="Ellipse_44"
+                      data-name="Ellipse 44"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1441 -52)">
+                    <g
+                      id="Ellipse_45"
+                      data-name="Ellipse 45"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1417 -52)">
+                    <g
+                      id="Ellipse_46"
+                      data-name="Ellipse 46"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1537 -28)">
+                    <g
+                      id="Ellipse_47"
+                      data-name="Ellipse 47"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1513 -28)">
+                    <g
+                      id="Ellipse_48"
+                      data-name="Ellipse 48"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1489 -28)">
+                    <g
+                      id="Ellipse_49"
+                      data-name="Ellipse 49"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1465 -28)">
+                    <g
+                      id="Ellipse_50"
+                      data-name="Ellipse 50"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1441 -28)">
+                    <g
+                      id="Ellipse_51"
+                      data-name="Ellipse 51"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                  <g transform="translate(-1417 -28)">
+                    <g
+                      id="Ellipse_52"
+                      data-name="Ellipse 52"
+                      transform="translate(1537 172)"
+                      fill="none"
+                      :stroke="$vuetify?.theme?.themes?.light?.colors?.primary"
+                      stroke-width="2"
+                    >
+                      <circle cx="8" cy="8" r="8" stroke="none" />
+                      <circle cx="8" cy="8" r="7" fill="none" />
+                    </g>
+                  </g>
+                </g>
+                <g
+                  id="Polygon_11"
+                  data-name="Polygon 11"
+                  transform="translate(367)"
+                  fill="none"
+                  opacity="0.141"
+                >
+                  <path
+                    d="M230.113,0a30,30,0,0,1,26.031,15.087l65.313,114a30,30,0,0,1,0,29.827l-65.312,114A30,30,0,0,1,230.113,288H99.887a30,30,0,0,1-26.031-15.087l-65.312-114a30,30,0,0,1,0-29.827l65.313-114A30,30,0,0,1,99.887,0Z"
+                    stroke="none"
+                  />
+                  <path
+                    d="M 99.88719177246094 21 C 96.66975402832031 21 93.67744445800781 22.7342529296875 92.07806396484375 25.5260009765625 L 26.7655029296875 139.5260009765625 C 25.1844482421875 142.2856903076172 25.1844482421875 145.7143707275391 26.7655029296875 148.4739990234375 L 92.07806396484375 262.4740600585938 C 93.67744445800781 265.2657470703125 96.66975402832031 267 99.88719177246094 267 L 230.1126861572266 267 C 233.3301849365234 267 236.3225708007812 265.2656860351562 237.9219360351562 262.4739990234375 L 303.2344360351562 148.4740600585938 C 304.8154907226562 145.7143707275391 304.8154907226562 142.2856292724609 303.2344360351562 139.5260009765625 L 237.9219970703125 25.5260009765625 C 236.3225708007812 22.7342529296875 233.3302612304688 21 230.1128234863281 21 L 99.88719177246094 21 M 99.88719177246094 0 L 230.1128234863281 0 C 240.8664398193359 0 250.7975616455078 5.75579833984375 256.1433715820312 15.08663940429688 L 321.4558715820312 129.0866241455078 C 326.7484436035156 138.3245697021484 326.7484436035156 149.6754302978516 321.4558715820312 158.9133758544922 L 256.1433715820312 272.9133605957031 C 250.7975616455078 282.2442016601562 240.8664398193359 287.9999389648438 230.1128234863281 288 L 99.88719177246094 288 C 89.13349914550781 288 79.20237731933594 282.2442016601562 73.85662841796875 272.9133605957031 L 8.5440673828125 158.9133758544922 C 3.251556396484375 149.6754302978516 3.251556396484375 138.3244934082031 8.54412841796875 129.0866241455078 L 73.85662841796875 15.08663940429688 C 79.20243835449219 5.75579833984375 89.13356018066406 0 99.88719177246094 0 Z"
+                    stroke="none"
+                    :fill="$vuetify?.theme?.themes?.light?.colors?.primary"
+                  />
+                </g>
+                <g
+                  id="Polygon_12"
+                  data-name="Polygon 12"
+                  transform="translate(0 1039)"
+                  fill="none"
+                  opacity="0.14"
+                >
+                  <path
+                    d="M152.123,0a30,30,0,0,1,26.023,15.073l39.292,68.5a30,30,0,0,1,0,29.854l-39.292,68.5A30,30,0,0,1,152.123,197H73.877a30,30,0,0,1-26.023-15.073l-39.292-68.5a30,30,0,0,1,0-29.854l39.292-68.5A30,30,0,0,1,73.877,0Z"
+                    stroke="none"
+                  />
+                  <path
+                    d="M 73.87684631347656 21 C 70.66130065917969 21 67.66984558105469 22.73269653320312 66.0699462890625 25.52189636230469 L 26.77810668945312 94.02189636230469 C 25.19369506835938 96.78410339355469 25.19369506835938 100.2158508300781 26.77810668945312 102.9780502319336 L 66.0699462890625 171.4780578613281 C 67.66984558105469 174.2673034667969 70.66130065917969 176 73.87684631347656 176 L 152.1231536865234 176 C 155.3386993408203 176 158.3301086425781 174.2673034667969 159.9299926757812 171.4780578613281 L 199.2218933105469 102.9779968261719 C 200.8063049316406 100.2158508300781 200.8063049316406 96.78410339355469 199.2218933105469 94.02194976806641 L 159.9299011230469 25.5218505859375 C 158.3300476074219 22.73265075683594 155.3386993408203 21 152.1231536865234 21 L 73.87684631347656 21 M 73.87684631347656 0 L 152.1231536865234 0 C 162.8713073730469 0 172.7982025146484 5.749893188476562 178.14599609375 15.07319641113281 L 217.4378967285156 83.57315063476562 C 222.7407531738281 92.81794738769531 222.7407531738281 104.1820526123047 217.4378967285156 113.4268035888672 L 178.14599609375 181.9268493652344 C 172.7982025146484 191.2500457763672 162.8713073730469 197 152.1231536865234 197 L 73.87684631347656 197 C 63.12869262695312 197 53.20179748535156 191.2500457763672 47.85394287109375 181.9268493652344 L 8.562103271484375 113.4268035888672 C 3.259246826171875 104.1820526123047 3.259246826171875 92.81794738769531 8.562103271484375 83.57315063476562 L 47.85394287109375 15.07315063476562 C 53.20179748535156 5.749893188476562 63.12869262695312 0 73.87684631347656 0 Z"
+                    stroke="none"
+                    :fill="$vuetify?.theme?.themes?.light?.colors?.primary"
+                  />
+                </g>
+              </g>
+            </g>
+            <rect
+              id="Rectangle_31"
+              data-name="Rectangle 31"
+              width="1920"
+              height="1175"
+              fill="none"
+            />
+          </g>
+        </g>
+      </svg> -->
+
       <v-img
         :src="blok?.backgroundImage?.filename"
         class="c-hero__background-image position-relative"
@@ -60,1140 +808,6 @@ const openSocial = (url) => {
 .c-hero {
   &__background-image {
     position: relative;
-    // clip-path: polygon(
-    //   0% 0%,
-    //   0% 97.564%,
-    //   0.089% 97.515%,
-    //   0.177% 97.466%,
-    //   0.266% 97.417%,
-    //   0.355% 97.367%,
-    //   0.443% 97.317%,
-    //   0.532% 97.266%,
-    //   0.621% 97.215%,
-    //   0.709% 97.164%,
-    //   0.798% 97.112%,
-    //   0.887% 97.06%,
-    //   0.975% 97.007%,
-    //   1.064% 96.954%,
-    //   1.152% 96.901%,
-    //   1.241% 96.847%,
-    //   1.33% 96.793%,
-    //   1.418% 96.738%,
-    //   1.507% 96.683%,
-    //   1.596% 96.628%,
-    //   1.684% 96.572%,
-    //   1.773% 96.516%,
-    //   1.862% 96.459%,
-    //   1.95% 96.402%,
-    //   2.039% 96.345%,
-    //   2.128% 96.288%,
-    //   2.216% 96.23%,
-    //   2.305% 96.171%,
-    //   2.394% 96.113%,
-    //   2.482% 96.054%,
-    //   2.571% 95.994%,
-    //   2.66% 95.935%,
-    //   2.748% 95.875%,
-    //   2.837% 95.814%,
-    //   2.926% 95.754%,
-    //   3.014% 95.692%,
-    //   3.103% 95.631%,
-    //   3.191% 95.569%,
-    //   3.28% 95.507%,
-    //   3.369% 95.445%,
-    //   3.457% 95.382%,
-    //   3.546% 95.319%,
-    //   3.635% 95.256%,
-    //   3.723% 95.192%,
-    //   3.812% 95.128%,
-    //   3.901% 95.064%,
-    //   3.989% 95%,
-    //   4.078% 94.935%,
-    //   4.167% 94.869%,
-    //   4.255% 94.804%,
-    //   4.344% 94.738%,
-    //   4.433% 94.672%,
-    //   4.521% 94.606%,
-    //   4.61% 94.539%,
-    //   4.699% 94.473%,
-    //   4.787% 94.405%,
-    //   4.876% 94.338%,
-    //   4.965% 94.27%,
-    //   5.053% 94.202%,
-    //   5.142% 94.134%,
-    //   5.23% 94.066%,
-    //   5.319% 93.997%,
-    //   5.408% 93.928%,
-    //   5.496% 93.859%,
-    //   5.585% 93.789%,
-    //   5.674% 93.72%,
-    //   5.762% 93.65%,
-    //   5.851% 93.579%,
-    //   5.94% 93.509%,
-    //   6.028% 93.438%,
-    //   6.117% 93.367%,
-    //   6.206% 93.296%,
-    //   6.294% 93.225%,
-    //   6.383% 93.154%,
-    //   6.472% 93.082%,
-    //   6.56% 93.01%,
-    //   6.649% 92.938%,
-    //   6.738% 92.865%,
-    //   6.826% 92.793%,
-    //   6.915% 92.72%,
-    //   7.004% 92.647%,
-    //   7.092% 92.574%,
-    //   7.181% 92.501%,
-    //   7.27% 92.427%,
-    //   7.358% 92.353%,
-    //   7.447% 92.28%,
-    //   7.535% 92.206%,
-    //   7.624% 92.131%,
-    //   7.713% 92.057%,
-    //   7.801% 91.983%,
-    //   7.89% 91.908%,
-    //   7.979% 91.833%,
-    //   8.067% 91.758%,
-    //   8.156% 91.683%,
-    //   8.245% 91.608%,
-    //   8.333% 91.532%,
-    //   8.422% 91.457%,
-    //   8.511% 91.381%,
-    //   8.599% 91.305%,
-    //   8.688% 91.229%,
-    //   8.777% 91.153%,
-    //   8.865% 91.077%,
-    //   8.954% 91.001%,
-    //   9.043% 90.925%,
-    //   9.131% 90.848%,
-    //   9.22% 90.772%,
-    //   9.309% 90.695%,
-    //   9.397% 90.618%,
-    //   9.486% 90.541%,
-    //   9.574% 90.464%,
-    //   9.663% 90.387%,
-    //   9.752% 90.31%,
-    //   9.84% 90.233%,
-    //   9.929% 90.156%,
-    //   10.018% 90.078%,
-    //   10.106% 90.001%,
-    //   10.195% 89.924%,
-    //   10.284% 89.846%,
-    //   10.372% 89.768%,
-    //   10.461% 89.691%,
-    //   10.55% 89.613%,
-    //   10.638% 89.535%,
-    //   10.727% 89.458%,
-    //   10.816% 89.38%,
-    //   10.904% 89.302%,
-    //   10.993% 89.224%,
-    //   11.082% 89.146%,
-    //   11.17% 89.068%,
-    //   11.259% 88.991%,
-    //   11.348% 88.913%,
-    //   11.436% 88.835%,
-    //   11.525% 88.757%,
-    //   11.613% 88.679%,
-    //   11.702% 88.601%,
-    //   11.791% 88.523%,
-    //   11.879% 88.445%,
-    //   11.968% 88.367%,
-    //   12.057% 88.289%,
-    //   12.145% 88.211%,
-    //   12.234% 88.133%,
-    //   12.323% 88.055%,
-    //   12.411% 87.978%,
-    //   12.5% 87.9%,
-    //   12.589% 87.822%,
-    //   12.677% 87.744%,
-    //   12.766% 87.667%,
-    //   12.855% 87.589%,
-    //   12.943% 87.512%,
-    //   13.032% 87.434%,
-    //   13.121% 87.357%,
-    //   13.209% 87.279%,
-    //   13.298% 87.202%,
-    //   13.387% 87.125%,
-    //   13.475% 87.048%,
-    //   13.564% 86.971%,
-    //   13.652% 86.894%,
-    //   13.741% 86.817%,
-    //   13.83% 86.74%,
-    //   13.918% 86.663%,
-    //   14.007% 86.587%,
-    //   14.096% 86.51%,
-    //   14.184% 86.434%,
-    //   14.273% 86.357%,
-    //   14.362% 86.281%,
-    //   14.45% 86.205%,
-    //   14.539% 86.129%,
-    //   14.628% 86.053%,
-    //   14.716% 85.977%,
-    //   14.805% 85.902%,
-    //   14.894% 85.826%,
-    //   14.982% 85.751%,
-    //   15.071% 85.676%,
-    //   15.16% 85.601%,
-    //   15.248% 85.526%,
-    //   15.337% 85.451%,
-    //   15.426% 85.377%,
-    //   15.514% 85.302%,
-    //   15.603% 85.228%,
-    //   15.691% 85.154%,
-    //   15.78% 85.08%,
-    //   15.869% 85.006%,
-    //   15.957% 84.932%,
-    //   16.046% 84.859%,
-    //   16.135% 84.786%,
-    //   16.223% 84.713%,
-    //   16.312% 84.64%,
-    //   16.401% 84.567%,
-    //   16.489% 84.495%,
-    //   16.578% 84.423%,
-    //   16.667% 84.35%,
-    //   16.755% 84.279%,
-    //   16.844% 84.207%,
-    //   16.933% 84.136%,
-    //   17.021% 84.064%,
-    //   17.11% 83.993%,
-    //   17.199% 83.923%,
-    //   17.287% 83.852%,
-    //   17.376% 83.782%,
-    //   17.465% 83.712%,
-    //   17.553% 83.642%,
-    //   17.642% 83.572%,
-    //   17.73% 83.503%,
-    //   17.819% 83.434%,
-    //   17.908% 83.365%,
-    //   17.996% 83.296%,
-    //   18.085% 83.228%,
-    //   18.174% 83.16%,
-    //   18.262% 83.092%,
-    //   18.351% 83.024%,
-    //   18.44% 82.957%,
-    //   18.528% 82.89%,
-    //   18.617% 82.823%,
-    //   18.706% 82.757%,
-    //   18.794% 82.691%,
-    //   18.883% 82.625%,
-    //   18.972% 82.559%,
-    //   19.06% 82.494%,
-    //   19.149% 82.429%,
-    //   19.238% 82.364%,
-    //   19.326% 82.3%,
-    //   19.415% 82.236%,
-    //   19.504% 82.172%,
-    //   19.592% 82.108%,
-    //   19.681% 82.045%,
-    //   19.77% 81.982%,
-    //   19.858% 81.92%,
-    //   19.947% 81.858%,
-    //   20.035% 81.796%,
-    //   20.124% 81.734%,
-    //   20.213% 81.673%,
-    //   20.301% 81.612%,
-    //   20.39% 81.551%,
-    //   20.479% 81.491%,
-    //   20.567% 81.431%,
-    //   20.656% 81.372%,
-    //   20.745% 81.313%,
-    //   20.833% 81.254%,
-    //   20.922% 81.195%,
-    //   21.011% 81.137%,
-    //   21.099% 81.079%,
-    //   21.188% 81.022%,
-    //   21.277% 80.965%,
-    //   21.365% 80.908%,
-    //   21.454% 80.852%,
-    //   21.543% 80.796%,
-    //   21.631% 80.74%,
-    //   21.72% 80.685%,
-    //   21.809% 80.63%,
-    //   21.897% 80.576%,
-    //   21.986% 80.522%,
-    //   22.074% 80.468%,
-    //   22.163% 80.415%,
-    //   22.252% 80.362%,
-    //   22.34% 80.31%,
-    //   22.429% 80.258%,
-    //   22.518% 80.206%,
-    //   22.606% 80.155%,
-    //   22.695% 80.104%,
-    //   22.784% 80.054%,
-    //   22.872% 80.004%,
-    //   22.961% 79.954%,
-    //   23.05% 79.905%,
-    //   23.138% 79.856%,
-    //   23.227% 79.808%,
-    //   23.316% 79.76%,
-    //   23.404% 79.712%,
-    //   23.493% 79.665%,
-    //   23.582% 79.618%,
-    //   23.67% 79.572%,
-    //   23.759% 79.526%,
-    //   23.848% 79.481%,
-    //   23.936% 79.436%,
-    //   24.025% 79.392%,
-    //   24.113% 79.348%,
-    //   24.202% 79.304%,
-    //   24.291% 79.261%,
-    //   24.379% 79.218%,
-    //   24.468% 79.176%,
-    //   24.557% 79.134%,
-    //   24.645% 79.093%,
-    //   24.734% 79.052%,
-    //   24.823% 79.012%,
-    //   24.911% 78.972%,
-    //   25% 78.932%,
-    //   25.089% 78.893%,
-    //   25.177% 78.855%,
-    //   25.266% 78.816%,
-    //   25.355% 78.779%,
-    //   25.443% 78.742%,
-    //   25.532% 78.705%,
-    //   25.621% 78.669%,
-    //   25.709% 78.633%,
-    //   25.798% 78.598%,
-    //   25.887% 78.563%,
-    //   25.975% 78.529%,
-    //   26.064% 78.495%,
-    //   26.152% 78.462%,
-    //   26.241% 78.429%,
-    //   26.33% 78.397%,
-    //   26.418% 78.365%,
-    //   26.507% 78.333%,
-    //   26.596% 78.302%,
-    //   26.684% 78.272%,
-    //   26.773% 78.242%,
-    //   26.862% 78.213%,
-    //   26.95% 78.184%,
-    //   27.039% 78.156%,
-    //   27.128% 78.128%,
-    //   27.216% 78.1%,
-    //   27.305% 78.073%,
-    //   27.394% 78.047%,
-    //   27.482% 78.021%,
-    //   27.571% 77.996%,
-    //   27.66% 77.971%,
-    //   27.748% 77.947%,
-    //   27.837% 77.923%,
-    //   27.926% 77.9%,
-    //   28.014% 77.877%,
-    //   28.103% 77.855%,
-    //   28.191% 77.833%,
-    //   28.28% 77.811%,
-    //   28.369% 77.791%,
-    //   28.457% 77.771%,
-    //   28.546% 77.751%,
-    //   28.635% 77.732%,
-    //   28.723% 77.713%,
-    //   28.812% 77.695%,
-    //   28.901% 77.677%,
-    //   28.989% 77.66%,
-    //   29.078% 77.644%,
-    //   29.167% 77.628%,
-    //   29.255% 77.612%,
-    //   29.344% 77.597%,
-    //   29.433% 77.583%,
-    //   29.521% 77.569%,
-    //   29.61% 77.555%,
-    //   29.699% 77.543%,
-    //   29.787% 77.53%,
-    //   29.876% 77.518%,
-    //   29.965% 77.507%,
-    //   30.053% 77.496%,
-    //   30.142% 77.486%,
-    //   30.23% 77.477%,
-    //   30.319% 77.467%,
-    //   30.408% 77.459%,
-    //   30.496% 77.451%,
-    //   30.585% 77.443%,
-    //   30.674% 77.436%,
-    //   30.762% 77.43%,
-    //   30.851% 77.424%,
-    //   30.94% 77.418%,
-    //   31.028% 77.414%,
-    //   31.117% 77.409%,
-    //   31.206% 77.405%,
-    //   31.294% 77.402%,
-    //   31.383% 77.4%,
-    //   31.472% 77.397%,
-    //   31.56% 77.396%,
-    //   31.649% 77.395%,
-    //   31.738% 77.394%,
-    //   31.826% 77.394%,
-    //   31.915% 77.395%,
-    //   32.004% 77.396%,
-    //   32.092% 77.397%,
-    //   32.181% 77.399%,
-    //   32.27% 77.402%,
-    //   32.358% 77.405%,
-    //   32.447% 77.409%,
-    //   32.535% 77.413%,
-    //   32.624% 77.418%,
-    //   32.713% 77.423%,
-    //   32.801% 77.429%,
-    //   32.89% 77.436%,
-    //   32.979% 77.443%,
-    //   33.067% 77.45%,
-    //   33.156% 77.458%,
-    //   33.245% 77.467%,
-    //   33.333% 77.476%,
-    //   33.422% 77.486%,
-    //   33.511% 77.496%,
-    //   33.599% 77.506%,
-    //   33.688% 77.518%,
-    //   33.777% 77.529%,
-    //   33.865% 77.542%,
-    //   33.954% 77.555%,
-    //   34.043% 77.568%,
-    //   34.131% 77.582%,
-    //   34.22% 77.596%,
-    //   34.309% 77.611%,
-    //   34.397% 77.627%,
-    //   34.486% 77.643%,
-    //   34.574% 77.659%,
-    //   34.663% 77.676%,
-    //   34.752% 77.694%,
-    //   34.84% 77.712%,
-    //   34.929% 77.731%,
-    //   35.018% 77.75%,
-    //   35.106% 77.769%,
-    //   35.195% 77.789%,
-    //   35.284% 77.81%,
-    //   35.372% 77.831%,
-    //   35.461% 77.853%,
-    //   35.55% 77.875%,
-    //   35.638% 77.898%,
-    //   35.727% 77.921%,
-    //   35.816% 77.945%,
-    //   35.904% 77.97%,
-    //   35.993% 77.994%,
-    //   36.082% 78.02%,
-    //   36.17% 78.045%,
-    //   36.259% 78.072%,
-    //   36.348% 78.099%,
-    //   36.436% 78.126%,
-    //   36.525% 78.154%,
-    //   36.613% 78.182%,
-    //   36.702% 78.211%,
-    //   36.791% 78.24%,
-    //   36.879% 78.27%,
-    //   36.968% 78.301%,
-    //   37.057% 78.331%,
-    //   37.145% 78.363%,
-    //   37.234% 78.395%,
-    //   37.323% 78.427%,
-    //   37.411% 78.46%,
-    //   37.5% 78.493%,
-    //   37.589% 78.527%,
-    //   37.677% 78.561%,
-    //   37.766% 78.596%,
-    //   37.855% 78.631%,
-    //   37.943% 78.667%,
-    //   38.032% 78.703%,
-    //   38.121% 78.739%,
-    //   38.209% 78.777%,
-    //   38.298% 78.814%,
-    //   38.387% 78.852%,
-    //   38.475% 78.891%,
-    //   38.564% 78.93%,
-    //   38.652% 78.969%,
-    //   38.741% 79.009%,
-    //   38.83% 79.05%,
-    //   38.918% 79.09%,
-    //   39.007% 79.132%,
-    //   39.096% 79.173%,
-    //   39.184% 79.216%,
-    //   39.273% 79.258%,
-    //   39.362% 79.301%,
-    //   39.45% 79.345%,
-    //   39.539% 79.389%,
-    //   39.628% 79.433%,
-    //   39.716% 79.478%,
-    //   39.805% 79.524%,
-    //   39.894% 79.569%,
-    //   39.982% 79.616%,
-    //   40.071% 79.662%,
-    //   40.16% 79.709%,
-    //   40.248% 79.757%,
-    //   40.337% 79.805%,
-    //   40.426% 79.853%,
-    //   40.514% 79.902%,
-    //   40.603% 79.951%,
-    //   40.691% 80%,
-    //   40.78% 80.05%,
-    //   40.869% 80.101%,
-    //   40.957% 80.152%,
-    //   41.046% 80.203%,
-    //   41.135% 80.255%,
-    //   41.223% 80.307%,
-    //   41.312% 80.359%,
-    //   41.401% 80.412%,
-    //   41.489% 80.465%,
-    //   41.578% 80.519%,
-    //   41.667% 80.573%,
-    //   41.755% 80.627%,
-    //   41.844% 80.682%,
-    //   41.933% 80.737%,
-    //   42.021% 80.793%,
-    //   42.11% 80.848%,
-    //   42.199% 80.905%,
-    //   42.287% 80.961%,
-    //   42.376% 81.018%,
-    //   42.465% 81.076%,
-    //   42.553% 81.134%,
-    //   42.642% 81.192%,
-    //   42.73% 81.25%,
-    //   42.819% 81.309%,
-    //   42.908% 81.368%,
-    //   42.996% 81.428%,
-    //   43.085% 81.487%,
-    //   43.174% 81.548%,
-    //   43.262% 81.608%,
-    //   43.351% 81.669%,
-    //   43.44% 81.73%,
-    //   43.528% 81.792%,
-    //   43.617% 81.854%,
-    //   43.706% 81.916%,
-    //   43.794% 81.978%,
-    //   43.883% 82.041%,
-    //   43.972% 82.104%,
-    //   44.06% 82.168%,
-    //   44.149% 82.232%,
-    //   44.238% 82.296%,
-    //   44.326% 82.36%,
-    //   44.415% 82.425%,
-    //   44.504% 82.49%,
-    //   44.592% 82.555%,
-    //   44.681% 82.621%,
-    //   44.77% 82.687%,
-    //   44.858% 82.753%,
-    //   44.947% 82.819%,
-    //   45.035% 82.886%,
-    //   45.124% 82.953%,
-    //   45.213% 83.02%,
-    //   45.301% 83.088%,
-    //   45.39% 83.156%,
-    //   45.479% 83.224%,
-    //   45.567% 83.292%,
-    //   45.656% 83.361%,
-    //   45.745% 83.429%,
-    //   45.833% 83.499%,
-    //   45.922% 83.568%,
-    //   46.011% 83.637%,
-    //   46.099% 83.707%,
-    //   46.188% 83.777%,
-    //   46.277% 83.848%,
-    //   46.365% 83.918%,
-    //   46.454% 83.989%,
-    //   46.543% 84.06%,
-    //   46.631% 84.131%,
-    //   46.72% 84.203%,
-    //   46.809% 84.274%,
-    //   46.897% 84.346%,
-    //   46.986% 84.418%,
-    //   47.074% 84.49%,
-    //   47.163% 84.563%,
-    //   47.252% 84.635%,
-    //   47.34% 84.708%,
-    //   47.429% 84.781%,
-    //   47.518% 84.854%,
-    //   47.606% 84.928%,
-    //   47.695% 85.001%,
-    //   47.784% 85.075%,
-    //   47.872% 85.149%,
-    //   47.961% 85.223%,
-    //   48.05% 85.298%,
-    //   48.138% 85.372%,
-    //   48.227% 85.447%,
-    //   48.316% 85.521%,
-    //   48.404% 85.596%,
-    //   48.493% 85.671%,
-    //   48.582% 85.746%,
-    //   48.67% 85.822%,
-    //   48.759% 85.897%,
-    //   48.848% 85.973%,
-    //   48.936% 86.048%,
-    //   49.025% 86.124%,
-    //   49.113% 86.2%,
-    //   49.202% 86.276%,
-    //   49.291% 86.353%,
-    //   49.379% 86.429%,
-    //   49.468% 86.505%,
-    //   49.557% 86.582%,
-    //   49.645% 86.658%,
-    //   49.734% 86.735%,
-    //   49.823% 86.812%,
-    //   49.911% 86.889%,
-    //   50% 86.966%,
-    //   50.089% 87.043%,
-    //   50.177% 87.12%,
-    //   50.266% 87.197%,
-    //   50.355% 87.275%,
-    //   50.443% 87.352%,
-    //   50.532% 87.429%,
-    //   50.621% 87.507%,
-    //   50.709% 87.584%,
-    //   50.798% 87.662%,
-    //   50.887% 87.74%,
-    //   50.975% 87.817%,
-    //   51.064% 87.895%,
-    //   51.152% 87.973%,
-    //   51.241% 88.051%,
-    //   51.33% 88.128%,
-    //   51.418% 88.206%,
-    //   51.507% 88.284%,
-    //   51.596% 88.362%,
-    //   51.684% 88.44%,
-    //   51.773% 88.518%,
-    //   51.862% 88.596%,
-    //   51.95% 88.674%,
-    //   52.039% 88.752%,
-    //   52.128% 88.83%,
-    //   52.216% 88.908%,
-    //   52.305% 88.986%,
-    //   52.394% 89.064%,
-    //   52.482% 89.142%,
-    //   52.571% 89.219%,
-    //   52.66% 89.297%,
-    //   52.748% 89.375%,
-    //   52.837% 89.453%,
-    //   52.926% 89.531%,
-    //   53.014% 89.608%,
-    //   53.103% 89.686%,
-    //   53.191% 89.764%,
-    //   53.28% 89.841%,
-    //   53.369% 89.919%,
-    //   53.457% 89.996%,
-    //   53.546% 90.074%,
-    //   53.635% 90.151%,
-    //   53.723% 90.228%,
-    //   53.812% 90.305%,
-    //   53.901% 90.383%,
-    //   53.989% 90.46%,
-    //   54.078% 90.537%,
-    //   54.167% 90.613%,
-    //   54.255% 90.69%,
-    //   54.344% 90.767%,
-    //   54.433% 90.843%,
-    //   54.521% 90.92%,
-    //   54.61% 90.996%,
-    //   54.699% 91.073%,
-    //   54.787% 91.149%,
-    //   54.876% 91.225%,
-    //   54.965% 91.301%,
-    //   55.053% 91.376%,
-    //   55.142% 91.452%,
-    //   55.23% 91.528%,
-    //   55.319% 91.603%,
-    //   55.408% 91.678%,
-    //   55.496% 91.753%,
-    //   55.585% 91.828%,
-    //   55.674% 91.903%,
-    //   55.762% 91.978%,
-    //   55.851% 92.052%,
-    //   55.94% 92.127%,
-    //   56.028% 92.201%,
-    //   56.117% 92.275%,
-    //   56.206% 92.349%,
-    //   56.294% 92.423%,
-    //   56.383% 92.496%,
-    //   56.472% 92.569%,
-    //   56.56% 92.643%,
-    //   56.649% 92.715%,
-    //   56.738% 92.788%,
-    //   56.826% 92.861%,
-    //   56.915% 92.933%,
-    //   57.004% 93.005%,
-    //   57.092% 93.077%,
-    //   57.181% 93.149%,
-    //   57.27% 93.221%,
-    //   57.358% 93.292%,
-    //   57.447% 93.363%,
-    //   57.535% 93.434%,
-    //   57.624% 93.505%,
-    //   57.713% 93.575%,
-    //   57.801% 93.645%,
-    //   57.89% 93.715%,
-    //   57.979% 93.785%,
-    //   58.067% 93.854%,
-    //   58.156% 93.924%,
-    //   58.245% 93.993%,
-    //   58.333% 94.061%,
-    //   58.422% 94.13%,
-    //   58.511% 94.198%,
-    //   58.599% 94.266%,
-    //   58.688% 94.334%,
-    //   58.777% 94.401%,
-    //   58.865% 94.468%,
-    //   58.954% 94.535%,
-    //   59.043% 94.602%,
-    //   59.131% 94.668%,
-    //   59.22% 94.734%,
-    //   59.309% 94.8%,
-    //   59.397% 94.865%,
-    //   59.486% 94.931%,
-    //   59.574% 94.996%,
-    //   59.663% 95.06%,
-    //   59.752% 95.124%,
-    //   59.84% 95.188%,
-    //   59.929% 95.252%,
-    //   60.018% 95.315%,
-    //   60.106% 95.378%,
-    //   60.195% 95.441%,
-    //   60.284% 95.503%,
-    //   60.372% 95.566%,
-    //   60.461% 95.627%,
-    //   60.55% 95.689%,
-    //   60.638% 95.75%,
-    //   60.727% 95.811%,
-    //   60.816% 95.871%,
-    //   60.904% 95.931%,
-    //   60.993% 95.991%,
-    //   61.082% 96.05%,
-    //   61.17% 96.109%,
-    //   61.259% 96.168%,
-    //   61.348% 96.226%,
-    //   61.436% 96.284%,
-    //   61.525% 96.342%,
-    //   61.613% 96.399%,
-    //   61.702% 96.456%,
-    //   61.791% 96.512%,
-    //   61.879% 96.568%,
-    //   61.968% 96.624%,
-    //   62.057% 96.68%,
-    //   62.145% 96.735%,
-    //   62.234% 96.789%,
-    //   62.323% 96.843%,
-    //   62.411% 96.897%,
-    //   62.5% 96.951%,
-    //   62.589% 97.004%,
-    //   62.677% 97.056%,
-    //   62.766% 97.109%,
-    //   62.855% 97.161%,
-    //   62.943% 97.212%,
-    //   63.032% 97.263%,
-    //   63.121% 97.314%,
-    //   63.209% 97.364%,
-    //   63.298% 97.414%,
-    //   63.387% 97.463%,
-    //   63.475% 97.512%,
-    //   63.564% 97.561%,
-    //   63.652% 97.609%,
-    //   63.741% 97.657%,
-    //   63.83% 97.704%,
-    //   63.918% 97.751%,
-    //   64.007% 97.797%,
-    //   64.096% 97.843%,
-    //   64.184% 97.889%,
-    //   64.273% 97.934%,
-    //   64.362% 97.979%,
-    //   64.45% 98.023%,
-    //   64.539% 98.067%,
-    //   64.628% 98.11%,
-    //   64.716% 98.153%,
-    //   64.805% 98.196%,
-    //   64.894% 98.238%,
-    //   64.982% 98.279%,
-    //   65.071% 98.32%,
-    //   65.16% 98.361%,
-    //   65.248% 98.401%,
-    //   65.337% 98.441%,
-    //   65.426% 98.48%,
-    //   65.514% 98.519%,
-    //   65.603% 98.557%,
-    //   65.691% 98.595%,
-    //   65.78% 98.633%,
-    //   65.869% 98.67%,
-    //   65.957% 98.706%,
-    //   66.046% 98.742%,
-    //   66.135% 98.778%,
-    //   66.223% 98.813%,
-    //   66.312% 98.847%,
-    //   66.401% 98.881%,
-    //   66.489% 98.915%,
-    //   66.578% 98.948%,
-    //   66.667% 98.98%,
-    //   66.755% 99.012%,
-    //   66.844% 99.044%,
-    //   66.933% 99.075%,
-    //   67.021% 99.106%,
-    //   67.11% 99.136%,
-    //   67.199% 99.166%,
-    //   67.287% 99.195%,
-    //   67.376% 99.223%,
-    //   67.465% 99.252%,
-    //   67.553% 99.279%,
-    //   67.642% 99.306%,
-    //   67.73% 99.333%,
-    //   67.819% 99.359%,
-    //   67.908% 99.385%,
-    //   67.996% 99.41%,
-    //   68.085% 99.434%,
-    //   68.174% 99.459%,
-    //   68.262% 99.482%,
-    //   68.351% 99.505%,
-    //   68.44% 99.528%,
-    //   68.528% 99.55%,
-    //   68.617% 99.571%,
-    //   68.706% 99.592%,
-    //   68.794% 99.613%,
-    //   68.883% 99.633%,
-    //   68.972% 99.652%,
-    //   69.06% 99.671%,
-    //   69.149% 99.69%,
-    //   69.238% 99.707%,
-    //   69.326% 99.725%,
-    //   69.415% 99.742%,
-    //   69.504% 99.758%,
-    //   69.592% 99.774%,
-    //   69.681% 99.789%,
-    //   69.77% 99.804%,
-    //   69.858% 99.818%,
-    //   69.947% 99.832%,
-    //   70.035% 99.845%,
-    //   70.124% 99.857%,
-    //   70.213% 99.869%,
-    //   70.301% 99.881%,
-    //   70.39% 99.892%,
-    //   70.479% 99.902%,
-    //   70.567% 99.912%,
-    //   70.656% 99.922%,
-    //   70.745% 99.931%,
-    //   70.833% 99.939%,
-    //   70.922% 99.947%,
-    //   71.011% 99.954%,
-    //   71.099% 99.961%,
-    //   71.188% 99.967%,
-    //   71.277% 99.973%,
-    //   71.365% 99.978%,
-    //   71.454% 99.983%,
-    //   71.543% 99.987%,
-    //   71.631% 99.99%,
-    //   71.72% 99.993%,
-    //   71.809% 99.996%,
-    //   71.897% 99.997%,
-    //   71.986% 99.999%,
-    //   72.074% 100%,
-    //   72.163% 100%,
-    //   72.252% 100%,
-    //   72.34% 99.999%,
-    //   72.429% 99.998%,
-    //   72.518% 99.996%,
-    //   72.606% 99.993%,
-    //   72.695% 99.991%,
-    //   72.784% 99.987%,
-    //   72.872% 99.983%,
-    //   72.961% 99.979%,
-    //   73.05% 99.973%,
-    //   73.138% 99.968%,
-    //   73.227% 99.962%,
-    //   73.316% 99.955%,
-    //   73.404% 99.948%,
-    //   73.493% 99.94%,
-    //   73.582% 99.932%,
-    //   73.67% 99.923%,
-    //   73.759% 99.914%,
-    //   73.848% 99.904%,
-    //   73.936% 99.893%,
-    //   74.025% 99.882%,
-    //   74.113% 99.871%,
-    //   74.202% 99.859%,
-    //   74.291% 99.846%,
-    //   74.379% 99.833%,
-    //   74.468% 99.82%,
-    //   74.557% 99.806%,
-    //   74.645% 99.791%,
-    //   74.734% 99.776%,
-    //   74.823% 99.76%,
-    //   74.911% 99.744%,
-    //   75% 99.727%,
-    //   75.089% 99.71%,
-    //   75.177% 99.692%,
-    //   75.266% 99.673%,
-    //   75.355% 99.655%,
-    //   75.443% 99.635%,
-    //   75.532% 99.615%,
-    //   75.621% 99.595%,
-    //   75.709% 99.574%,
-    //   75.798% 99.552%,
-    //   75.887% 99.531%,
-    //   75.975% 99.508%,
-    //   76.064% 99.485%,
-    //   76.152% 99.462%,
-    //   76.241% 99.437%,
-    //   76.33% 99.413%,
-    //   76.418% 99.388%,
-    //   76.507% 99.362%,
-    //   76.596% 99.336%,
-    //   76.684% 99.31%,
-    //   76.773% 99.283%,
-    //   76.862% 99.255%,
-    //   76.95% 99.227%,
-    //   77.039% 99.198%,
-    //   77.128% 99.169%,
-    //   77.216% 99.14%,
-    //   77.305% 99.11%,
-    //   77.394% 99.079%,
-    //   77.482% 99.048%,
-    //   77.571% 99.016%,
-    //   77.66% 98.984%,
-    //   77.748% 98.952%,
-    //   77.837% 98.919%,
-    //   77.926% 98.885%,
-    //   78.014% 98.851%,
-    //   78.103% 98.817%,
-    //   78.191% 98.782%,
-    //   78.28% 98.746%,
-    //   78.369% 98.711%,
-    //   78.457% 98.674%,
-    //   78.546% 98.637%,
-    //   78.635% 98.6%,
-    //   78.723% 98.562%,
-    //   78.812% 98.524%,
-    //   78.901% 98.485%,
-    //   78.989% 98.446%,
-    //   79.078% 98.406%,
-    //   79.167% 98.366%,
-    //   79.255% 98.325%,
-    //   79.344% 98.284%,
-    //   79.433% 98.243%,
-    //   79.521% 98.201%,
-    //   79.61% 98.158%,
-    //   79.699% 98.116%,
-    //   79.787% 98.072%,
-    //   79.876% 98.028%,
-    //   79.965% 97.984%,
-    //   80.053% 97.94%,
-    //   80.142% 97.895%,
-    //   80.23% 97.849%,
-    //   80.319% 97.803%,
-    //   80.408% 97.757%,
-    //   80.496% 97.71%,
-    //   80.585% 97.663%,
-    //   80.674% 97.615%,
-    //   80.762% 97.567%,
-    //   80.851% 97.518%,
-    //   80.94% 97.469%,
-    //   81.028% 97.42%,
-    //   81.117% 97.37%,
-    //   81.206% 97.32%,
-    //   81.294% 97.269%,
-    //   81.383% 97.218%,
-    //   81.472% 97.167%,
-    //   81.56% 97.115%,
-    //   81.649% 97.063%,
-    //   81.738% 97.01%,
-    //   81.826% 96.957%,
-    //   81.915% 96.904%,
-    //   82.004% 96.85%,
-    //   82.092% 96.796%,
-    //   82.181% 96.741%,
-    //   82.27% 96.686%,
-    //   82.358% 96.631%,
-    //   82.447% 96.575%,
-    //   82.535% 96.519%,
-    //   82.624% 96.463%,
-    //   82.713% 96.406%,
-    //   82.801% 96.349%,
-    //   82.89% 96.291%,
-    //   82.979% 96.233%,
-    //   83.067% 96.175%,
-    //   83.156% 96.116%,
-    //   83.245% 96.057%,
-    //   83.333% 95.998%,
-    //   83.422% 95.938%,
-    //   83.511% 95.878%,
-    //   83.599% 95.818%,
-    //   83.688% 95.757%,
-    //   83.777% 95.696%,
-    //   83.865% 95.635%,
-    //   83.954% 95.573%,
-    //   84.043% 95.511%,
-    //   84.131% 95.449%,
-    //   84.22% 95.386%,
-    //   84.309% 95.323%,
-    //   84.397% 95.26%,
-    //   84.486% 95.196%,
-    //   84.574% 95.132%,
-    //   84.663% 95.068%,
-    //   84.752% 95.004%,
-    //   84.84% 94.939%,
-    //   84.929% 94.874%,
-    //   85.018% 94.808%,
-    //   85.106% 94.742%,
-    //   85.195% 94.676%,
-    //   85.284% 94.61%,
-    //   85.372% 94.544%,
-    //   85.461% 94.477%,
-    //   85.55% 94.41%,
-    //   85.638% 94.342%,
-    //   85.727% 94.274%,
-    //   85.816% 94.207%,
-    //   85.904% 94.138%,
-    //   85.993% 94.07%,
-    //   86.082% 94.001%,
-    //   86.17% 93.932%,
-    //   86.259% 93.863%,
-    //   86.348% 93.794%,
-    //   86.436% 93.724%,
-    //   86.525% 93.654%,
-    //   86.613% 93.584%,
-    //   86.702% 93.513%,
-    //   86.791% 93.443%,
-    //   86.879% 93.372%,
-    //   86.968% 93.301%,
-    //   87.057% 93.229%,
-    //   87.145% 93.158%,
-    //   87.234% 93.086%,
-    //   87.323% 93.014%,
-    //   87.411% 92.942%,
-    //   87.5% 92.87%,
-    //   87.589% 92.797%,
-    //   87.677% 92.724%,
-    //   87.766% 92.652%,
-    //   87.855% 92.578%,
-    //   87.943% 92.505%,
-    //   88.032% 92.432%,
-    //   88.121% 92.358%,
-    //   88.209% 92.284%,
-    //   88.298% 92.21%,
-    //   88.387% 92.136%,
-    //   88.475% 92.062%,
-    //   88.564% 91.987%,
-    //   88.652% 91.912%,
-    //   88.741% 91.838%,
-    //   88.83% 91.763%,
-    //   88.918% 91.688%,
-    //   89.007% 91.612%,
-    //   89.096% 91.537%,
-    //   89.184% 91.461%,
-    //   89.273% 91.386%,
-    //   89.362% 91.31%,
-    //   89.45% 91.234%,
-    //   89.539% 91.158%,
-    //   89.628% 91.082%,
-    //   89.716% 91.006%,
-    //   89.805% 90.929%,
-    //   89.894% 90.853%,
-    //   89.982% 90.776%,
-    //   90.071% 90.7%,
-    //   90.16% 90.623%,
-    //   90.248% 90.546%,
-    //   90.337% 90.469%,
-    //   90.426% 90.392%,
-    //   90.514% 90.315%,
-    //   90.603% 90.238%,
-    //   90.691% 90.161%,
-    //   90.78% 90.083%,
-    //   90.869% 90.006%,
-    //   90.957% 89.928%,
-    //   91.046% 89.851%,
-    //   91.135% 89.773%,
-    //   91.223% 89.696%,
-    //   91.312% 89.618%,
-    //   91.401% 89.54%,
-    //   91.489% 89.462%,
-    //   91.578% 89.385%,
-    //   91.667% 89.307%,
-    //   91.755% 89.229%,
-    //   91.844% 89.151%,
-    //   91.933% 89.073%,
-    //   92.021% 88.995%,
-    //   92.11% 88.917%,
-    //   92.199% 88.839%,
-    //   92.287% 88.762%,
-    //   92.376% 88.684%,
-    //   92.465% 88.606%,
-    //   92.553% 88.528%,
-    //   92.642% 88.45%,
-    //   92.73% 88.372%,
-    //   92.819% 88.294%,
-    //   92.908% 88.216%,
-    //   92.996% 88.138%,
-    //   93.085% 88.06%,
-    //   93.174% 87.982%,
-    //   93.262% 87.905%,
-    //   93.351% 87.827%,
-    //   93.44% 87.749%,
-    //   93.528% 87.672%,
-    //   93.617% 87.594%,
-    //   93.706% 87.516%,
-    //   93.794% 87.439%,
-    //   93.883% 87.362%,
-    //   93.972% 87.284%,
-    //   94.06% 87.207%,
-    //   94.149% 87.13%,
-    //   94.238% 87.052%,
-    //   94.326% 86.975%,
-    //   94.415% 86.898%,
-    //   94.504% 86.821%,
-    //   94.592% 86.745%,
-    //   94.681% 86.668%,
-    //   94.77% 86.591%,
-    //   94.858% 86.515%,
-    //   94.947% 86.438%,
-    //   95.035% 86.362%,
-    //   95.124% 86.286%,
-    //   95.213% 86.21%,
-    //   95.301% 86.134%,
-    //   95.39% 86.058%,
-    //   95.479% 85.982%,
-    //   95.567% 85.906%,
-    //   95.656% 85.831%,
-    //   95.745% 85.756%,
-    //   95.833% 85.68%,
-    //   95.922% 85.605%,
-    //   96.011% 85.53%,
-    //   96.099% 85.456%,
-    //   96.188% 85.381%,
-    //   96.277% 85.307%,
-    //   96.365% 85.232%,
-    //   96.454% 85.158%,
-    //   96.543% 85.084%,
-    //   96.631% 85.011%,
-    //   96.72% 84.937%,
-    //   96.809% 84.864%,
-    //   96.897% 84.79%,
-    //   96.986% 84.717%,
-    //   97.074% 84.644%,
-    //   97.163% 84.572%,
-    //   97.252% 84.499%,
-    //   97.34% 84.427%,
-    //   97.429% 84.355%,
-    //   97.518% 84.283%,
-    //   97.606% 84.211%,
-    //   97.695% 84.14%,
-    //   97.784% 84.069%,
-    //   97.872% 83.998%,
-    //   97.961% 83.927%,
-    //   98.05% 83.856%,
-    //   98.138% 83.786%,
-    //   98.227% 83.716%,
-    //   98.316% 83.646%,
-    //   98.404% 83.576%,
-    //   98.493% 83.507%,
-    //   98.582% 83.438%,
-    //   98.67% 83.369%,
-    //   98.759% 83.3%,
-    //   98.848% 83.232%,
-    //   98.936% 83.164%,
-    //   99.025% 83.096%,
-    //   99.113% 83.029%,
-    //   99.202% 82.961%,
-    //   99.291% 82.894%,
-    //   99.379% 82.828%,
-    //   99.468% 82.761%,
-    //   99.557% 82.695%,
-    //   99.645% 82.629%,
-    //   99.734% 82.563%,
-    //   99.823% 82.498%,
-    //   99.911% 82.433%,
-    //   100% 82.368%,
-    //   100.089% 82.304%,
-    //   100% 0%
-    // );
   }
   &__image-copy {
     position: absolute;

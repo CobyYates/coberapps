@@ -1,38 +1,16 @@
 <template>
   <v-app>
-    <navigation v-if="navActive" v-bind="nav.content" />
-    <!-- <pre v-if="navActive">{{ nav.content }}</pre> -->
-    <slot />
+    <navigation />
+    <div class="c-main bg-black">
+      <slot />
+    </div>
     <navigation-footer v-if="navActive" v-bind="nav.content.footer[0]" />
   </v-app>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      nav: null,
-    };
-  },
-  async beforeMount() {
-    const config = useRuntimeConfig();
-    let environment = config.public.NUXT_PUBLIC_NODE_ENV;
-    const story = await useAsyncStoryblok("globalNavigation", {
-      version: environment === "production" ? "published" : "draft",
-    });
-    this.nav = story;
-  },
-  computed: {
-    navActive() {
-      let result = false;
-      const nav = this.nav;
-      if (nav && nav.content) {
-        result = true;
-      }
-      return result;
-    },
-  },
-  useServerSeoMeta() {},
+  // useServerSeoMeta() {},
 };
 </script>
 <!--
@@ -109,6 +87,9 @@ export default {
 </script> -->
 
 <style lang="scss">
+.c-main {
+  padding-top: 85px;
+}
 h1,
 h2 {
   font-family: "Tw Cen MT", sans-serif;

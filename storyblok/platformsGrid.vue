@@ -4,7 +4,7 @@
       <h2 class="text-h2 mb-8 text-center">{{ blok?.title }}</h2>
       <p class="mb-10 text-center">{{ blok?.description }}</p>
       <v-row class="c-platforms__container" justify="center">
-        <v-col cols="12" md="8" class="d-flex flex-wrap ga-10 justify-center">
+        <v-col cols="12" lg="10" xl="8" class="d-flex flex-wrap ga-10 justify-center">
           <v-row>
             <v-col
               v-for="platform in blok?.platform"
@@ -14,12 +14,14 @@
               md="2"
             >
               <div class="d-flex flex-column align-center">
-                <img
+                <NuxtImg
                   :src="platform?.image?.filename"
-                  contain
-                  width="100"
+                  provider="storyblok"
                   max-height="100%"
+                  format="webp"
                   class="mb-3"
+                  width="100"
+                  contain
                 />
                 <p>{{ platform?.title }}</p>
               </div>

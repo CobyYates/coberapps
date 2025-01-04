@@ -4,7 +4,6 @@
     height="350px"
     width="370px"
     class="pa-5 text-primary"
-    rounded="xl"
   >
     <v-avatar size="100" tile class="mb-2">
       <v-icon size="100" color="primary">{{ blok?.icon }}</v-icon>

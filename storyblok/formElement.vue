@@ -65,6 +65,11 @@
 <script setup>
 import { ref } from "vue";
 import emailjs from "@emailjs/browser";
+const config = useRuntimeConfig();
+
+const EMAILJS_SERVICE_ID = config?.EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = config?.EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = config?.EMAILJS_PUBLIC_KEY
 
 defineProps({ blok: Object });
 
@@ -96,12 +101,12 @@ const submitForm = async () => {
 
   try {
     await emailjs.send(
-      "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-      "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
       {
         ...form.value,
       },
-      "YOUR_PUBLIC_KEY" // Replace with your EmailJS public key
+      EMAILJS_PUBLIC_KEY,
     );
 
     alert("Form submitted successfully!");
