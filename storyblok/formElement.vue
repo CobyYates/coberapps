@@ -67,10 +67,6 @@ import { ref } from "vue";
 import emailjs from "@emailjs/browser";
 const config = useRuntimeConfig();
 
-const EMAILJS_SERVICE_ID = config?.EMAILJS_SERVICE_ID
-const EMAILJS_TEMPLATE_ID = config?.EMAILJS_TEMPLATE_ID
-const EMAILJS_PUBLIC_KEY = config?.EMAILJS_PUBLIC_KEY
-
 defineProps({ blok: Object });
 
 const formRef = ref(null);
@@ -95,6 +91,9 @@ const options = (value) => {
 };
 
 const submitForm = async () => {
+  const EMAILJS_SERVICE_ID = config?.public?.EMAILJS_SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = config?.public?.EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = config?.public?.EMAILJS_PUBLIC_KEY;
   if (!formRef.value.validate()) {
     return;
   }
@@ -106,7 +105,7 @@ const submitForm = async () => {
       {
         ...form.value,
       },
-      EMAILJS_PUBLIC_KEY,
+      EMAILJS_PUBLIC_KEY
     );
 
     alert("Form submitted successfully!");
@@ -119,5 +118,4 @@ const submitForm = async () => {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
